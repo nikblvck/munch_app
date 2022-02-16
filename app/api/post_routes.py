@@ -26,3 +26,6 @@ def new_post():
         db.session.commit()
         return new_post.to_dict()
     return {'errors': form.errors}
+
+
+
