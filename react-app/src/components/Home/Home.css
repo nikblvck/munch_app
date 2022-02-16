@@ -14,16 +14,26 @@ list-style: none;
 
 .post_content{
   box-sizing: border-box;
-  height: 100%;
-  width: 100%;
-  padding: 20px;
+  height: 650px;
+  width: 650px;
   margin:auto;
   justify-content: center;
   align-items: center;
+
 }
 
 .individual_post {
-  background-color: black;
+  background-color: #f2f2f1;
   box-sizing: border-box;
   margin: 20px;
+  justify-content: center;
+  align-items: center;;
+
+
+}
+.post_image{
+  height: 500px;
+  width: 500px;
+  margin: auto;
+  object-fit: contain;
 }

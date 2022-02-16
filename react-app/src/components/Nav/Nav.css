@@ -1,0 +1,13 @@
+.nav_container {
+  width: 100%;
+  height: 50px;
+  position:absolute;
+  display: flex;
+  flex-direction: column;
+}
+
+li {
+  display : inline;
+  padding:0px 10px;
+
+}

@@ -27,9 +27,9 @@ console.log(posts);
             <div className="individual_post">
             {posts?.map((post) => (
               <>
-                <li key={user.username}>{user?.username}</li>
+                <li key={post.username}>{post?.username}</li>
                 <li className="post_image" key={post.image_url}>
-                  <img src={post.image_url} alt={post.title} />
+                  <img src={post.image_url} alt={post.title} className="post_image" />
                 </li>
                 <li key={post.caption}>{post.caption}</li>
               </>
@@ -37,7 +37,7 @@ console.log(posts);
             </div>
           </ul>
         </div>
-      
+
     </>
   );
 }
