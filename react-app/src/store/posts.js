@@ -15,12 +15,12 @@ const loadPosts = posts => ({
 // thunk functions
 
 export const getPosts = () => async dispatch => {
-  const response = await fetch('/api/posts', {
+  const response = await fetch('/api/posts/', {
     headers: {
       'Content-Type': 'application/json',
     }
   });
-  
+
   if (response.ok) {
     const posts = await response.json();
     dispatch(loadPosts(posts));
@@ -35,7 +35,8 @@ export default function reducer(state = initialState, action) {
 
   switch (action.type) {
     case GET_POSTS:
-      newState = { ...state, posts: action.posts };
+      newState = { ...state}
+      newState.posts = action.posts;
       return newState;
     default:
       return state;

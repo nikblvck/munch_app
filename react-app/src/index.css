@@ -1,1 +1,8 @@
 /* TODO Add site wide styles */
+ * {
+   font-family: 'Lato', sans-serif;
+ }
+ a, ul, li {
+   text-decoration: none;
+   color: #333;
+ }
