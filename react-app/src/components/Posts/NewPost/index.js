@@ -43,7 +43,7 @@ return (
   <>
     <div className="post_form_container">
       <div className="post_form_header">
-        <p>Edit Post</p>
+        <p>New Post</p>
       </div>
       <div className="post_form_content">
         <div className="post_form_image">
@@ -51,7 +51,7 @@ return (
         </div>
         <div className="post_form_inputs">
           <div className="form_errors">
-            {errors.length && (
+            {!errors.length ? null : (
               <ul>
                 {errors.map((error) => (
                   <li key={error}>{error}</li>
