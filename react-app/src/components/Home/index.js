@@ -52,7 +52,7 @@ function HomeFeed() {
                   {user?.id === post?.user_id && (
                     <div className="product-button-container">
                      <EditPost id={post.id}/>
-                      <button id={post.id} onClick={(e)=> handleDelete(e.target.id)}>Delete product</button>
+                      <button id={post.id} onClick={(e)=> handleDelete(e.target.id)}><i class="fa-solid fa-xmark"/></button>
                     </div>
                   )}
                 </div>

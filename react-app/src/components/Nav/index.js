@@ -52,9 +52,14 @@ const NavBar = () => {
       <div className="nav_container">
       <div className="left_nav">
         <ul>
-          <li key="home" className="title"><NavLink to="/posts"><h1>
+          <li key="home" className="title"><NavLink to="/"><h1>
             Munch
             </h1></NavLink></li>
+            <li>
+              <NavLink to="/posts" className="nav_link">
+                Home
+              </NavLink>
+            </li>
         </ul>
       </div>
       <div className="right_nav">

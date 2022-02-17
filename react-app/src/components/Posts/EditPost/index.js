@@ -8,7 +8,7 @@ function EditPost() {
 
   return (
     <>
-      <button onClick={() => setShowModal(true)}>Edit Post</button>
+      <button onClick={() => setShowModal(true)}><i class="fa-solid fa-pen-to-square"/></button>
       {showModal &&
       (
         <Modal onClose={() => setShowModal(false)}>

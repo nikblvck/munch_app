@@ -7,9 +7,10 @@ function NewPost() {
 
   return (
     <>
-      <button onClick={() => setShowModal(true)}>New Post</button>
-      {showModal &&
-      (
+      <button onClick={() => setShowModal(true)}>
+        <i class="fa-solid fa-plus"></i>
+      </button>
+      {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <NewPostForm />
         </Modal>
