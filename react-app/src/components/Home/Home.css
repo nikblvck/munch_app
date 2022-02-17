@@ -2,7 +2,7 @@ button {
   border: none;
   background-color: transparent;
   font-size: 1rem;
-  padding: 15px;
+  padding: 15px 15px;
 }
 div {
   margin: 1rem;
@@ -50,14 +50,13 @@ div {
   width: 100%;
   /* padding: 10px; */
   position: relative;
-  top: -10px;
   z-index: 25;
 
 }
 
 .post_caption {
   box-sizing: border-box;
-  padding: 10px;
+  padding: 20px 10px;
   margin: 10px;
   text-align: left;
   /* border: 2px solid blue; */

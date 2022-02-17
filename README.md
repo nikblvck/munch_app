@@ -90,7 +90,7 @@ There is a layer in the Dockerfile that will install psycopg2 (not binary) for u
    This will build the Dockerfile and push the image to your heroku container registry.
 
    ```bash
-   heroku container:push web -a {NAME_OF_HEROKU_APP}
+   heroku container:push web -a munch-206
    ```
 
 9. Release your docker container to heroku
@@ -102,8 +102,8 @@ There is a layer in the Dockerfile that will install psycopg2 (not binary) for u
 10. set up your database
 
     ```bash
-    heroku run -a {NAME_OF_HEROKU_APP} flask db upgrade
-    heroku run -a {NAME_OF_HEROKU_APP} flask seed all
+    heroku run -a munch-206 flask db upgrade
+    heroku run -a munch-206 flask seed all
     ```
 
 11. Under Settings find "Config Vars" and add any additional/secret .env
@@ -116,7 +116,7 @@ There is a layer in the Dockerfile that will install psycopg2 (not binary) for u
 (Replaces **Step 8**)
 
 1. Build image with linux platform for heroku servers. Replace
-   {NAME_OF_HEROKU_APP} with your own tag:
+   munch-206 with your own tag:
 
    ```bash=
    docker buildx build --platform linux/amd64 -t munch-206 .
