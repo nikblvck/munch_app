@@ -4,14 +4,14 @@ import EditPostForm from './EditPostForm';
 
 
 function EditPost() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <>
-      <button onClick={() => setIsOpen(true)}>Edit Post</button>
-      {isOpen **
+      <button onClick={() => setShowModal(true)}>Edit Post</button>
+      {showModal &&
       (
-        <Modal onClose={() => setIsOpen(false)}>
+        <Modal onClose={() => setShowModal(false)}>
           <EditPostForm />
         </Modal>
       )}

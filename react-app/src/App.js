@@ -45,9 +45,6 @@ function App() {
         <ProtectedRoute path='/' exact={true} >
          <HomeFeed />
         </ProtectedRoute>
-        <ProtectedRoute path="/edit/:postId" exact={true}>
-          <EditPost />
-          </ProtectedRoute>
       </Switch>
     </BrowserRouter>
   );
