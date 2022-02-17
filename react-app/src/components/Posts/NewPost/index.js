@@ -2,7 +2,7 @@ import {useEffect, useState } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {useHistory} from 'react-router';
 import { addPost } from '../../../store/posts';
-
+import { getCategories } from '../../../store/categories';
 function NewPost() {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -12,11 +12,12 @@ function NewPost() {
   const [category, setCategory] = useState('');
   const [isLoaded, setIsLoaded] = useState(false);
   const [errors, setErrors] = useState([]);
-
+  const categories = useSelector((state) => state?.categories?.categories);
+  console.log(categories);
   useEffect(() => {
-   setIsLoaded(true);
+   dispatch(getCategories()).then(() => setIsLoaded(true));
 
-  }, []);
+  }, [dispatch]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -75,12 +76,12 @@ return (
               onChange={(e) => setCaption(e.target.value)}
             />
             <label htmlFor="category">Category</label>
-            <input
-              type="number"
-              name="category"
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
-            />
+            <select className="category_select" value={category} onChange={(e) => setCategory(e.target.value)}>
+            {categories.map((category) => (
+              <option key={category.id} value={category.id}>{category.name}</option>
+            ))}
+            </select>
+
             <button type="submit "> Save</button>
             <button type="cancel" onClick={() => history.push("/posts")}>
               Cancel

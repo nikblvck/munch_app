@@ -1,7 +1,7 @@
 //constants
 
-GET_CATEGORIES = 'categories/GET_CATEGORIES';
-GET_CATEGORY = 'categories/GET_CATEGORY';
+const GET_CATEGORIES = 'categories/GET_CATEGORIES';
+const GET_CATEGORY = 'categories/GET_CATEGORY';
 
 //action creators
 
@@ -53,3 +53,20 @@ export const getCategory = id => async dispatch => {
   }
 }
 
+//reducer
+const  initialState = {};
+export default function categoriesReducer(state = initialState, action)  {
+  let newState;
+  switch (action.type) {
+    case GET_CATEGORIES:
+      newState = {...state}
+      newState.categories = action.categories;
+      return newState;
+    case GET_CATEGORY:
+      newState = {...state}
+      newState.category = action.category;
+      return newState;
+    default:
+      return state;
+  }
+}
