@@ -8,6 +8,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import HomeFeed from './components/Home';
 import User from './components/User';
+import EditPost from './components/EditPost';
 import { authenticate } from './store/session';
 
 function App() {
@@ -44,6 +45,9 @@ function App() {
         <ProtectedRoute path='/' exact={true} >
          <HomeFeed />
         </ProtectedRoute>
+        <ProtectedRoute path="/edit/:postId" exact={true}>
+          <EditPost />
+          </ProtectedRoute>
       </Switch>
     </BrowserRouter>
   );

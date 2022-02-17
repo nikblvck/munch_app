@@ -1,40 +1,65 @@
-import {useEffect, useState} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import { getPosts } from '../../store/posts';
-import './Home.css';
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory} from "react-router-dom";
+import { addPost,getPosts, editPost, deletePost} from "../../store/posts";
+import EditPost from "../EditPost";
+import "./Home.css";
 
 function HomeFeed() {
-
   const [isLoaded, setIsLoaded] = useState(false);
   const dispatch = useDispatch();
-  const user = useSelector(state => state?.session?.user);
-  const posts = useSelector(state => state?.posts?.posts);
-  const postsArray = Object?.values(posts);
+  const history = useHistory();
+  const user = useSelector((state) => state?.session?.user);
+  const posts = useSelector((state) => state?.posts?.posts);
+  const [isOpen, setIsOpen] = useState(false);
 
-  console.log(posts)
-
+  console.log(posts);
   useEffect(() => {
     dispatch(getPosts()).then(() => setIsLoaded(true));
-  }, [dispatch]);
+  }, [dispatch, isOpen]);
 
-  return !isLoaded ? null : (
+  const handleDelete = (id) => {
+    dispatch(deletePost(id)).then(() => setIsLoaded(false)).then(() => dispatch(getPosts())).then(() => setIsLoaded(true));
+  }
+
+  const handleEdit = (id) => {
+    history.push('/edit'/{id});
+  }
+
+  let userButtons;
+
+  if (!isLoaded) {
+    return null
+  }
+  return (
     <>
       <div className="home_feed_container">
         <div className="home_feed_header">
           <h1>Home Feed</h1>
         </div>
-        <div className="individual_post">
-          <ul className="post_content">
-            {postsArray.map((post) => (
+
+        <div className="post_content">
+          <div className="individual_post">
+            {posts?.map((post) => (
               <>
-                <li>{user.username}</li>
-                <li>
-                  <img src={post.image_url} alt={post.title} />
-                </li>
-                <li>{post.caption}</li>
+                <div key={post.username}>{post?.username}</div>
+                <div className="post_image" key={post.image_url}>
+                  <img
+                    src={post.image_url}
+                    alt={post.title}
+                    className="post_image"
+                  />
+                  {user?.id === post?.user_id && (
+                    <div className="product-button-container">
+                     <EditPost/>
+                      <button id={post.id} onClick={(e)=> handleDelete(e.target.id)}>Delete product</button>
+                    </div>
+                  )}
+                </div>
+                <div>{post.caption}</div>
               </>
             ))}
-          </ul>
+          </div>
         </div>
       </div>
     </>
