@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory} from "react-router-dom";
+import { useHistory, Link} from "react-router-dom";
 import { addPost,getPosts, editPost, deletePost} from "../../store/posts";
 import EditPost from "../Posts/EditPost";
 import "./Home.css";
@@ -23,7 +23,7 @@ function HomeFeed() {
   }
 
   const handleEdit = (id) => {
-    history.push('/edit'/{id});
+    history.push(`/edit/${id}`);
   }
 
   let userButtons;
@@ -53,12 +53,16 @@ function HomeFeed() {
                   />
                   {user?.id === post?.user_id && (
                     <div className="product_button_container">
-                      <button className="edit_post" onClick={(e)=> handleEdit(e.target.id)}><i class="fa-solid fa-pen-to-square"/></button>
+                      <button className="edit_post">
+                        <Link to={`/${post.id}/edit`}>
+                        <i className="fa-solid fa-pen-to-square"/>
+                        </Link>
+                        </button>
                       <button
                         id={post.id}
                         onClick={(e) => handleDelete(e.target.id)}
                       >
-                        <i class="fa-solid fa-xmark" />
+                        <i className="fa-solid fa-xmark" />
                       </button>
                     </div>
                   )}

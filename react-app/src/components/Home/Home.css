@@ -1,7 +1,7 @@
 button {
   border: none;
   background-color: transparent;
-  font-size: 1rem;
+  font-size: 1.5rem;
   padding: 15px 15px;
 }
 div {
@@ -42,7 +42,6 @@ div {
   text-align: left;
 }
 .product_button_container{
-  box-sizing: border-box;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -50,7 +49,6 @@ div {
   width: 100%;
   /* padding: 10px; */
   position: relative;
-  z-index: 25;
 
 }
 
