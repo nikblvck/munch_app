@@ -9,33 +9,57 @@ const NavBar = () => {
 
   const user = useSelector(state => state?.session?.user)
 
+  let navLinks
+
+  if (!user) {
+    navLinks = (
+      <>
+        <ul>
+          <li key="nav_left_login">
+            <NavLink to="/login" className="nav_link">
+              Login
+            </NavLink>
+          </li>
+          <li key="nav_left_signup">
+            <NavLink to="/signup" className="nav_link">
+              Signup
+            </NavLink>
+          </li>
+        </ul>
+      </>
+    );
+  } else {
+    navLinks = (
+      <>
+        <ul>
+          <li>
+            <p>Welcome, {user.first_name}</p>{" "}
+          </li>
+          <li key="nav_right_post">
+            <NavLink to="/posts/new" className="nav_link">
+              New Post
+            </NavLink>
+          </li>
+          <li key="nav_right_logout">
+          <LogoutButton />
+          </li>
+        </ul>
+      </>
+    );
+  }
+
   return (
     <nav>
-      <ul>
-        <li>
-          <NavLink to='/' exact={true} activeClassName='active'>
-            Home
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to='/login' exact={true} activeClassName='active'>
-            Login
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to='/sign-up' exact={true} activeClassName='active'>
-            Sign Up
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to='/users' exact={true} activeClassName='active'>
-            Users
-          </NavLink>
-        </li>
-        <li>
-          <LogoutButton />
-        </li>
-      </ul>
+      <div className="nav_container">
+      <div className="left_nav">
+        <ul>
+          <li key="home"><NavLink to="/posts">Munch</NavLink></li>
+        </ul>
+      </div>
+      <div className="right_nav">
+        {navLinks}
+      </div>
+      </div>
     </nav>
   );
 }

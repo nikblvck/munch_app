@@ -1,0 +1,29 @@
+.nav_container {
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav_left{
+  float: left;
+
+}
+
+.nav_right {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+li{
+  align-items: center;
+  text-align: center;
+  justify-content: space-around;
+  display: inline-block;
+  padding: 0px 10px;;
+}
+
+a, a:hover, a:active, a:visited {
+  text-decoration: none;
+  color: black;
+}
