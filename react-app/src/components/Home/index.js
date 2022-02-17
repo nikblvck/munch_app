@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, Link} from "react-router-dom";
-import { addPost,getPosts, editPost, deletePost} from "../../store/posts";
+import { getPosts, deletePost} from "../../store/posts";
 import EditPost from "../Posts/EditPost";
 import "./Home.css";
 
