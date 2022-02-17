@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import { addPost, getOnePost } from "../../../store/posts";
+import { addPost, getPosts, getOnePost, editPost} from "../../../store/posts";
 import { getCategories } from "../../../store/categories";
 function PostIdPage() {
   const dispatch = useDispatch();
   const history = useHistory();
   const postId = useParams();
-  const post = useSelector((state) => state?.posts?.post);
-  const id = +postId
+  const post = useSelector((state) => state?.posts?.posts)
   const user = useSelector((state) => state?.session?.user);
   const [image_url, setImage_url] = useState(post?.image_url || '');
   const [caption, setCaption] = useState(post?.caption || '');
@@ -16,24 +15,23 @@ function PostIdPage() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [errors, setErrors] = useState([]);
   const categories = useSelector((state) => state?.categories?.categories);
-
-  console.log(id)
+  console.log(postId.id)
   useEffect(() => {
-    dispatch(getCategories()).then(() => dispatch(getOnePost(id))).then(() => setIsLoaded(true));
+    dispatch(getCategories()).then(() => dispatch(getPosts())).then(() => dispatch(getOnePost(postId.id))).then(() => setIsLoaded(true));
   }, [dispatch]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newPost = {
-      id: +postId,
+    const editedPost = {
+      id: postId,
       image_url,
       caption,
       category,
       user_id: user.id,
     };
 
-    if (newPost) {
-      dispatch(addPost(newPost)).then(() => {
+    if (editedPost) {
+      dispatch(editPost(editedPost)).then(() => {
         history.push("/posts");
       });
     } else {

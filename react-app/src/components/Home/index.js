@@ -54,7 +54,7 @@ function HomeFeed() {
                   {user?.id === post?.user_id && (
                     <div className="product_button_container">
                       <button className="edit_post">
-                        <Link to={`/edit/${post.id}`}>
+                        <Link to={`/${post.id}/edit`}>
                         <i className="fa-solid fa-pen-to-square"/>
                         </Link>
                         </button>
