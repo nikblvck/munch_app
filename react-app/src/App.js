@@ -45,6 +45,9 @@ function App() {
         <ProtectedRoute path='/posts' exact={true} >
          <HomeFeed />
         </ProtectedRoute>
+        <Route path="/" exact={true}>
+          <h1> SPLASH GOES HERE</h1>
+        </Route>
       </Switch>
     </>
   );
