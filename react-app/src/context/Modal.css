@@ -12,16 +12,19 @@
 
 .modal-wrapper{
   position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  background-color: rgba(88, 88, 88, 0.58);
+  top: 20%;
+  right: 50%;
+  left: 40%;
+  bottom: 50%;
+  height: 600px;
+  width: 400px;
+  background-color: rgba(88, 88, 88, 0.98);
+  z-index: 200;
 }
 
 .modal-content {
   position: absolute;
-  width: 440px;
+  width: 90%;
   height: fit-content;
   padding:40px;
   border-radius: 8px;

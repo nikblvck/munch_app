@@ -4,6 +4,8 @@ import { useDispatch } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/Nav';
+import NewPostForm from './components/Posts/NewPost/';
+import EditPost from './components/Posts/EditPost/';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 
 import HomeFeed from './components/Home';
@@ -45,6 +47,12 @@ function App() {
         <Route path="/" exact={true}>
           <h1> SPLASH GOES HERE</h1>
         </Route>
+        <ProtectedRoute path='/posts/new' exact={true} >
+          <NewPostForm />
+        </ProtectedRoute>
+        <ProtectedRoute path='/posts/:postId/edit' exact={true} >
+          <EditPost />
+        </ProtectedRoute>
       </Switch>
     </>
   );

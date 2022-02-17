@@ -1,0 +1,23 @@
+.post_form_container {
+  background-color: black;
+  border: 2px solid red;
+}
+
+.post_form_header {
+  background-color: red;
+  border: 2px solid red;
+}
+
+.post_form_image{
+  height: 400px;
+  width: auto;
+}
+
+.form_errors {
+  color: red;
+  font-size: 1rem;
+}
+
+.post_form{
+  background-color: black;
+}

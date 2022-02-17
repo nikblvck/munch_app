@@ -37,10 +37,12 @@ const NavBar = () => {
             <p>Welcome, {user.first_name}</p>{" "}
           </li>
           <li key="nav_right_post">
-            <NewPost/>
+            <NavLink to="/posts/new" className="nav_link">
+            <i class="fa-solid fa-plus"></i>
+            </NavLink>
           </li>
           <li key="nav_right_logout">
-          <LogoutButton />
+            <LogoutButton />
           </li>
         </ul>
       </>
