@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {useHistory} from 'react-router';
 import { addPost } from '../../../store/posts';
 
-function NewPostForm() {
+function NewPost() {
   const dispatch = useDispatch();
   const history = useHistory();
   const user = useSelector((state) => state?.session?.user);
@@ -14,9 +14,27 @@ function NewPostForm() {
   const [errors, setErrors] = useState([]);
 
   useEffect(() => {
-
+   setIsLoaded(true);
 
   }, []);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const newPost = {
+      image_url,
+      caption,
+      category,
+      user_id: user.id,
+    }
+
+    if (newPost) {
+      dispatch(addPost(newPost)).then(() => {
+        history.push('/posts');
+      });
+    } else {
+      setErrors(['Please fill out all fields']);
+    }
+  };
 
   if (!isLoaded) {
     return null
@@ -41,7 +59,7 @@ return (
               </ul>
             )}
           </div>
-          <form className="post_form">
+          <form className="post_form" onSubmit={handleSubmit}>
             <label htmlFor="image_url">Image URL</label>
             <input
               type="text"
@@ -76,4 +94,4 @@ return (
 
 }
 
-export default NewPostForm;
+export default NewPost;
