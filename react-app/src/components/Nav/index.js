@@ -3,6 +3,7 @@ import React from 'react';
 import {useSelector} from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
+import NewPost from '../Posts/NewPost';
 import './Nav.css'
 
 const NavBar = () => {
@@ -36,9 +37,7 @@ const NavBar = () => {
             <p>Welcome, {user.first_name}</p>{" "}
           </li>
           <li key="nav_right_post">
-            <NavLink to="/posts/new" className="nav_link">
-              New Post
-            </NavLink>
+            <NewPost/>
           </li>
           <li key="nav_right_logout">
           <LogoutButton />
@@ -53,7 +52,9 @@ const NavBar = () => {
       <div className="nav_container">
       <div className="left_nav">
         <ul>
-          <li key="home"><NavLink to="/posts">Munch</NavLink></li>
+          <li key="home" className="title"><NavLink to="/posts"><h1>
+            Munch
+            </h1></NavLink></li>
         </ul>
       </div>
       <div className="right_nav">

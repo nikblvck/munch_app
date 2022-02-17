@@ -2,7 +2,7 @@ import {useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import { useParams } from 'react-router-dom'
-import { getOnePost, editPost, deletePost } from '../../store/posts';
+import { getOnePost, editPost } from '../../../store/posts';
 function EditPostForm() {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -20,6 +20,9 @@ function EditPostForm() {
     dispatch(getOnePost(postId)).then(() => setIsLoaded(true));
   }, [dispatch, postId]);
 
+  if (!isLoaded) {
+    return null
+  }
 
   return (
     <>
