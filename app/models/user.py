@@ -15,7 +15,10 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
     created_at = db.Column(db.DateTime, nullable=False, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, nullable=False, server_default=db.func.now(), onupdate=db.func.now())
-    
+
+    post = db.relationship('Post', back_populates='user', lazy=True)
+    comments = db.relationship('Comment', back_populates='user', lazy=True)
+    likes = db.relationship('Like', back_populates='user', lazy=True)
 
     @property
     def password(self):
