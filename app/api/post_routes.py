@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import db, User, Post, Category
-from app.forms import NewPost 
+from app.forms import NewPost
 
 post_routes = Blueprint('posts', __name__)
 
@@ -29,6 +29,7 @@ def new_post():
 def posts():
     posts = Post.query.all()
     return jsonify([post.to_dict() for post in posts])
+    
 # READ ONE
 @post_routes.route('/<int:id>')
 def post(id):

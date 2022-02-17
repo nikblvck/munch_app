@@ -5,10 +5,10 @@ import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/Nav';
 import ProtectedRoute from './components/auth/ProtectedRoute';
-import UsersList from './components/UsersList';
+
 import HomeFeed from './components/Home';
-import User from './components/User';
-import EditPost from './components/EditPost';
+import Profile from './components/Profile';
+
 import { authenticate } from './store/session';
 
 function App() {
@@ -36,11 +36,8 @@ function App() {
         <Route path='/signup' exact={true}>
           <SignUpForm />
         </Route>
-        <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
-        </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
-          <User />
+          <Profile />
         </ProtectedRoute>
         <ProtectedRoute path='/posts' exact={true} >
          <HomeFeed />

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory} from "react-router-dom";
 import { addPost,getPosts, editPost, deletePost} from "../../store/posts";
-import EditPost from "../EditPost";
+import EditPost from "../Posts/EditPost";
 import "./Home.css";
 
 function HomeFeed() {
@@ -35,7 +35,7 @@ function HomeFeed() {
     <>
       <div className="home_feed_container">
         <div className="home_feed_header">
-          <h1>Home Feed</h1>
+          <h2>Home Feed</h2>
         </div>
 
         <div className="post_content">

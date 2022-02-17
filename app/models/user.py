@@ -40,5 +40,6 @@ class User(db.Model, UserMixin):
             'last_name': self.last_name,
             'is_admin': self.is_admin,
             'created_at': self.created_at,
-
+            'post_count': len(self.post),
+            'post_list': [post.to_dict() for post in self.post],
         }
