@@ -2,4 +2,63 @@ button {
   border: none;
   background-color: transparent;
   font-size: 1rem;
+  padding: 15px;
+}
+div {
+  margin: 1rem;
+}
+.home_feed_container h2 {
+  text-align: center;
+}
+.post_content {
+
+  justify-content: center;
+  width: 800px;
+  min-height: 600px;
+  max-height: 1080px;
+  margin: auto;
+  overflow-y: scroll;
+}
+
+#post_username{
+  font-weight: bold;
+  text-align: left;
+  box-sizing: border-box;
+  margin:none;
+}
+.post_image{
+  height: 400px;
+  width: auto;
+
+}
+.individual_post {
+  /* border: 2px solid red; */
+  background-color: #f2f2f2;
+  margin: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+}
+.product_button_container{
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+  /* padding: 10px; */
+  position: relative;
+  top: -10px;
+  z-index: 25;
+
+}
+
+.post_caption {
+  box-sizing: border-box;
+  padding: 10px;
+  margin: 10px;
+  text-align: left;
+  /* border: 2px solid blue; */
 }

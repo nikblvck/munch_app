@@ -39,10 +39,12 @@ function HomeFeed() {
         </div>
 
         <div className="post_content">
-          <div className="individual_post">
-            {posts?.map((post) => (
-              <>
-                <div key={post.username}>{post?.username}</div>
+          {posts?.map((post) => (
+            <>
+              <div className="individual_post">
+                <div key={post.username} id="post_username">
+                  {post?.username}
+                </div>
                 <div className="post_image" key={post.image_url}>
                   <img
                     src={post.image_url}
@@ -50,16 +52,22 @@ function HomeFeed() {
                     className="post_image"
                   />
                   {user?.id === post?.user_id && (
-                    <div className="product-button-container">
-                     <EditPost id={post.id}/>
-                      <button id={post.id} onClick={(e)=> handleDelete(e.target.id)}><i class="fa-solid fa-xmark"/></button>
+                    <div className="product_button_container">
+                      <button className="edit_post" onClick={(e)=> handleEdit(e.target.id)}><i class="fa-solid fa-pen-to-square"/></button>
+                      <button
+                        id={post.id}
+                        onClick={(e) => handleDelete(e.target.id)}
+                      >
+                        <i class="fa-solid fa-xmark" />
+                      </button>
                     </div>
                   )}
                 </div>
-                <div>{post.caption}</div>
-              </>
-            ))}
-          </div>
+                <br />
+                <div className="post_caption"><b>{post.username}</b> {post.caption}</div>
+              </div>
+            </>
+          ))}
         </div>
       </div>
     </>
