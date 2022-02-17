@@ -1,6 +1,7 @@
 //constants
 
 const GET_POSTS = 'posts/GET_POSTS';
+const GET_POST = 'posts/GET_POST';
 const ADD_POST = 'posts/ADD_POST';
 const EDIT_POST = 'posts/EDIT_POST';
 const DELETE_POST = 'posts/DELETE_POST';
@@ -11,6 +12,12 @@ const loadPosts = posts => ({
   type: GET_POSTS,
   posts,
 });
+
+const loadPost = post => ({
+  type: GET_POST,
+  post,
+});
+
 
 const edit = post => ({
   type: EDIT_POST,
@@ -61,15 +68,15 @@ export const getPosts = () => async dispatch => {
   }
 };
 
-export const getOnePost = id => async dispatch => {
-  const response = await fetch(`/api/posts/${id}`, {
+export const getOnePost = (postId) => async dispatch => {
+  const res = await fetch(`/api/posts/${postId}`, {
     headers: {
       'Content-Type': 'application/json',
     }
   });
-  if (response.ok) {
-    const post = await response.json();
-    dispatch(loadPosts(post));
+  if (res.ok) {
+    const post = await res.json();
+    dispatch(loadPost(post));
   }
 };
 
@@ -125,6 +132,10 @@ export default function reducer(state = initialState, action) {
     case GET_POSTS:
       newState = { ...state}
       newState.posts = action.posts;
+      return newState;
+    case GET_POST:
+      newState = { ...state}
+      newState.posts = action.post;
       return newState;
     case ADD_POST:
       newState = {...state}

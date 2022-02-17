@@ -5,12 +5,9 @@ import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/Nav';
 import NewPostForm from './components/Posts/NewPost/';
-import EditPost from './components/Posts/EditPost/';
-import ProtectedRoute from './components/auth/ProtectedRoute';
-
 import HomeFeed from './components/Home';
 import Profile from './components/Profile';
-
+import PostIdPage from './components/Posts/PostIdPage';
 import { authenticate } from './store/session';
 
 function App() {
@@ -38,21 +35,22 @@ function App() {
         <Route path='/signup' exact={true}>
           <SignUpForm />
         </Route>
-        <ProtectedRoute path='/users/:userId' exact={true} >
+        <Route path='/users/:userId' exact={true} >
           <Profile />
-        </ProtectedRoute>
-        <ProtectedRoute path='/posts' exact={true} >
+        </Route>
+        <Route path='/posts' exact={true} >
          <HomeFeed />
-        </ProtectedRoute>
+        </Route>
+        <Route path='/posts/:id/edit' exact={true} >
+          <PostIdPage/>
+        </Route>
         <Route path="/" exact={true}>
           <h1> SPLASH GOES HERE</h1>
         </Route>
-        <ProtectedRoute path='/posts/new' exact={true} >
+        <Route path='/posts/new' exact={true} >
           <NewPostForm />
-        </ProtectedRoute>
-        <ProtectedRoute path='/posts/edit/:postId' exact={true} >
-          <EditPost />
-        </ProtectedRoute>
+        </Route>
+
       </Switch>
     </>
   );
