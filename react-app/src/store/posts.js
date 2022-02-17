@@ -61,6 +61,19 @@ export const getPosts = () => async dispatch => {
   }
 };
 
+export const getOnePost = id => async dispatch => {
+  const response = await fetch(`/api/posts/${id}`, {
+    headers: {
+      'Content-Type': 'application/json',
+    }
+  });
+  if (response.ok) {
+    const post = await response.json();
+    dispatch(loadPosts(post));
+  }
+};
+
+
 
 //UPDATE
 export const editPost = post => async dispatch => {
@@ -110,11 +123,21 @@ export default function reducer(state = initialState, action) {
 
   switch (action.type) {
     case GET_POSTS:
-      newState = { ...state, posts: action.posts };
+      newState = { ...state}
+      newState.posts = action.posts;
       return newState;
     case ADD_POST:
       newState = {...state}
-      newStates.posts = action.post
+      newState.posts = action.post;
+      return newState;
+    case EDIT_POST:
+      newState = {...state}
+      newState.posts = action.post;
+      return newState;
+    case DELETE_POST:
+      newState = {...state}
+      delete newState.posts[action.id];
+      return newState
     default:
       return state;
   }

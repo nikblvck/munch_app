@@ -1,28 +1,36 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getPosts} from "../../store/posts";
+import { useHistory} from "react-router-dom";
+import { addPost,getPosts, editPost, deletePost} from "../../store/posts";
+import EditPost from "../EditPost";
 import "./Home.css";
 
 function HomeFeed() {
   const [isLoaded, setIsLoaded] = useState(false);
   const dispatch = useDispatch();
+  const history = useHistory();
   const user = useSelector((state) => state?.session?.user);
   const posts = useSelector((state) => state?.posts?.posts);
+  const [isOpen, setIsOpen] = useState(false);
 
   console.log(posts);
   useEffect(() => {
     dispatch(getPosts()).then(() => setIsLoaded(true));
-  }, [dispatch]);
+  }, [dispatch, isOpen]);
 
-  const handleDelete = () => {
-
+  const handleDelete = (id) => {
+    dispatch(deletePost(id)).then(() => setIsLoaded(false)).then(() => dispatch(getPosts())).then(() => setIsLoaded(true));
   }
 
-  const handleEdit = () => {
+  const handleEdit = (id) => {
+    history.push('/edit'/{id});
   }
 
   let userButtons;
 
+  if (!isLoaded) {
+    return null
+  }
   return (
     <>
       <div className="home_feed_container">
@@ -43,8 +51,8 @@ function HomeFeed() {
                   />
                   {user?.id === post?.user_id && (
                     <div className="product-button-container">
-                      <button>Edit</button>
-                      <button>Delete product</button>
+                     <EditPost/>
+                      <button id={post.id} onClick={(e)=> handleDelete(e.target.id)}>Delete product</button>
                     </div>
                   )}
                 </div>
