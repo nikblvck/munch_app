@@ -25,6 +25,23 @@ def seed_posts():
       'caption': 'Grillin some steak',
       'user_id': 1,
       'category_id': 4
+    },
+    {
+      'image_url': 'https://res.cloudinary.com/bigtechnik/image/upload/v1644970170/munch/image_uomerr.jpg',
+      'caption': 'XXXL Bacon Cheeseburger, so yummy - I almost forgot I made fries 🥴🤣' ,
+      'user_id': 1,
+      'category_id': 4
+    },
+    {
+      'image_url': 'https://res.cloudinary.com/bigtechnik/image/upload/v1644969920/munch/image_qpwiag.jpg',
+      'user_id': 1,
+      'category_id': 12
+    },
+    {
+      'image_url': 'https://res.cloudinary.com/bigtechnik/image/upload/v1644969857/munch/image_g6kfho.jpg',
+      'caption': 'Chicken fings & things....',
+      'user_id': 2,
+      'category_id': 4
     }
   ]
 

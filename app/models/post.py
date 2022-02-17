@@ -29,5 +29,6 @@ class Post (db.Model):
       'comments': len(self.comments),
       'comment_list': [comment.to_dict() for comment in self.comments],
       'created_at': self.created_at,
-      'updated_at': self.updated_at
+      'updated_at': self.updated_at,
+      'category_name': self.category.name
     }
