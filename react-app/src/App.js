@@ -50,7 +50,7 @@ function App() {
         <ProtectedRoute path='/posts/new' exact={true} >
           <NewPostForm />
         </ProtectedRoute>
-        <ProtectedRoute path='/posts/:postId/edit' exact={true} >
+        <ProtectedRoute path='/posts/edit/:postId' exact={true} >
           <EditPost />
         </ProtectedRoute>
       </Switch>
