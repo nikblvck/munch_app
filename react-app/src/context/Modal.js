@@ -28,6 +28,7 @@ export function Modal({ onClose, children }) {
 
   return ReactDOM.createPortal(
     <div className="modal-overlay">
+    
       <div className="modal-wrapper">
         <div className="modal_content">
           {children}

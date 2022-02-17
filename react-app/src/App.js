@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
-import NavBar from './components/NavBar';
+import NavBar from './components/Nav';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import HomeFeed from './components/Home';
@@ -27,7 +27,7 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
+    <>
       <NavBar />
       <Switch>
         <Route path='/login' exact={true}>
@@ -42,14 +42,11 @@ function App() {
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
-        <ProtectedRoute path='/' exact={true} >
+        <ProtectedRoute path='/posts' exact={true} >
          <HomeFeed />
         </ProtectedRoute>
-        <ProtectedRoute path="/edit/:postId" exact={true}>
-          <EditPost />
-          </ProtectedRoute>
       </Switch>
-    </BrowserRouter>
+    </>
   );
 }
 

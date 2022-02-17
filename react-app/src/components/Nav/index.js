@@ -2,7 +2,8 @@
 import React from 'react';
 import {useSelector} from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import LogoutButton from './auth/LogoutButton';
+import LogoutButton from '../auth/LogoutButton';
+import './Nav.css'
 
 const NavBar = () => {
 
@@ -11,7 +12,6 @@ const NavBar = () => {
   return (
     <nav>
       <ul>
-        <li>Hey, {user?.username}</li>
         <li>
           <NavLink to='/' exact={true} activeClassName='active'>
             Home

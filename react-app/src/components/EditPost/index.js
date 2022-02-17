@@ -9,7 +9,7 @@ function EditPost() {
   return (
     <>
       <button onClick={() => setIsOpen(true)}>Edit Post</button>
-      {isOpen **
+      {isOpen &&
       (
         <Modal onClose={() => setIsOpen(false)}>
           <EditPostForm />
