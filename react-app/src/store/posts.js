@@ -84,18 +84,18 @@ export const getPosts = () => async dispatch => {
     }
   }
 
-  export const deleteOnePost = (post) => async dispatch => {
+  export const deletePost = (postId) => async dispatch => {
     const res = await fetch (`/api/posts/delete/${postId}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(post)
+      body: JSON.stringify(postId)
     });
     if (res.ok) {
-      await dispatch(deletePost(+postId))
+      await dispatch(remove(+postId))
     }
-
+  }
 
 
 

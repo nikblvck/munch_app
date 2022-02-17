@@ -9,17 +9,21 @@ list-style: none;
   justify-content: center;
   width: 90%;
   height: 100%;
-  margin: auto;
+  margin: 50px auto;
+  border:1px solid red;
 }
 
 .post_content{
+  max-width: 800px;
+  width: 70%;
+  max-height: 1000px;
+  height: 775px;
   box-sizing: border-box;
-  height: 650px;
-  width: 650px;
   margin:auto;
   justify-content: center;
   align-items: center;
-
+  border: 1px solid red;
+  overflow-y: scroll;
 }
 
 .individual_post {
@@ -27,7 +31,8 @@ list-style: none;
   box-sizing: border-box;
   margin: 20px;
   justify-content: center;
-  align-items: center;;
+  align-items: center;
+  border: 1px solid blue;
 
 
 }

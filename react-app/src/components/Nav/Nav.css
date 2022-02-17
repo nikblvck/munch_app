@@ -4,6 +4,8 @@
   position:absolute;
   display: flex;
   flex-direction: column;
+  border: 1px solid red;
+  background-color: #f2f2f1;
 }
 
 li {
@@ -11,3 +13,4 @@ li {
   padding:0px 10px;
 
 }
+

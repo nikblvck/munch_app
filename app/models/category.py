@@ -7,4 +7,4 @@ class Category(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64))
 
- 
+    post = db.relationship('Post', back_populates='category', lazy=True)

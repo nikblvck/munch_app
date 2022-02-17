@@ -26,13 +26,15 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
+    <>
+    <div className="main">
       <NavBar />
+      <div className='main_container'>
       <Switch>
         <Route path='/login' exact={true}>
           <LoginForm />
         </Route>
-        <Route path='/sign-up' exact={true}>
+        <Route path='/signup' exact={true}>
           <SignUpForm />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
@@ -41,11 +43,13 @@ function App() {
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
-        <ProtectedRoute path='/' exact={true} >
+        <Route path='/posts' exact={true} >
          <HomeFeed />
-        </ProtectedRoute>
+        </Route>
       </Switch>
-    </BrowserRouter>
+      </div>
+      </div>
+    </>
   );
 }
 

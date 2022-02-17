@@ -8,6 +8,10 @@ class Like(db.Model):
   user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
   post_id = db.Column(db.Integer, db.ForeignKey('posts.id'), nullable=False)
 
+  user = db.relationship('User', back_populates='likes', lazy=True)
+  post = db.relationship('Post', back_populates='likes', lazy=True)
+
+  
   def to_dict(self):
     return {
       'id': self.id,
