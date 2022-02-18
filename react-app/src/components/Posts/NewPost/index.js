@@ -24,10 +24,10 @@ function NewPost() {
     const newPost = {
       image_url,
       caption,
-      category,
+      category: +category,
       user_id: user.id,
     }
-
+    console.log(newPost)
     if (newPost) {
       dispatch(addPost(newPost)).then(() => {
         history.push('/posts');

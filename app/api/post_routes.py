@@ -37,8 +37,7 @@ def post(id):
     return jsonify(post.to_dict())
 
 # UPDATE
-@post_routes.route('/edit/<int:id>', methods=['PUT'])
-@login_required
+@post_routes.route('/<int:id>', methods=['PUT'])
 def edit_post(id):
     form = NewPost()
     form['csrf_token'].data = request.cookies['csrf_token']
