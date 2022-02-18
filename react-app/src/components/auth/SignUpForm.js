@@ -17,7 +17,7 @@ const SignUpForm = () => {
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
+      const data = await dispatch(signUp(first_name, last_name, username, email, password));
       if (data) {
         setErrors(data)
       }
@@ -58,6 +58,24 @@ const SignUpForm = () => {
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
+      </div>
+      <div>
+        <label> First Name</label>
+        <input
+        type='text'
+        name='first_name'
+        onChange={updateFirstName}
+        value={first_name}
+        />
+      </div>
+      <div>
+        <label> Last Name</label>
+        <input
+        type='text'
+        name='last_name'
+        onChange={updateLastName}
+        value={last_name}
+        />
       </div>
       <div>
         <label>User Name</label>

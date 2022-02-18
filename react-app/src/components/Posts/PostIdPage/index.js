@@ -23,7 +23,7 @@ function PostIdPage() {
 
   useEffect(() => {
     dispatch(getCategories()).then(() => dispatch(getOnePost(postId.id))).then(() => setIsLoaded(true));
-  }, [dispatch, image_url, caption, category_id]);
+  }, [dispatch]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -43,6 +43,15 @@ function PostIdPage() {
       setErrors(["Please fill out all fields"]);
     }
   };
+
+  useEffect(() => {
+    if(post) {
+      setImage_url(post.image_url);
+      setCaption(post.caption);
+      setCategoryId(post.category_id);
+    }
+  }, [post]);
+
 
   if (!isLoaded) {
     return null;
