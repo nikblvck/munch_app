@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import {  getOnePost, editPost} from "../../../store/posts";
+import {  getPosts, getOnePost, editPost} from "../../../store/posts";
 import { getCategories } from "../../../store/categories";
 import '../PostForm.css'
 
@@ -22,8 +22,8 @@ function PostIdPage() {
   console.log(postId.id)
 
   useEffect(() => {
-    dispatch(getCategories()).then(() => dispatch(getOnePost(postId.id))).then(() => setIsLoaded(true));
-  }, [dispatch]);
+    dispatch(getCategories()).then(() => dispatch(getPosts())).then(() => dispatch(getOnePost(postId.id))).then(() => setIsLoaded(true));
+  }, [dispatch, image_url, caption, category]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -34,7 +34,7 @@ function PostIdPage() {
       category_id,
       user_id: user.id,
     };
-
+    console.log(editedPost)
     if (editedPost) {
       dispatch(editPost(editedPost)).then(() => {
         history.push("/posts");
