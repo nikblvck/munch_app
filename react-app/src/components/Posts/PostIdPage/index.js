@@ -1,29 +1,31 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import { addPost, getPosts, getOnePost, editPost} from "../../../store/posts";
+import {  getOnePost, editPost} from "../../../store/posts";
 import { getCategories } from "../../../store/categories";
 function PostIdPage() {
   const dispatch = useDispatch();
   const history = useHistory();
   const postId = useParams();
-  const post = useSelector((state) => state?.posts?.posts)
+  const post = useSelector((state) => state?.posts?.posts);
   const user = useSelector((state) => state?.session?.user);
   const [image_url, setImage_url] = useState(post?.image_url || '');
-  const [caption, setCaption] = useState(post?.caption || '');
-  const [category, setCategory] = useState(post?.category_id || '');
+  const [caption, setCaption] = useState(post.caption || '');
+  const [category, setCategory] = useState(post.category_id || '');
   const [isLoaded, setIsLoaded] = useState(false);
   const [errors, setErrors] = useState([]);
   const categories = useSelector((state) => state?.categories?.categories);
+  console.log('hello')
   console.log(postId.id)
+
   useEffect(() => {
-    dispatch(getCategories()).then(() => dispatch(getPosts())).then(() => dispatch(getOnePost(postId.id))).then(() => setIsLoaded(true));
+    dispatch(getCategories()).then(() => dispatch(getOnePost(postId.id))).then(() => setIsLoaded(true));
   }, [dispatch]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const editedPost = {
-      id: postId,
+      id: postId.id,
       image_url,
       caption,
       category,
@@ -50,7 +52,7 @@ function PostIdPage() {
         </div>
         <div className="post_form_content">
           <div className="post_form_image">
-            <img src={image_url} alt={caption} className="post_form_image" />
+            <img src={post?.image_url} alt={caption} className="post_form_image" />
           </div>
           <div className="post_form_inputs">
             <div className="form_errors">

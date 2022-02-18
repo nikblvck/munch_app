@@ -48,6 +48,7 @@ def edit_post(id):
             post.image_url = form.image_url.data
             post.caption = form.caption.data
             post.category_id = form.category_id.data
+            db.session.add(post)
             db.session.commit()
             return jsonify(post.to_dict())
         return jsonify(form.errors)
