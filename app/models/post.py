@@ -30,5 +30,5 @@ class Post (db.Model):
       'comment_list': [comment.to_dict() for comment in self.comments],
       'created_at': self.created_at,
       'updated_at': self.updated_at,
-      # 'category_name': self.category.name
+      'category_name': self.category.name
     }

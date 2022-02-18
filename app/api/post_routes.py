@@ -27,7 +27,7 @@ def new_post():
 # READ ALL
 @post_routes.route('/')
 def posts():
-    posts = Post.query.order_by(Post.created_at.desc())
+    posts = Post.query.order_by(Post.updated_at.desc())
     return jsonify([post.to_dict() for post in posts])
 
 # READ ONE
