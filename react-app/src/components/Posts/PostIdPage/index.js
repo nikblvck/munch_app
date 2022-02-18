@@ -3,6 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import {  getOnePost, editPost} from "../../../store/posts";
 import { getCategories } from "../../../store/categories";
+import '../PostForm.css'
+
+
 function PostIdPage() {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -11,7 +14,7 @@ function PostIdPage() {
   const user = useSelector((state) => state?.session?.user);
   const [image_url, setImage_url] = useState(post?.image_url || '');
   const [caption, setCaption] = useState(post?.caption || '');
-  const [category, setCategory] = useState(post?.category_id || '');
+  const [category_id, setCategoryId] = useState(post?.category_id || '');
   const [isLoaded, setIsLoaded] = useState(false);
   const [errors, setErrors] = useState([]);
   const categories = useSelector((state) => state?.categories?.categories);
@@ -20,7 +23,7 @@ function PostIdPage() {
 
   useEffect(() => {
     dispatch(getCategories()).then(() => dispatch(getOnePost(postId.id))).then(() => setIsLoaded(true));
-  }, [dispatch]);
+  }, [dispatch, image_url, caption, category_id]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -28,7 +31,7 @@ function PostIdPage() {
       id: postId.id,
       image_url,
       caption,
-      category,
+      category_id,
       user_id: user.id,
     };
 
@@ -79,11 +82,11 @@ function PostIdPage() {
                 value={caption}
                 onChange={(e) => setCaption(e.target.value)}
               />
-              <label htmlFor="category">Category</label>
+              <label htmlFor="category_id">Category</label>
               <select
                 className="category_select"
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
+                value={category_id}
+                onChange={(e) => setCategoryId(e.target.value)}
               >
                 {categories.map((category) => (
                   <option key={category.id} value={category.id}>
