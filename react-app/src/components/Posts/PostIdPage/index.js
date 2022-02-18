@@ -10,8 +10,8 @@ function PostIdPage() {
   const post = useSelector((state) => state?.posts?.posts);
   const user = useSelector((state) => state?.session?.user);
   const [image_url, setImage_url] = useState(post?.image_url || '');
-  const [caption, setCaption] = useState(post?.caption || '');
-  const [category, setCategory] = useState(post?.category_id || '');
+  const [caption, setCaption] = useState(post.caption || '');
+  const [category, setCategory] = useState(post.category_id || '');
   const [isLoaded, setIsLoaded] = useState(false);
   const [errors, setErrors] = useState([]);
   const categories = useSelector((state) => state?.categories?.categories);
