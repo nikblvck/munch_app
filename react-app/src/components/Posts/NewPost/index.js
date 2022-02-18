@@ -9,7 +9,7 @@ function NewPost() {
   const user = useSelector((state) => state?.session?.user);
   const [image_url, setImage_url] = useState('');
   const [caption, setCaption] = useState('');
-  const [category, setCategory] = useState('');
+  const [category_id, setCategoryId] = useState('');
   const [isLoaded, setIsLoaded] = useState(false);
   const [errors, setErrors] = useState([]);
   const categories = useSelector((state) => state?.categories?.categories);
@@ -24,7 +24,7 @@ function NewPost() {
     const newPost = {
       image_url,
       caption,
-      category: +category,
+      category_id,
       user_id: user.id,
     }
     console.log(newPost)
@@ -75,8 +75,8 @@ return (
               value={caption}
               onChange={(e) => setCaption(e.target.value)}
             />
-            <label htmlFor="category">Category</label>
-            <select className="category_select" value={category} onChange={(e) => setCategory(e.target.value)}>
+            <label htmlFor="category_id">Category</label>
+            <select className="category_select" value={category_id} onChange={(e) => setCategoryId(e.target.value)}>
             {categories.map((category) => (
               <option key={category.id} value={category.id}>{category.name}</option>
             ))}

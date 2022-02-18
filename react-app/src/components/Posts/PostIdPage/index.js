@@ -23,7 +23,7 @@ function PostIdPage() {
 
   useEffect(() => {
     dispatch(getCategories()).then(() => dispatch(getPosts())).then(() => dispatch(getOnePost(postId.id))).then(() => setIsLoaded(true));
-  }, [dispatch, image_url, caption, category]);
+  }, [dispatch]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
