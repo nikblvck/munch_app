@@ -1,0 +1,39 @@
+.post_form_container {
+  background-color: #f2f2f1;
+  border-radius: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.post_form_header {
+  border: 2px solid red;
+}
+
+.post_form_image{
+  height: 400px;
+  width: auto;
+}
+
+.form_errors {
+  color: red;
+  font-size: 1rem;
+}
+
+.post_form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+}
+
+button #new_post {
+  font-size: 1em;
+  color: white;
+}
+
+.post_form_inputs {
+  background-color: transparent;
+  color: red;
+}
