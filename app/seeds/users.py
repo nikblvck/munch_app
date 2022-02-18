@@ -12,7 +12,11 @@ def seed_users():
     munchie = User (
         first_name='Munchie', last_name='Munch', username='munchie', email='munchie@munch.io', is_admin=False, password='password')
 
-    db.session.add_all([demo, nik, munchie])
+    jack= User (
+        first_name='Jack', last_name='Munch', username='hungryjack', email='hungry@munch.io',password='password')
+        
+
+    db.session.add_all([demo, nik, munchie, jack])
 
     db.session.commit()
 
