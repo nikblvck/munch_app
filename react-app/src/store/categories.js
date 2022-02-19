@@ -18,7 +18,7 @@ const loadCategory = category => ({
 //thunk functions
 
 export const getCategories = () => async dispatch => {
-  const response = await fetch('/api/categories', {
+  const response = await fetch('/api/categories/', {
     headers: {
       'Content-Type': 'application/json',
     }
@@ -36,7 +36,7 @@ export const getCategories = () => async dispatch => {
 }
 
 export const getCategory = id => async dispatch => {
-  const response = await fetch(`/api/categories/${id}`, {
+  const response = await fetch(`/api/categories/${id}/`, {
     headers: {
       'Content-Type': 'application/json',
     }

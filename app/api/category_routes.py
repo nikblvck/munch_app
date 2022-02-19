@@ -14,7 +14,7 @@ def categories():
 
 
 # READ ONE
-@category_routes.route('/<int:id>')
+@category_routes.route('/<int:id>/')
 def category(id):
     category = Category.query.get(id)
     posts = Post.query.filter_by(category_id=id).all()
