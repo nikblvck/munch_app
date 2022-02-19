@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, Link} from "react-router-dom";
 import { getPosts, deletePost} from "../../store/posts";
+import CommentsDiv from "../Comments";
 import "./Home.css";
 
 function HomeFeed() {
@@ -68,6 +69,8 @@ function HomeFeed() {
                 </div>
                 <br />
                 <div className="post_caption"><b>{post.username}</b> {post.caption}</div>
+                {!post.comment_list.length ? null : (
+                <CommentsDiv postId={post.id} /> )}
               </div>
             </>
           ))}

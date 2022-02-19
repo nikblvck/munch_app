@@ -7,7 +7,7 @@ post_routes = Blueprint('posts', __name__)
 
 
 # CREATE
-@post_routes.route('/new', methods=['POST'])
+@post_routes.route('/new/', methods=['POST'])
 @login_required
 def new_post():
     form = NewPost()
@@ -31,13 +31,13 @@ def posts():
     return jsonify([post.to_dict() for post in posts])
 
 # READ ONE
-@post_routes.route('/<int:id>')
+@post_routes.route('/<int:id>/')
 def post(id):
     post = Post.query.get(id)
     return jsonify(post.to_dict())
 
 # UPDATE
-@post_routes.route('/<int:id>', methods=['PUT'])
+@post_routes.route('/<int:id>/', methods=['PUT'])
 def edit_post(id):
     form = NewPost()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -52,7 +52,7 @@ def edit_post(id):
         return jsonify(form.errors)
 
 # DELETE
-@post_routes.route('/delete/<int:id>', methods=['DELETE'])
+@post_routes.route('/delete/<int:id>/', methods=['DELETE'])
 @login_required
 def delete_post(id):
     post = Post.query.get(id)

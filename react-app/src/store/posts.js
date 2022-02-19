@@ -37,7 +37,7 @@ const add = post => ({
 // thunk functions
 //CREATE
 export const addPost = post => async(dispatch) => {
-  const response = await fetch('/api/posts/new', {
+  const response = await fetch('/api/posts/new/', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -56,7 +56,7 @@ export const addPost = post => async(dispatch) => {
 };
 //READ
 export const getPosts = () => async dispatch => {
-  const response = await fetch('/api/posts', {
+  const response = await fetch('/api/posts/', {
     headers: {
       'Content-Type': 'application/json',
     }
@@ -69,7 +69,7 @@ export const getPosts = () => async dispatch => {
 };
 
 export const getOnePost = (postId) => async dispatch => {
-  const res = await fetch(`/api/posts/${postId}`, {
+  const res = await fetch(`/api/posts/${postId}/`, {
     headers: {
       'Content-Type': 'application/json',
     }
@@ -84,7 +84,7 @@ export const getOnePost = (postId) => async dispatch => {
 
 //UPDATE
 export const editPost = post => async dispatch => {
-  const response = await fetch(`/api/posts/${post.id}`, {
+  const response = await fetch(`/api/posts/${post.id}/`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
@@ -104,7 +104,7 @@ export const editPost = post => async dispatch => {
 
 //DELETE
 export const deletePost = id => async dispatch => {
-  const response = await fetch(`/api/posts/delete/${id}`, {
+  const response = await fetch(`/api/posts/delete/${id}/`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
