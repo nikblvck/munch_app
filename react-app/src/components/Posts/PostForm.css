@@ -4,10 +4,16 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  height: 800px;
+  width: 800px;
+  margin: auto;
 }
 
 .post_form_header {
   border: 2px solid red;
+  font-size: 1.25em;
+  font-weight: bold;
 }
 
 .post_form_image{
@@ -30,10 +36,8 @@
 
 button #new_post {
   font-size: 1em;
-  color: white;
 }
 
-.post_form_inputs {
-  background-color: transparent;
-  color: red;
+input {
+  width: 90%;
 }
