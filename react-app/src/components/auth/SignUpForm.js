@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
+import './Auth.css';
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
@@ -53,13 +54,15 @@ const SignUpForm = () => {
   }
 
   return (
+    <>
+    <div className='auth_container'>
     <form onSubmit={onSignUp}>
       <div>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
       </div>
-      <div>
+      <div className='auth_input'>
         <label> First Name</label>
         <input
         type='text'
@@ -68,7 +71,7 @@ const SignUpForm = () => {
         value={first_name}
         />
       </div>
-      <div>
+      <div className='auth_input'>
         <label> Last Name</label>
         <input
         type='text'
@@ -77,7 +80,7 @@ const SignUpForm = () => {
         value={last_name}
         />
       </div>
-      <div>
+      <div className='auth_input'>
         <label>User Name</label>
         <input
           type='text'
@@ -86,7 +89,7 @@ const SignUpForm = () => {
           value={username}
         ></input>
       </div>
-      <div>
+      <div className='auth_input'>
         <label>Email</label>
         <input
           type='text'
@@ -95,7 +98,7 @@ const SignUpForm = () => {
           value={email}
         ></input>
       </div>
-      <div>
+      <div className='auth_input'>
         <label>Password</label>
         <input
           type='password'
@@ -104,7 +107,7 @@ const SignUpForm = () => {
           value={password}
         ></input>
       </div>
-      <div>
+      <div className='auth_input'>
         <label>Repeat Password</label>
         <input
           type='password'
@@ -114,8 +117,10 @@ const SignUpForm = () => {
           required={true}
         ></input>
       </div>
-      <button type='submit'>Sign Up</button>
+      <button className='auth_btn' type='submit'>Sign Up</button>
     </form>
+    </div>
+    </>
   );
 };
 

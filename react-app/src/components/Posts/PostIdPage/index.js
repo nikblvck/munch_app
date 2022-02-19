@@ -86,7 +86,7 @@ function PostIdPage() {
               />
               <label htmlFor="caption">Caption</label>
               <input
-                type="text"
+                type="textarea"
                 name="caption"
                 value={caption}
                 onChange={(e) => setCaption(e.target.value)}
