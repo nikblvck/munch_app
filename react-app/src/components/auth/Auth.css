@@ -1,0 +1,7 @@
+.auth_container {
+  height: 75%vh;
+  width: 75%vw;
+  margin: auto;
+  background-color: rgba(0, 0, 0, 1);
+  border: 2px solid black;
+}
