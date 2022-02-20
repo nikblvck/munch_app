@@ -13,7 +13,7 @@ function HomeFeed() {
   const posts = useSelector((state) => state?.posts?.posts);
   const [isOpen, setIsOpen] = useState(false);
 
-  console.log(posts);
+
   useEffect(() => {
     dispatch(getPosts()).then(() => setIsLoaded(true));
   }, [dispatch, isOpen]);

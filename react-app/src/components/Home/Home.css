@@ -2,13 +2,15 @@ button {
   border: none;
   background-color: transparent;
   font-size: 1.5rem;
-  padding: 15px 45px;
+  padding: 0px 45px;
 }
 div {
   margin: 1rem;
 }
 .home_feed_container h2 {
   text-align: center;
+  display: flex;
+
 }
 .post_content {
 
