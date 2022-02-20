@@ -5,9 +5,9 @@ const GET_COMMENTS = 'GET_COMMENTS';
 
 //actions
 
-export const loadComments = (postId) => ({
+export const loadComments = (comments) => ({
   type: GET_COMMENTS,
-  payload: postId
+   comments
 });
 
 //thunk functions
