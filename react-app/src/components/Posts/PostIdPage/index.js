@@ -27,7 +27,7 @@ function PostIdPage () {
         <img src={post?.image_url} alt="post"/>
       </div>
       <div className="individual_post_caption_container">
-        <p>{post?.caption}</p>
+        <p><b>{post.username}</b> {post?.caption}</p>
       </div>
       <div>
       {post?.comment_list.map((comment) => (
