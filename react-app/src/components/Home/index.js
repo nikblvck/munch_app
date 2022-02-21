@@ -46,11 +46,13 @@ function HomeFeed() {
                   {post?.username}
                 </div>
                 <div className="post_image" key={post.image_url}>
+                  <Link to={`/posts/${post.id}`}>
                   <img
                     src={post.image_url}
                     alt={post.title}
                     className="post_image"
                   />
+                  </Link>
                   <div className="post_category">{post.category_name}</div>
                   {user?.id === post?.user_id && (
                     <div className="product_button_container">
@@ -71,7 +73,7 @@ function HomeFeed() {
                 <br />
                 <div className="post_caption"><b>{post.username}</b> {post.caption}</div>
                 {!post.comment_list.length ? null : (
-                <CommentsDiv postId={post.id} /> )}
+                <Link to={`/posts/${post.id}`}>View Comments</Link> )}
               </div>
             </>
           ))}

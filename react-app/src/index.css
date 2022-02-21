@@ -9,7 +9,7 @@ body {
   font-family: 'Lato', sans-serif;
   font-weight: 200;
   background: rgb(150,0,3);
-  background: linear-gradient(270deg, rgba(150,0,3,.3) 0%, rgba(190,176,6,.3) 50%, rgba(0,114,199,.3) 100%);
+  /* background: linear-gradient(270deg, rgba(150,0,3,.3) 0%, rgba(190,176,6,.3) 50%, rgba(0,114,199,.3) 100%); */
       -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
