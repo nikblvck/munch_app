@@ -53,7 +53,9 @@ function HomeFeed() {
                     className="post_image"
                   />
                   </Link>
+                  <Link to={`/categories/${post.category_id}`}>
                   <div className="post_category">{post.category_name}</div>
+                  </Link>
                   {user?.id === post?.user_id && (
                     <div className="product_button_container">
                       <button className="edit_post">

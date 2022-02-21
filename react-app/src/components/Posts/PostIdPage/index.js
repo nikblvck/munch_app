@@ -19,6 +19,7 @@ function PostIdPage () {
     dispatch(getOnePost(postId.id)).then(()=> getComments(postId.id)).then(() => setIsLoaded(true));
   }, [dispatch, postId]);
 
+  console.log(post?.comment_list)
   return (
     <>
     <div className="individual_post_container">
@@ -28,11 +29,12 @@ function PostIdPage () {
       <div className="individual_post_caption_container">
         <p>{post?.caption}</p>
       </div>
-      <div className="individual_post_category_container">
-        <p>{post?.category_id}</p>
-      </div>
       <div>
-  
+      {post?.comment_list.map((comment) => (
+        <div className="individual_post_comment_container">
+          <p><b>{comment.username}</b> {comment.content}</p>
+          </div>
+      ))}
       </div>
       </div>
     </>
