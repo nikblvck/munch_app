@@ -7,8 +7,10 @@ import NavBar from './components/Nav';
 import NewPostForm from './components/Posts/NewPost/';
 import HomeFeed from './components/Home';
 import Profile from './components/Profile';
+import EditPostPagee from './components/Posts/EditPostPage';
 import PostIdPage from './components/Posts/PostIdPage';
 import { authenticate } from './store/session';
+import EditPostPage from './components/Posts/EditPostPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -41,8 +43,11 @@ function App() {
         <Route path='/posts' exact={true} >
          <HomeFeed />
         </Route>
+        <Route path='/posts/:id' exact={true} >
+          <PostIdPage />
+        </Route>
         <Route path='/posts/:id/edit' exact={true} >
-          <PostIdPage/>
+          <EditPostPage/>
         </Route>
         <Route path="/" exact={true}>
           <h1> SPLASH GOES HERE</h1>

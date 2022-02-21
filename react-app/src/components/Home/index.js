@@ -13,7 +13,7 @@ function HomeFeed() {
   const posts = useSelector((state) => state?.posts?.posts);
   const [isOpen, setIsOpen] = useState(false);
 
-  console.log(posts);
+
   useEffect(() => {
     dispatch(getPosts()).then(() => setIsLoaded(true));
   }, [dispatch, isOpen]);
@@ -46,12 +46,16 @@ function HomeFeed() {
                   {post?.username}
                 </div>
                 <div className="post_image" key={post.image_url}>
+                  <Link to={`/posts/${post.id}`}>
                   <img
                     src={post.image_url}
                     alt={post.title}
                     className="post_image"
                   />
+                  </Link>
+                  <Link to={`/categories/${post.category_id}`}>
                   <div className="post_category">{post.category_name}</div>
+                  </Link>
                   {user?.id === post?.user_id && (
                     <div className="product_button_container">
                       <button className="edit_post">
@@ -71,7 +75,7 @@ function HomeFeed() {
                 <br />
                 <div className="post_caption"><b>{post.username}</b> {post.caption}</div>
                 {!post.comment_list.length ? null : (
-                <CommentsDiv postId={post.id} /> )}
+                <Link to={`/posts/${post.id}`}>View Comments</Link> )}
               </div>
             </>
           ))}

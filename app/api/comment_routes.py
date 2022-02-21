@@ -18,6 +18,11 @@ def get_comment(id):
     comment = Comment.query.get(id)
     return jsonify(comment.to_dict())
 
+# READ BY POST
+@comment_routes.route('/post/<int:id>', methods=['GET'])
+def get_comments_by_post(id):
+    comments = Comment.query.filter_by(post_id=id).all()
+    return jsonify([comment.to_dict() for comment in comments])
 # UPDATE
 
 
