@@ -34,11 +34,10 @@ const handleAdd = async (e) => {
     content,
     post_id: postId.id,
     user_id: user.id,
-  };
-  if (comment) {
+  }
     await dispatch(addComment(comment));
     setShowModal(false);
-  }
+    setIsLoaded(false);
 };
 
   const addComment = (e) => {
