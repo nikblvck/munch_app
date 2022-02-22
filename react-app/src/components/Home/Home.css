@@ -4,9 +4,7 @@ button {
   font-size: 1.5rem;
   padding: 0px 45px;
 }
-div {
-  margin: 1rem;
-}
+
 .home_feed_container h2 {
   text-align: center;
   display: flex;
@@ -32,17 +30,19 @@ div {
   position: relative;
   top: 30px;
   left: -240px;
+  padding-bottom:5px;
 }
 .post_image{
   height: 400px;
   width: auto;
   position: relative;
   z-index: 1;
+  border-radius: .5rem;
 
 }
 .individual_post {
   /* border: 2px solid red; */
-  border-radius: .5em;
+  border-radius: .5rem;
   background-color: rgba(242, 242, 241, .5);
   margin: 40px;
   display: flex;
@@ -50,8 +50,9 @@ div {
   justify-content: space-between;
   align-items: center;
   text-align: left;
+  height: 700px;
 }
-.product_button_container{
+.post_button_container{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -59,7 +60,6 @@ div {
   width: 100%;
   /* padding: 10px; */
   position: relative;
-
 }
 
 .post_caption {
@@ -80,4 +80,16 @@ div {
   z-index: 2;
   top: 3px;
   font-size: .75rem;
+}
+
+.likes_container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+  /* padding: 10px; */
+  padding-bottom: 15px;
+  position: relative;
+  height: 30px;
 }

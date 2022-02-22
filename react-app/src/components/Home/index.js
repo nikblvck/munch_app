@@ -28,6 +28,9 @@ function HomeFeed() {
 
   let userButtons;
 
+  let likesDiv
+
+
   if (!isLoaded) {
     return null
   }
@@ -47,22 +50,31 @@ function HomeFeed() {
                 </div>
                 <div className="post_image" key={post.image_url}>
                   <Link to={`/posts/${post.id}`}>
-                  <img
-                    src={post.image_url}
-                    alt={post.title}
-                    className="post_image"
-                  />
+                    <img
+                      src={post.image_url}
+                      alt={post.title}
+                      className="post_image"
+                    />
                   </Link>
                   <Link to={`/categories/${post.category_id}`}>
-                  <div className="post_category">{post.category_name}</div>
+                    <div className="post_category">{post.category_name}</div>
                   </Link>
+                  <div className="likes_container">
+                    <i class="fa-solid fa-heart"></i>
+                    {!post.likes ? null : (
+                      <div className="post_likes">
+                        <p>{post.likes}</p>
+                      </div>
+                    )}
+                  </div> 
+
                   {user?.id === post?.user_id && (
-                    <div className="product_button_container">
+                    <div className="post_button_container">
                       <button className="edit_post">
                         <Link to={`/posts/${post.id}/edit`}>
-                        <i className="fa-solid fa-pen-to-square"/>
+                          <i className="fa-solid fa-pen-to-square" />
                         </Link>
-                        </button>
+                      </button>
                       <button
                         id={post.id}
                         onClick={(e) => handleDelete(e.target.id)}
@@ -73,9 +85,12 @@ function HomeFeed() {
                   )}
                 </div>
                 <br />
-                <div className="post_caption"><b>{post.username}</b> {post.caption}</div>
+                <div className="post_caption">
+                  <b>{post.username}</b> {post.caption}
+                </div>
                 {!post.comment_list.length ? null : (
-                <Link to={`/posts/${post.id}`}>View Comments</Link> )}
+                  <Link to={`/posts/${post.id}`}>View Comments</Link>
+                )}
               </div>
             </>
           ))}

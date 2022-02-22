@@ -22,7 +22,7 @@ def add_comment():
         db.session.commit()
         return jsonify(new_comment.to_dict())
     return jsonify(form.errors)
-    
+
 
 # READ ALL
 @comment_routes.route('/', methods=['GET'])
@@ -42,11 +42,22 @@ def get_comments_by_post(id):
     comments = Comment.query.filter_by(post_id=id).all()
     return jsonify([comment.to_dict() for comment in comments])
 # UPDATE
-
+@comment_routes.route('/<int:id>', methods=['PUT'])
+def edit_comment(id):
+    form = NewComment()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    comment = Comment.query.get(id)
+    if comment.user_id == current_user.id:
+        if form.validate_on_submit():
+            comment.content = form.content.data
+            comment.post_id = form.post_id.data
+            db.session.commit()
+            return jsonify(comment.to_dict())
+        return jsonify(form.errors)
 
 # DELETE
 @comment_routes.route('/<int:id>', methods=['DELETE'])
 def delete_comment(id):
     comment = Comment.query.get(id)
-    comment.delete()
+    db.session.delete(comment)
     return jsonify('Success, your comment has been deleted!')

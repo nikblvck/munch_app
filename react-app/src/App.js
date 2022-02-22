@@ -7,10 +7,13 @@ import NavBar from './components/Nav';
 import NewPostForm from './components/Posts/NewPost/';
 import HomeFeed from './components/Home';
 import Profile from './components/Profile';
-import EditPostPagee from './components/Posts/EditPostPage';
-import PostIdPage from './components/Posts/PostIdPage';
-import { authenticate } from './store/session';
 import EditPostPage from './components/Posts/EditPostPage';
+import PostIdPage from './components/Posts/PostIdPage';
+import ProtectedRoute from './components/auth/ProtectedRoute';
+import { authenticate } from "./store/session";
+
+
+
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -40,9 +43,9 @@ function App() {
         <Route path='/users/:userId' exact={true} >
           <Profile />
         </Route>
-        <Route path='/posts' exact={true} >
+        <ProtectedRoute path='/posts' exact={true} >
          <HomeFeed />
-        </Route>
+        </ProtectedRoute>
         <Route path='/posts/:id' exact={true} >
           <PostIdPage />
         </Route>
