@@ -20,7 +20,11 @@ def seed_categories():
     {'name': 'Dessert'},
     {'name': 'Breakfast'},
     {'name': 'Brunch'},
-    {'name': 'Seafood'}
+    {'name': 'Seafood'},
+    {'name': 'Soup'},
+    {'name': 'Sandwich'},
+    {'name': 'Salad'},
+    {'name': 'From Scratch'},
   ]
   for category in categories:
     new_category = Category(**category)

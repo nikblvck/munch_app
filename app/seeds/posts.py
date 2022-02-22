@@ -42,6 +42,24 @@ def seed_posts():
       'caption': 'Chicken fings & things....',
       'user_id': 2,
       'category_id': 4
+    },
+    {
+      'image_url': 'https://res.cloudinary.com/bigtechnik/image/upload/v1645480014/munch/image_xj5zs0.jpg',
+      'caption': 'Lobster tails anyone? First time making them and it definitely will not be my last! Not pictured: garlic mashed potatoes, roasted asparagus and cheddar bay biscuits.',
+      'user_id': 1,
+      'category_id': 19
+    },
+    {
+      'image_url': 'https://res.cloudinary.com/bigtechnik/image/upload/v1645480027/munch/yppdv83xj7j81_xrzsoq.jpg',
+      'caption': 'Beef curry over rice, definitely will go a little heavier on the garlic next time! Any curry pros out there? All tips are welcome!',
+      'user_id': 1,
+      'category_id': 19
+    },
+    {
+      'image_url': 'https://res.cloudinary.com/bigtechnik/image/upload/v1645133437/munch/image_r4xlle.png',
+      'caption': 'Tried something new - made queso on the grill, BOMB.COM okay?! ',
+      'user_id': 1,
+      'category_id': 5
     }
   ]
 
