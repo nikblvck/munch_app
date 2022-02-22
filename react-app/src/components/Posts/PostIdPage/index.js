@@ -29,18 +29,7 @@ function PostIdPage () {
     setShowModal(true)
   }
 
-  const handleAdd = () => {
 
-    const comment = {
-      content,
-      post_id: postId.id,
-      user_id: user.id,
-    }
-    if (comment) {
-      dispatch(addComment(comment))
-      setShowModal(false);
-    }
-  }
 
 
 
@@ -56,28 +45,8 @@ function PostIdPage () {
         </div>
         <div>
           <div className="add_comment_btn">
-            <button onClick={addComment}>
-              {" "}
-              <i class="fa-solid fa-plus"></i>
-            </button>
-            {showModal && (
-              <Modal onClose={() => setShowModal(false)}>
-                <div>
-                  Add Comment
-                  <div>
-                    <form onSubmit={handleAdd}>
-                      <input
-                        type="textarea"
-                        placeholder="Add Comment"
-                        value={content}
-                        onChange={(e) => setContent(e.target.value)}
-                      />
-                      <button type="submit">Submit</button>
-                    </form>
-                  </div>
-                </div>
-              </Modal>
-            )}
+          
+
           </div>
           <CommentsDiv postId={post?.id} />
         </div>

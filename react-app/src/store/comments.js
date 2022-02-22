@@ -96,7 +96,7 @@ export default function reducer(state = initialState, action) {
       return newState;
     case DELETE_COMMENT:
       newState = {...state}
-      delete newState.posts[action.id];
+      delete newState.comments.comments[action.id];
       return newState;
     default:
       return state;

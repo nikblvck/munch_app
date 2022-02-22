@@ -1,7 +1,78 @@
+.main_auth_container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  background-color: transparent;
+}
 .auth_container {
-  height: 75%vh;
-  width: 75%vw;
+  height: 600px;
+  width: 500px;
   margin: auto;
-  background-color: rgba(0, 0, 0, 1);
-  border: 2px solid black;
+  background-color: rgba(242, 242, 241, 1);
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: blue;
+  border-radius: .5rem;
+}
+#login {
+  height: 350px;
+}
+.auth_input {
+  box-sizing: border-box;
+  padding: 10px;
+  width: 500px;
+  text-align: center;
+  justify-content: center;
+}
+
+.auth_input input {
+  width: 460px;
+  border: 1px solid black;
+  border-radius: .5rem;
+  background-color: rgba(242, 242, 241, 1);
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  border-radius: .5rem;
+  text-align: center;
+}
+input:focus {
+  color: blue;
+}
+
+button:disabled{
+  color: grey;
+}
+
+.auth_btn_div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.sign_up_header, .login_header {
+  font-size: 2rem;
+  font-weight: bold;
+  color: rgb(61, 61, 61);
+  text-align: center;
+  margin: 10px;
+}
+
+.auth_errors {
+  color: rgb(177, 0, 0);
+  box-sizing: border-box;
+  padding: 10px;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  
 }
