@@ -64,12 +64,14 @@ button {
 
 .post_caption {
   box-sizing: border-box;
-  padding: 20px 10px;
+  padding: 0px 10px;
   margin: 10px;
   text-align: left;
   /* border: 2px solid blue; */
 }
-
+.post_caption span{
+  font-weight: bold;
+}
 .post_category {
   background-color: rgba(6, 6, 6, .3);
   color: white;
@@ -89,11 +91,26 @@ button {
   flex-direction: row;
   width: 100%;
   /* padding: 10px; */
-  padding-bottom: 15px;
+  padding: 15px 5px;
   position: relative;
   height: 30px;
 }
 
 .fa-solid fa-heart {
   color: red;
+}
+
+.post_likes p {
+  padding-left: 5px;
+}
+
+.post_comments {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+  padding: 15px 15px;
+  position: relative;
+  height: 30px;
 }

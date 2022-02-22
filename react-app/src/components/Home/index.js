@@ -85,12 +85,16 @@ function HomeFeed() {
                   )}
                 </div>
                 <br />
-                <div className="post_caption">
-                  <b>{post.username}</b> {post.caption}
-                </div>
+                {post?.caption && (
+                  <div className="post_caption">
+                    <span>{post.username}</span> {post.caption}
+                  </div>
+                )}
+                <div className="post_comments">
                 {!post.comment_list.length ? null : (
                   <Link to={`/posts/${post.id}`}>View Comments</Link>
                 )}
+                </div>
               </div>
             </>
           ))}
