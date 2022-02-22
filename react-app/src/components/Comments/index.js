@@ -19,15 +19,15 @@ function CommentsDiv({postId}){
 
 
   useEffect(() => {
-    dispatch(getComments(postId)).then(() => setIsLoaded(true));
-  }, [dispatch, postId]);
+    dispatch(getComments(postId)).then(()=> getOnePost(postId)).then(() => setIsLoaded(true));
+  }, [dispatch, postId, isLoaded]);
 
  const comments = useSelector((state) => state?.comments?.comments);
 
 
 const handleDelete = (id) => {
   console.log(id)
-  dispatch(deleteComment(id)).then(() => setIsLoaded(false));
+  dispatch(deleteComment(id)).then(() => setIsLoaded(false)).then(() => getComments(postId)).then(() => setIsLoaded(true));
 };
 
 const handleSubmit = (e) => {

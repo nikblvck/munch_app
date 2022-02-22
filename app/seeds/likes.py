@@ -17,7 +17,9 @@ def seed_likes():
     {
       'user_id': 1,
       'post_id': 7
-    }
+    },
+    {'user_id': 2,
+      'post_id': 4}
   ]
 
   for like in likes:

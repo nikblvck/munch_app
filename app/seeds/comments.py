@@ -27,6 +27,16 @@ def seed_comments():
       'user_id': 1,
       'post_id': 7
     },
+    {
+      'content': 'I\'m trying to figure out how you got \'em so crispy!',
+      'user_id': 2,
+      'post_id': 7
+    },
+    {
+      'content': 'SAME!!! I just need a lil honey mustard and it\'s GO TIME!',
+      'user_id': 1,
+      'post_id': 7
+    }
   ]
 
   for comment in comments:
