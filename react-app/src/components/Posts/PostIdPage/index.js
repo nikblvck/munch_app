@@ -44,6 +44,7 @@ function PostIdPage () {
 
   return (
     <>
+
       <div className="individual_post_container">
         <div className="individual_post_image_container">
           <img src={post?.image_url} alt="post" />
@@ -56,6 +57,7 @@ function PostIdPage () {
             <button onClick={addComment}>
               <i class="fa-solid fa-plus"></i>
             </button>
+
           </div>
           <CommentsDiv postId={post?.id}/>
         </div>
