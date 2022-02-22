@@ -38,7 +38,7 @@ export const getComments = (postId) => async dispatch => {
 }
 
 export const addComment = (comment) => async dispatch => {
-  const res = await fetch('/api/comments/new', {
+  const res = await fetch('/api/comments/new/', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -50,6 +50,21 @@ export const addComment = (comment) => async dispatch => {
     dispatch(add(newComment));
   }
 }
+
+export const editComment = (commentId) => async dispatch => {
+  const res = await fetch(`/api/comments/${commentId}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(commentId)
+  });
+  if(res.ok) {
+    const editedComment = await res.json();
+    dispatch(add(editedComment));
+  }
+}
+
 
 export const deleteComment = (commentId) => async dispatch => {
   const res = await fetch(`/api/comments/${commentId}`, {
