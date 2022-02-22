@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import {getComments} from '../../store/comments';
 import {getOnePost, editPost, deletePost} from '../../store/posts';
 import { addComment, editComment, deleteComment} from '../../store/comments'
@@ -8,6 +9,7 @@ import {Modal} from '../../context/Modal'
 function CommentsDiv({postId}){
   const [isLoaded, setIsLoaded] = useState(false);
   const dispatch = useDispatch();
+  const history = useHistory()
   const user = useSelector((state) => state?.session?.user);
   const post = useSelector((state) => state?.posts?.posts);
   const [comment, setComment] = useState('');
@@ -28,17 +30,19 @@ const handleDelete = (id) => {
   dispatch(deleteComment(id)).then(() => setIsLoaded(false));
 };
 
-const handleAdd = async (e) => {
+const handleSubmit = (e) => {
   e.preventDefault();
-  const comment = {
+  const newComment = {
     content,
     post_id: postId.id,
     user_id: user.id,
   }
-    await dispatch(addComment(comment));
-    setShowModal(false);
-    setIsLoaded(false);
-};
+  console.log(newComment)
+  if(newComment) {
+    dispatch(addComment(newComment))
+    .then(() => history.push(`/posts/${postId.id}`))
+  }
+}
 
   const addComment = (e) => {
     e.preventDefault();
@@ -55,21 +59,21 @@ const openEdit = (e) => {
   return (
     <>
       <div className="comments_div_container">
-        <button onClick={addComment}>
+        <button >
           <i class="fa-solid fa-plus"></i>
           {showModal && (
             <Modal onClose={() => setShowModal(false)}>
               <div>
                 Add Comment
                 <div>
-                  <form onSubmit={handleAdd}>
+                  <form>
                     <input
                       type="textarea"
                       placeholder="Add Comment"
                       value={content}
                       onChange={(e) => setContent(e.target.value)}
                     />
-                    <button type="submit">Submit</button>
+                    <button onClick={handleSubmit} type="submit">Submit</button>
                   </form>
                 </div>
               </div>
@@ -79,7 +83,7 @@ const openEdit = (e) => {
 
         {comments?.map((comment) => (
           <div className="individual_comment">
-            <b>{comment.username}</b> {comment.content}
+            <b>{comment.username}</b> {comment.content} {comment.id}
             {user?.id === comment?.user_id && (
               <div className="edit_delete_container">
                 <button onClick={openEdit}>Edit</button>

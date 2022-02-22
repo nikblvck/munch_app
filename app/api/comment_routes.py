@@ -60,4 +60,5 @@ def edit_comment(id):
 def delete_comment(id):
     comment = Comment.query.get(id)
     db.session.delete(comment)
+    db.session.commit()
     return jsonify('Success, your comment has been deleted!')
