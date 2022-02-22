@@ -60,13 +60,13 @@ function HomeFeed() {
                     <div className="post_category">{post.category_name}</div>
                   </Link>
                   <div className="likes_container">
-                    <i class="fa-solid fa-heart"></i>
+                    <i className="fa-solid fa-heart"></i>
                     {!post.likes ? null : (
                       <div className="post_likes">
                         <p>{post.likes}</p>
                       </div>
                     )}
-                  </div> 
+                  </div>
 
                   {user?.id === post?.user_id && (
                     <div className="post_button_container">

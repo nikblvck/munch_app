@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { login } from '../../store/session';
 
 const LoginForm = () => {
@@ -31,13 +31,16 @@ const LoginForm = () => {
   }
 
   return (
+    <div className="main_auth_container">
+      <div className="auth_container" id="login">
+        <p className="login_header">Login</p>
     <form onSubmit={onLogin}>
-      <div>
+      <div className="auth_errors">
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
       </div>
-      <div>
+      <div className="auth_input">
         <label htmlFor='email'>Email</label>
         <input
           name='email'
@@ -47,7 +50,7 @@ const LoginForm = () => {
           onChange={updateEmail}
         />
       </div>
-      <div>
+      <div className="auth_input">
         <label htmlFor='password'>Password</label>
         <input
           name='password'
@@ -56,9 +59,14 @@ const LoginForm = () => {
           value={password}
           onChange={updatePassword}
         />
+        <div className="auth_btn_div">
         <button type='submit'>Login</button>
+        <button><Link to="/signup">Don't Have An Account?</Link></button>
+        </div>
       </div>
     </form>
+    </div>
+    </div>
   );
 };
 

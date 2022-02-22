@@ -93,3 +93,7 @@ button {
   position: relative;
   height: 30px;
 }
+
+.fa-solid fa-heart {
+  color: red;
+}
