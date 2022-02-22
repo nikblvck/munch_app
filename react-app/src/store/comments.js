@@ -12,7 +12,7 @@ export const loadComments = (comments) => ({
 
 //thunk functions
 export const getComments = (postId) => async dispatch => {
-  const response = await fetch(`/api/comments/post/${postId}`, {
+  const response = await fetch(`/api/comments/posts/${postId}`, {
     headers: {
       'Content-Type': 'application/json',
     }

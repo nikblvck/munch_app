@@ -1,0 +1,9 @@
+.individual_post_image_container {
+  height: 800px;
+  width: 800px;
+  margin: auto;
+}
+.individual_post_image_container img{
+  height: 400px;
+  width: auto;
+}

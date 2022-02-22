@@ -2,15 +2,15 @@ import React, {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {getComments} from '../../store/comments';
 
-function CommentsDiv(postId){
+function CommentsDiv({postId}){
   console.log(postId);
   const [isLoaded, setIsLoaded] = useState(false);
   const dispatch = useDispatch();
-  const id = postId.postId
-  console.log(id)
+
+
   useEffect(() => {
-    dispatch(getComments(id)).then(() => setIsLoaded(true));
-  }, [dispatch, isLoaded]);
+    dispatch(getComments(postId)).then(() => setIsLoaded(true));
+  }, [dispatch, postId]);
 
  const comments = useSelector((state) => state?.comments?.comments);
 
@@ -23,6 +23,7 @@ function CommentsDiv(postId){
          </div>
        ))}
     </div>
+
     </>
   )
 }
