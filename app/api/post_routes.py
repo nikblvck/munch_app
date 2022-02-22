@@ -24,6 +24,7 @@ def new_post():
         return jsonify(new_post.to_dict())
     return jsonify(form.errors)
 
+
 # READ ALL
 @post_routes.route('/')
 def posts():
