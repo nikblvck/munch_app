@@ -68,6 +68,19 @@ export const getPosts = () => async dispatch => {
   }
 };
 
+export const getUserPosts = (userId) => async dispatch => {
+  const res = await fetch(`/api/posts/${userId}`, {
+    headers: {
+      'Content-Type': 'application/json',
+    }
+  });
+  if (res.ok) {
+    const posts = await res.json();
+    dispatch(loadPosts(posts));
+  }
+};
+
+
 export const getOnePost = (postId) => async dispatch => {
   const res = await fetch(`/api/posts/${postId}/`, {
     headers: {

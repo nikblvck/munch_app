@@ -30,6 +30,8 @@ def get_comments():
     comments = Comment.query.all()
     return jsonify([comment.to_dict() for comment in comments])
 
+
+
 #READ ONE
 @comment_routes.route('/<int:id>', methods=['GET'])
 def get_comment(id):

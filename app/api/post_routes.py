@@ -31,6 +31,18 @@ def posts():
     posts = Post.query.order_by(Post.updated_at.desc())
     return jsonify([post.to_dict() for post in posts])
 
+#READ ALL FROM USER
+@post_routes.route('/user/<int:user_id>')
+def posts_by_user(user_id):
+    posts = Post.query.filter_by(user_id=user_id).order_by(Post.updated_at.desc())
+    return jsonify([post.to_dict() for post in posts])
+
+#READ ALL FROM CATEGORY
+@post_routes.route('/category/<int:category_id>')
+def posts_by_category(category_id):
+    posts = Post.query.filter_by(category_id=category_id).order_by(Post.updated_at.desc())
+    return jsonify([post.to_dict() for post in posts])
+
 # READ ONE
 @post_routes.route('/<int:id>/')
 def post(id):
