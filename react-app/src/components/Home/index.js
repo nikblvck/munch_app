@@ -18,10 +18,14 @@ function HomeFeed() {
     dispatch(getPosts()).then(() => setIsLoaded(true));
   }, [dispatch, isOpen]);
 
-  const handleDelete = (id) => {
+  const handleDelete = (id, e) => {
+    e.preventDefault();
+    const confirmation = window.confirm("Are you sure you want to delete this post?");
+    if (confirmation) {
     dispatch(deletePost(id)).then(() => setIsLoaded(false)).then(() => dispatch(getPosts())).then(() => setIsLoaded(true));
-  }
 
+  }
+  }
   const handleEdit = (id) => {
     history.push(`/edit/${id}`);
   }

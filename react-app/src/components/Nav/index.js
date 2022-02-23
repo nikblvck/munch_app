@@ -4,6 +4,7 @@ import {useSelector} from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
 import NewPost from '../Posts/NewPost';
+import DemoUser from './Demo';
 import './Nav.css'
 
 const NavBar = () => {
@@ -16,6 +17,9 @@ const NavBar = () => {
     navLinks = (
       <>
         <ul>
+          <li>
+            <DemoUser />
+          </li>
           <li key="nav_left_login">
             <NavLink to="/login" className="nav_link">
               Login

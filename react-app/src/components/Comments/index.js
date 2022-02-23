@@ -50,7 +50,7 @@ const handleSubmit = (e) => {
   if(newComment) {
     console.log(newComment)
     dispatch(addComment(newComment))
-    .then(() => history.push(`/posts/${postId.id}`))
+    .then(() => history.push(`/posts/${post.id}`))
   }
 }
 
