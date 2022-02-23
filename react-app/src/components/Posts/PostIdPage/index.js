@@ -35,17 +35,16 @@ const handleSubmit = async (e) => {
   if (newComment) {
     console.log(newComment);
     await dispatch(addComment(newComment))
-    setIsLoaded(false);
-      // .then(() => dispatch(addComment(newComment)))
-      // .then(() => getComments())
-      // .then(() => setIsLoaded(true));
   }
+
 };
 
 
 
 
-
+if (!loaded) {
+  return null
+}
 
   return (
     <>
@@ -73,7 +72,7 @@ const handleSubmit = async (e) => {
                 <button type="submit">Add Comment</button>
               </form>
             </div>
-            {!loaded ? null : <CommentsDiv postId={post?.id} />}
+            {!loaded ? null : <CommentsDiv loaded={loaded} postId={post?.id} />}
           </div>
         </div>
       </div>

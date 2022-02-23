@@ -1,6 +1,7 @@
 //constants
 
 const GET_COMMENTS = 'GET_COMMENTS';
+const GET_COMMENT = 'GET_COMMENT';
 const ADD_COMMENT = 'ADD_COMMENT';
 const DELETE_COMMENT = 'DELETE_COMMENT';
 
@@ -11,6 +12,12 @@ export const loadComments = (comments) => ({
   type: GET_COMMENTS,
    comments
 });
+
+export const loadComment = (comment) => ({
+  type: GET_COMMENT,
+  comment
+});
+
 
 export const add = (comment) => ({
   type: ADD_COMMENT,
@@ -34,6 +41,18 @@ export const getComments = (postId) => async dispatch => {
   if (res.ok) {
     const comments = await res.json();
     dispatch(loadComments(comments));
+  }
+}
+
+export const getComment = (commentId) => async dispatch => {
+  const res = await fetch(`/api/comments/${commentId}`, {
+    headers: {
+      'Content-Type': 'application/json',
+    }
+  });
+  if (res.ok) {
+    const comment = await res.json();
+    dispatch(loadComment(comment));
   }
 }
 
@@ -89,6 +108,10 @@ export default function reducer(state = initialState, action) {
     case GET_COMMENTS:
       newState = { ...state}
       newState.comments = action.comments;
+      return newState;
+    case GET_COMMENT:
+      newState = { ...state}
+      newState.comment = action.comment;
       return newState;
     case ADD_COMMENT:
       newState = { ...state}

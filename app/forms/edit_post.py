@@ -4,7 +4,7 @@ from wtforms.validators import DataRequired, Length, ValidationError
 
 
 
-def unchanged_content(form, field):
+def changed_content(form, field):
     if field.data == form.original_content.data:
         raise ValidationError('Content unchanged. Please edit your post')
 

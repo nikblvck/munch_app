@@ -1,46 +1,69 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {editComment} from '../../store/comments';
+import {useParams} from 'react-router-dom'
+import {editComment, getComment} from '../../store/comments';
 import '../Posts/PostForm.css';
 
 
 export default function EditComment({commentId}) {
   console.log(commentId)
   const dispatch = useDispatch();
-  const comment = useSelector((state) => state?.comments?.comments[comment.id])
-  const [content, setContent] = useState(comment.content);
+
+
+  const [currentComment, setCurrentComment] = useState({})
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    dispatch(getComment(commentId)).then(() => setIsLoaded(true));
+  }, [dispatch, commentId, isLoaded]);
+
+
+
+   const comment = useSelector((state) => state?.comments?.comments.find(comment => comment.id === commentId));
+   const [content, setContent] = useState(comment.content);
+
+   console.log(comment)
 
   const handleEdit = async (e) => {
     e.preventDefault();
+    const id = commentId;
+
+    const post_id = comment.post_id;
 
     const editedComment = {
-      id: comment.id,
       content,
-      postId: comment.post_id,
-      userId: comment.user_id,
+      post_id,
     }
 
     if (editedComment) {
-      dispatch(editComment(editedComment))
+      console.log(editedComment)
+       await dispatch(editComment(editedComment))
+
     }
   }
 
   return (
     <>
-    <div className="edit_comment_container">
-      <div className="edit form">
-        <form>
-          <input
-          type='textarea'
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-          />
-          <button onClick={handleEdit} type="submit" disabled={!content}> Save </button>
-        </form>
-      </div>
-    </div>
+      {
+        (commentId = comment.id && (
+          <div className="edit_comment_container">
+            <div className="edit form">
+              <form>
+                <input
+                  type="textarea"
+                  value={content}
+                  onChange={(e) => setContent(e.target.value)}
+                />
+                <button onClick={handleEdit} type="submit" disabled={!content}>
+                  Save
+                </button>
+              </form>
+            </div>
+          </div>
+        ))
+      }
     </>
-  )
+  );
 
 
 }
