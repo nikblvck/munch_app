@@ -37,7 +37,7 @@ const NavBar = () => {
             <p>Welcome, {user.first_name}</p>{" "}
           </li>
           <li key="nav_right_post">
-            <NavLink to="/posts/new" className="nav_link">
+            <NavLink to="/post/new" exact={true} className="nav_link">
             <i class="fa-solid fa-plus"></i>
             </NavLink>
           </li>

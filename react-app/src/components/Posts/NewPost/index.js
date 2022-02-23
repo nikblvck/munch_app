@@ -3,7 +3,11 @@ import {useDispatch, useSelector} from 'react-redux';
 import {useHistory} from 'react-router';
 import { addPost } from '../../../store/posts';
 import { getCategories } from '../../../store/categories';
-import '../PostForm.css'
+import './NewPost.css'
+
+
+
+
 
 function NewPost() {
   const dispatch = useDispatch();
@@ -19,7 +23,7 @@ function NewPost() {
   useEffect(() => {
    dispatch(getCategories()).then(() => setIsLoaded(true));
 
-  }, [dispatch]);
+  }, [dispatch, isLoaded]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -78,16 +82,23 @@ return (
               onChange={(e) => setCaption(e.target.value)}
             />
             <label htmlFor="category_id">Category</label>
-            <select className="category_select" value={category_id} onChange={(e) => setCategoryId(e.target.value)}>
-            {categories.map((category) => (
-              <option key={category.id} value={category.id}>{category.name}</option>
-            ))}
+            <select
+              className="category_select"
+              value={category_id}
+              onChange={(e) => setCategoryId(e.target.value)}
+            >
+              {categories.map((category) => (
+                <option key={category.id} value={category.id}>
+                  {category.name}
+                </option>
+              ))}
             </select>
-
-            <button type="submit "> Save</button>
-            <button type="cancel" onClick={() => history.push("/posts")}>
-              Cancel
-            </button>
+            <div className="new_post_btns">
+              <button type="submit "> Save</button>
+              <button type="cancel" onClick={() => history.push("/posts")}>
+                Cancel
+              </button>
+            </div>
           </form>
         </div>
       </div>

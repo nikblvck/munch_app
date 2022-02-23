@@ -1,0 +1,10 @@
+.new_post_btns{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+  padding: 15px 15px;
+  position: relative;
+  height: 30px;
+}
