@@ -55,7 +55,7 @@ function App() {
         <Route path="/" exact={true}>
           <h1> SPLASH GOES HERE</h1>
         </Route>
-        <Route path='/posts/new' exact={true} >
+        <Route path='/post/new' exact={true} >
           <NewPostForm />
         </Route>
 
