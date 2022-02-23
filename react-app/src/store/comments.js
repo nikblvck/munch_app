@@ -25,14 +25,14 @@ export const remove = (id) => ({
 
 //thunk functions
 export const getComments = (postId) => async dispatch => {
-  const response = await fetch(`/api/comments/posts/${postId}`, {
+  const res = await fetch(`/api/comments/posts/${postId}`, {
     headers: {
       'Content-Type': 'application/json',
     }
   });
 
-  if (response.ok) {
-    const comments = await response.json();
+  if (res.ok) {
+    const comments = await res.json();
     dispatch(loadComments(comments));
   }
 }

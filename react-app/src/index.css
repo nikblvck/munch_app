@@ -75,3 +75,18 @@ button {
   background-color: transparent;
   border: none;
 }
+
+button{
+  background: transparent;
+  -webkit-border-radius: 10;
+  -moz-border-radius: 10;
+  border-radius: 10px;
+  color: #fc3c3c;
+  font-size: 1em;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+button:hover {
+  color: blue;
+}

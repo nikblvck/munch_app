@@ -19,7 +19,7 @@ function CommentsDiv({postId}){
 
 
   useEffect(() => {
-    dispatch(getComments(postId)).then(()=> getOnePost(postId)).then(() => setIsLoaded(true));
+    dispatch(getComments(postId)).then(()=> getOnePost(postId));
   }, [dispatch, postId]);
 
  const comments = useSelector((state) => state?.comments?.comments);
@@ -48,6 +48,7 @@ const handleSubmit = (e) => {
   }
   console.log(newComment)
   if(newComment) {
+    console.log(newComment)
     dispatch(addComment(newComment))
     .then(() => history.push(`/posts/${postId.id}`))
   }
@@ -64,28 +65,28 @@ const openEdit = (e) => {
   setShowEdit(true);
 };
 
-
   return (
     <>
-      <div className="comments_div_container">
-
-        {comments?.map((comment) => (
-          <div className="individual_comment">
-            <b>{comment.username}</b> {comment.content} {comment.id}
-            {user?.id === comment?.user_id && (
-              <div className="edit_delete_container">
-                <button onClick={openEdit}>Edit</button>
-                <button
-                  id={comment.id}
-                  onClick={(e) => handleDelete(e.target.id)}
-                >
-                  Delete
-                </button>
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
+      {isLoaded && (
+        <div className="comments_div_container">
+          {comments?.map((comment) => (
+            <div className="individual_comment">
+              <b>{comment.username}</b> {comment.content} {comment.id}
+              {user?.id === comment?.user_id && (
+                <div className="edit_delete_container">
+                  <button onClick={openEdit}>Edit</button>
+                  <button
+                    id={comment.id}
+                    onClick={(e) => handleDelete(e.target.id)}
+                  >
+                    Delete
+                  </button>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
     </>
   );
 }

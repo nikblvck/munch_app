@@ -14,9 +14,9 @@ def add_comment():
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         new_comment = Comment(
-            user_id=current_user.id,
-            post_id=form.post_id.data,
-            content=form.content.data
+            user_id= current_user.id,
+            post_id= form.post_id.data,
+            content= form.content.data
         )
         db.session.add(new_comment)
         db.session.commit()
@@ -41,7 +41,7 @@ def get_comment(id):
 def get_comments_by_post(id):
     comments = Comment.query.filter_by(post_id=id).all()
     return jsonify([comment.to_dict() for comment in comments])
-    
+
 # UPDATE
 @comment_routes.route('/<int:id>', methods=['PUT'])
 def edit_comment(id):

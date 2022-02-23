@@ -21,7 +21,7 @@ function PostIdPage () {
 
   useEffect(() => {
     dispatch(getOnePost(postId.id)).then(()=> getComments(postId.id)).then(() => setIsLoaded(true));
-  }, [dispatch, postId, content]);
+  }, [dispatch, postId]);
 
 
   const handleSubmit = (e) => {
@@ -46,6 +46,9 @@ function PostIdPage () {
   return (
     <>
       <div className="main_container">
+        <div className="header_links">
+          <button onClick={() => history.push("/posts")}>Back to Posts</button>
+        </div>
         <div className="individual_post_container">
           <div>{user.username}'s Post</div>
           <div className="individual_post_image_container">
@@ -58,7 +61,7 @@ function PostIdPage () {
             <div className="add_comment_form">
               <form onSubmit={handleSubmit}>
                 <input
-                  type="text"
+                  type="textarea"
                   placeholder="Add a comment..."
                   value={content}
                   onChange={(e) => setContent(e.target.value)}
@@ -66,7 +69,7 @@ function PostIdPage () {
                 <button type="submit">Add Comment</button>
               </form>
             </div>
-            <CommentsDiv postId={post?.id} />
+            {post.comments === 0 ? null : <CommentsDiv postId={post?.id} />}
           </div>
         </div>
       </div>

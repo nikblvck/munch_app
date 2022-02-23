@@ -11,9 +11,9 @@
 }
 
 .post_form_header {
-  border: 2px solid red;
   font-size: 1.25em;
   font-weight: bold;
+  color: rgba(3, 3, 3, .6);
 }
 
 .post_form_image{
@@ -34,9 +34,7 @@
   text-align: left;
 }
 
-button #new_post {
-  font-size: 1em;
-}
+
 
 input {
   width: 90%;
