@@ -60,7 +60,7 @@ function HomeFeed() {
                     <div className="post_category">{post.category_name}</div>
                   </Link>
                   <div className="likes_container">
-                    <i className="fa-solid fa-heart"></i>
+                    <button className="like_btn"><i className="fa-solid fa-heart"></i></button>
                     {!post.likes ? null : (
                       <div className="post_likes">
                         <p>{post.likes}</p>
@@ -85,13 +85,13 @@ function HomeFeed() {
                   )}
                 </div>
                 <br />
-                {post?.caption && (
+                {!post?.caption ? null: (
                   <div className="post_caption">
                     <span>{post.username}</span> {post.caption}
                   </div>
                 )}
                 <div className="post_comments">
-                {!post.comment_list.length ? null : (
+                {!post.comment_list.length ? <Link to={`/posts/${post.id}`}>Be The First To Add A Comment!</Link> : (
                   <Link to={`/posts/${post.id}`}>View Comments</Link>
                 )}
                 </div>

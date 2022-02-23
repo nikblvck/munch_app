@@ -33,6 +33,7 @@ ol, ul, menu {
 
 img {
     max-width: 100%;
+    border-radius: .5rem;
 }
 
 table {

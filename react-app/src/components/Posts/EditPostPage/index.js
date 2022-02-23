@@ -64,7 +64,11 @@ function EditPostPage() {
         </div>
         <div className="post_form_content">
           <div className="post_form_image">
-            <img src={post?.image_url} alt={caption} className="post_form_image" />
+            <img
+              src={post?.image_url}
+              alt={caption}
+              className="post_form_image"
+            />
           </div>
           <div className="post_form_inputs">
             <div className="form_errors">
@@ -104,10 +108,12 @@ function EditPostPage() {
                 ))}
               </select>
 
-              <button type="submit "> Save</button>
-              <button type="cancel" onClick={() => history.push("/posts")}>
-                Cancel
-              </button>
+              <div className="new_post_btns">
+                <button type="submit "> Save</button>
+                <button type="cancel" onClick={() => history.push("/posts")}>
+                  Cancel
+                </button>
+              </div>
             </form>
           </div>
         </div>

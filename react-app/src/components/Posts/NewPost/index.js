@@ -67,7 +67,7 @@ return (
             )}
           </div>
           <form className="post_form" onSubmit={handleSubmit}>
-            <label htmlFor="image_url">Image URL</label>
+            <label htmlFor="image_url">Image URL *</label>
             <input
               type="text"
               name="image_url"
@@ -79,6 +79,7 @@ return (
               type="text"
               name="caption"
               value={caption}
+              placholder="Caption [optional]"
               onChange={(e) => setCaption(e.target.value)}
             />
             <label htmlFor="category_id">Category</label>
