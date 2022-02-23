@@ -8,6 +8,7 @@ import './NewPost.css'
 
 
 
+
 function NewPost() {
   const dispatch = useDispatch();
   const history = useHistory();
