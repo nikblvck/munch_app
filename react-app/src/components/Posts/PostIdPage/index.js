@@ -16,28 +16,32 @@ function PostIdPage () {
   const user = useSelector((state) => state?.session?.user);
   const [loaded, setIsLoaded] = useState(false);
   const [content, setContent] = useState('')
-  const [showModal, setShowModal] = useState(false);
   const [errors, setErrors] = useState('');
 
   useEffect(() => {
     dispatch(getOnePost(postId.id)).then(()=> getComments(postId.id)).then(() => setIsLoaded(true));
-  }, [dispatch, postId]);
+  }, [dispatch,loaded]);
 
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const newComment = {
-      content,
-      post_id: post.id,
-      user_id: user.id,
-    };
-    console.log(newComment);
-    if (newComment) {
-      dispatch(addComment(newComment)).then(() => setIsLoaded(false))
-    } else {
-      setErrors(["Please fill out all fields"]);
-    }
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  const user_id = user.id;
+  const post_id = postId.id;
+  const newComment = {
+    content,
+    post_id,
+    user_id,
   };
+  console.log(newComment);
+  if (newComment) {
+    console.log(newComment);
+    await dispatch(addComment(newComment))
+    setIsLoaded(false);
+      // .then(() => dispatch(addComment(newComment)))
+      // .then(() => getComments())
+      // .then(() => setIsLoaded(true));
+  }
+};
+
 
 
 
@@ -69,7 +73,7 @@ function PostIdPage () {
                 <button type="submit">Add Comment</button>
               </form>
             </div>
-            {post.comments === 0 ? null : <CommentsDiv postId={post?.id} />}
+            {!loaded ? null : <CommentsDiv postId={post?.id} />}
           </div>
         </div>
       </div>

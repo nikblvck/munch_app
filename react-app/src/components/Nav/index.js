@@ -21,13 +21,16 @@ const NavBar = () => {
             <DemoUser />
           </li>
           <li key="nav_left_login">
-            <NavLink to="/login" className="nav_link">
-              Login
+            <NavLink to="/login" className="nav_link"><button>
+              Log In
+            </button>
             </NavLink>
           </li>
           <li key="nav_left_signup">
             <NavLink to="/signup" className="nav_link">
-              Signup
+              <button>
+                Sign Up
+              </button>
             </NavLink>
           </li>
         </ul>
@@ -63,7 +66,9 @@ const NavBar = () => {
             </h1></NavLink></li>
             <li>
               <NavLink to="/posts" className="nav_link">
-                Home
+                <button>
+                  Posts
+                </button>
               </NavLink>
             </li>
         </ul>
