@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {getUserPosts} from '../../store/posts';
+import './Profile.css';
+
 
 function Profile() {
   const [user, setUser] = useState({});
@@ -30,8 +32,15 @@ const posts = useSelector((state) => state?.session?.user.post_list);
   return (
    <>
    <div className="main_container">
+     <div>
       <div className="profile_container">
-
+        <div className="profile_image">
+          <img className="profile_pic" src={user.profile_img_url} alt={user.username} />
+          </div>
+          <div className="profile_info">
+            <div className="profile_username">{user.username}</div>
+            <div className="profile_bio">{user.bio}</div>
+          </div>
       </div>
       <div className="user_posts">
         <div className="user_posts_header">
@@ -48,6 +57,7 @@ const posts = useSelector((state) => state?.session?.user.post_list);
           ))}
       </div>
       </div>
+   </div>
    </div>
    </>
   );

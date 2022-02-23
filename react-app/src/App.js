@@ -10,6 +10,7 @@ import Profile from './components/Profile';
 import EditPostPage from './components/Posts/EditPostPage';
 import PostIdPage from './components/Posts/PostIdPage';
 import SplashPage from './components/Splash';
+import CategoryIdPage from './components/Categories';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import { authenticate } from "./store/session";
 
@@ -54,8 +55,8 @@ function App() {
         <Route path='/posts/:id/edit' exact={true} >
           <EditPostPage/>
         </Route>
-        <Route path="/" exact={true}>
-          <h1> SPLASH GOES HERE</h1>
+        <Route path='/categories/:id' exact={true} >
+          <CategoryIdPage />
         </Route>
         <Route path='/post/new' exact={true} >
           <NewPostForm />

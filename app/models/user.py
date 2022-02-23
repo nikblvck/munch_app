@@ -13,6 +13,8 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     is_admin=db.Column(db.Boolean, default=False)
     hashed_password = db.Column(db.String(255), nullable=False)
+    profile_img_url = db.Column(db.String(255), nullable=False, default='https://res.cloudinary.com/bigtechnik/image/upload/v1645603921/munch/image_luhr2p.jpg')
+    bio=db.Column(db.Text, nullable=False, default='I am a new muncher!')
     created_at = db.Column(db.DateTime, nullable=False, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, nullable=False, server_default=db.func.now(), onupdate=db.func.now())
 
@@ -42,4 +44,6 @@ class User(db.Model, UserMixin):
             'created_at': self.created_at,
             'post_count': len(self.post),
             'post_list': [post.to_dict() for post in self.post],
+            'profile_img_url': self.profile_img_url,
+            'bio': self.bio
         }

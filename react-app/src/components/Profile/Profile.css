@@ -7,23 +7,29 @@
   height: 100vh;
   background-color: transparent;
 }
-
+ .profile_pic {
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  border: 2px solid red;
+  margin: 0 auto;
+ }
 
 .profile_container{
     display: inline-flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-around;
     align-items: center;
+    background-color: rgba(242, 242, 241, 0.5);
+    width: 1500px;
 
 }
 
 .profile_grid_image{
-    width: 10px;
-    border-radius: 50%;
+    width: 300px;
+    border-radius: .5em;
     margin-bottom: 20px;
+
 }
 
-.user_posts_content{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-}
+
