@@ -20,14 +20,23 @@ function CommentsDiv({postId}){
 
   useEffect(() => {
     dispatch(getComments(postId)).then(()=> getOnePost(postId)).then(() => setIsLoaded(true));
-  }, [dispatch, postId, isLoaded]);
+  }, [dispatch, postId]);
 
  const comments = useSelector((state) => state?.comments?.comments);
 
+ useEffect(() =>
+ {
+    if (comments) {
+      setIsLoaded(true);
+    }
+    else {
+      setIsLoaded(false);
+    }
+ }, [comments]);
 
 const handleDelete = (id) => {
   console.log(id)
-  dispatch(deleteComment(id)).then(() => setIsLoaded(false)).then(() => getComments(postId)).then(() => setIsLoaded(true));
+  dispatch(deleteComment(id)).then(() => setIsLoaded(false)).then(() => getComments(post.id)).then(() => setIsLoaded(true));
 };
 
 const handleSubmit = (e) => {
@@ -59,27 +68,6 @@ const openEdit = (e) => {
   return (
     <>
       <div className="comments_div_container">
-        <button >
-          <i class="fa-solid fa-plus"></i>
-          {showModal && (
-            <Modal onClose={() => setShowModal(false)}>
-              <div>
-                Add Comment
-                <div>
-                  <form>
-                    <input
-                      type="textarea"
-                      placeholder="Add Comment"
-                      value={content}
-                      onChange={(e) => setContent(e.target.value)}
-                    />
-                    <button onClick={handleSubmit} type="submit">Submit</button>
-                  </form>
-                </div>
-              </div>
-            </Modal>
-          )}
-        </button>
 
         {comments?.map((comment) => (
           <div className="individual_comment">
