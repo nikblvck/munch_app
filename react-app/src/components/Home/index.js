@@ -11,20 +11,16 @@ function HomeFeed() {
   const history = useHistory();
   const user = useSelector((state) => state?.session?.user);
   const posts = useSelector((state) => state?.posts?.posts);
-  const [isOpen, setIsOpen] = useState(false);
+
 
 
   useEffect(() => {
     dispatch(getPosts()).then(() => setIsLoaded(true));
-  }, [dispatch, isOpen]);
+  }, [dispatch]);
 
-  const handleDelete = (id, e) => {
-    e.preventDefault();
-    const confirmation = window.confirm("Are you sure you want to delete this post?");
-    if (confirmation) {
+  const handleDelete = (id) => {
     dispatch(deletePost(id)).then(() => setIsLoaded(false)).then(() => dispatch(getPosts())).then(() => setIsLoaded(true));
 
-  }
   }
   const handleEdit = (id) => {
     history.push(`/edit/${id}`);
@@ -80,10 +76,11 @@ function HomeFeed() {
                         </Link>
                       </button>
                       <button
+                      className="delete_btn"
                         id={post.id}
                         onClick={(e) => handleDelete(e.target.id)}
                       >
-                        <i className="fa-solid fa-xmark" />
+                        {/* <i className="fa-solid fa-xmark" /> */} Delete
                       </button>
                     </div>
                   )}

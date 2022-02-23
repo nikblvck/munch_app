@@ -1,7 +1,13 @@
 button {
   border: none;
   background-color: transparent;
-  padding: 0px 45px;
+  padding: 0px 5px;
+}
+
+.delete_btn{
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 5px;
 }
 
 .home_feed_container h2 {

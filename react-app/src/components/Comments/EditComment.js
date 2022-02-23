@@ -1,12 +1,11 @@
 import {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {editComment} from '../../store/comments';
-import {getOnePost} from '../../store/posts';
 import '../Posts/PostForm.css';
 
 
-export default function EditComment({comment}) {
-
+export default function EditComment({commentId}) {
+  console.log(commentId)
   const dispatch = useDispatch();
   const comment = useSelector((state) => state?.comments?.comments[comment.id])
   const [content, setContent] = useState(comment.content);
@@ -23,13 +22,12 @@ export default function EditComment({comment}) {
 
     if (editedComment) {
       dispatch(editComment(editedComment))
-      setShowEdit(false);
     }
   }
 
   return (
     <>
-    <div>
+    <div className="edit_comment_container">
       <div className="edit form">
         <form>
           <input

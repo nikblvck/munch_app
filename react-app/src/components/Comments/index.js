@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import {getComments} from '../../store/comments';
 import {getOnePost, editPost, deletePost} from '../../store/posts';
+import EditComment from './EditComment';
 import { addComment, editComment, deleteComment} from '../../store/comments'
 import {Modal} from '../../context/Modal'
 
@@ -19,45 +20,28 @@ function CommentsDiv({postId}){
 
 
   useEffect(() => {
-    dispatch(getComments(postId)).then(()=> getOnePost(postId));
+    dispatch(getComments(postId)).then(()=> getOnePost(postId)).then(() => setIsLoaded(true));
   }, [dispatch, postId]);
 
  const comments = useSelector((state) => state?.comments?.comments);
 
- useEffect(() =>
- {
-    if (comments) {
-      setIsLoaded(true);
-    }
-    else {
-      setIsLoaded(false);
-    }
- }, [comments]);
+//  useEffect(() =>
+//  {
+//     if (!comments) {
+//       setIsLoaded(false);
+//     }
+//     else {
+//       setIsLoaded(true);
+//     }
+//  }, [comments]);
 
-const handleDelete = (id) => {
+const handleDelete = async (id) => {
   console.log(id)
-  dispatch(deleteComment(id)).then(() => setIsLoaded(false)).then(() => getComments(post.id)).then(() => setIsLoaded(true));
+  await dispatch(deleteComment(id))
+  await dispatch(getComments(postId))
 };
 
-const handleSubmit = (e) => {
-  e.preventDefault();
-  const newComment = {
-    content,
-    post_id: postId.id,
-    user_id: user.id,
-  }
-  console.log(newComment)
-  if(newComment) {
-    console.log(newComment)
-    dispatch(addComment(newComment))
-    .then(() => history.push(`/posts/${post.id}`))
-  }
-}
 
-  const addComment = (e) => {
-    e.preventDefault();
-    setShowModal(true);
-  };
 
 const openEdit = (e) => {
   e.preventDefault();
@@ -81,6 +65,7 @@ const openEdit = (e) => {
                   >
                     Delete
                   </button>
+                  {showEdit && <EditComment commentId={comment.id} />}
                 </div>
               )}
             </div>
