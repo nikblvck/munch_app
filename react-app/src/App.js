@@ -13,6 +13,7 @@ import SplashPage from './components/Splash';
 import CategoryIdPage from './components/Categories';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import { authenticate } from "./store/session";
+import SinglePost from './components/Posts/SinglePost';
 
 
 
@@ -50,7 +51,7 @@ function App() {
          <HomeFeed />
         </ProtectedRoute>
         <Route path='/posts/:id' exact={true} >
-          <PostIdPage />
+          <SinglePost/>
         </Route>
         <Route path='/posts/:id/edit' exact={true} >
           <EditPostPage/>

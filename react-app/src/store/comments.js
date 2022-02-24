@@ -32,67 +32,72 @@ export const remove = (id) => ({
 
 //thunk functions
 export const getComments = (postId) => async dispatch => {
-  const res = await fetch(`/api/comments/posts/${postId}`, {
+  console.log('!!!!!!!!!!!!!!!')
+  console.log(postId)
+  const response = await fetch(`/api/comments/posts/${postId}`, {
     headers: {
       'Content-Type': 'application/json',
     }
   });
 
-  if (res.ok) {
-    const comments = await res.json();
+  if (response.ok) {
+    const comments = await response.json();
     dispatch(loadComments(comments));
   }
 }
 
 export const getComment = (commentId) => async dispatch => {
-  const res = await fetch(`/api/comments/${commentId}`, {
+  const response = await fetch(`/api/comments/${commentId}`, {
     headers: {
       'Content-Type': 'application/json',
     }
   });
-  if (res.ok) {
-    const comment = await res.json();
+  if (response.ok) {
+    const comment = await response.json();
     dispatch(loadComment(comment));
   }
 }
 
 export const addComment = (comment) => async dispatch => {
-  const res = await fetch('/api/comments/new/', {
+  const response = await fetch('/api/comments/new/', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(comment)
+    body: JSON.stringify({comment})
+
   });
-  if(res.ok) {
-    const newComment = await res.json();
+  if(response.ok) {
+    const newComment = await response.json();
+    console.log({'newComment_SUCCESS': newComment});
     dispatch(add(newComment));
+    return newComment
   }
 }
 
 export const editComment = (commentId) => async dispatch => {
-  const res = await fetch(`/api/comments/${commentId}`, {
+  const response = await fetch(`/api/comments/${commentId}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(commentId)
   });
-  if(res.ok) {
-    const editedComment = await res.json();
+  if(response.ok) {
+    const editedComment = await response.json();
     dispatch(add(editedComment));
   }
 }
 
 
 export const deleteComment = (commentId) => async dispatch => {
-  const res = await fetch(`/api/comments/${commentId}`, {
+  const response = await fetch(`/api/comments/${commentId}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
     }
   });
-  if(res.ok) {
+  if(response.ok) {
     dispatch(remove(commentId));
   }
 }
