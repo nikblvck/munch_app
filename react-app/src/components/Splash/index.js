@@ -14,7 +14,7 @@ function SplashPage() {
       <>
         <div className="main_container">
           <div>
-            <h1 className="welcome">Welcome to MunCh</h1>
+            <h1 className="welcome">MUNCH</h1>
           </div>
           <div>
             <h2> Share your last bite, find your next! </h2>
