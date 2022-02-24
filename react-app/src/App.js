@@ -37,7 +37,7 @@ function App() {
     <>
       <NavBar />
       <Switch>
-        <Route exact path="/" component={SplashPage} />
+        <Route exact={true} path="/" component={SplashPage}  />
         <Route path='/login' exact={true}>
           <LoginForm />
         </Route>
@@ -50,9 +50,9 @@ function App() {
         <ProtectedRoute path='/posts' exact={true} >
          <HomeFeed />
         </ProtectedRoute>
-        <Route path='/posts/:id' exact={true} >
+        <ProtectedRoute path='/posts/:id' exact={true} >
           <SinglePost/>
-        </Route>
+        </ProtectedRoute>
         <Route path='/posts/:id/edit' exact={true} >
           <EditPostPage/>
         </Route>

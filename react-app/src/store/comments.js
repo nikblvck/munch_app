@@ -64,12 +64,12 @@ export const addComment = (comment) => async dispatch => {
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({comment})
+    body: JSON.stringify(comment)
 
   });
   if(response.ok) {
     const newComment = await response.json();
-    console.log({'newComment_SUCCESS': newComment});
+    console.log(newComment)
     dispatch(add(newComment));
     return newComment
   }
