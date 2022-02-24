@@ -62,7 +62,7 @@ const NavBar = () => {
       <div className="left_nav">
         <ul>
           <li key="home" className="title"><NavLink to="/"><h1>
-            Munch
+            MUNCH
             </h1></NavLink></li>
             <li>
               <NavLink to="/posts" className="nav_link">
