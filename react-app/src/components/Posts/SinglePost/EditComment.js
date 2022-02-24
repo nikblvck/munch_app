@@ -1,12 +1,12 @@
 import {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {useParams} from 'react-router-dom'
-import {editComment, getComment} from '../../store/comments';
-import '../Posts/PostForm.css';
+import {editComment, getComment} from '../../../store/comments';
+
 
 
 export default function EditComment({commentId}) {
-  console.log(commentId)
+
   const dispatch = useDispatch();
 
 
@@ -20,9 +20,10 @@ export default function EditComment({commentId}) {
 
 
    const comment = useSelector((state) => state?.comments?.comments.find(comment => comment.id === commentId));
+
    const [content, setContent] = useState(comment.content);
 
-   console.log(comment)
+
 
   const handleEdit = async (e) => {
     e.preventDefault();
@@ -36,11 +37,13 @@ export default function EditComment({commentId}) {
     }
 
     if (editedComment) {
-      console.log(editedComment)
+
        await dispatch(editComment(editedComment))
 
+       await dispatch(getComment(commentId))
     }
   }
+
 
   return (
     <>

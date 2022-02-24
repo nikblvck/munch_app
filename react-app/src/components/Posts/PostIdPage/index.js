@@ -10,34 +10,19 @@ import './PostIdPage.css'
 function PostIdPage () {
   const dispatch = useDispatch();
   const history = useHistory();
-  const postId = useParams();
-  console.log(postId)
+  const postId2 = useParams();
   const post = useSelector((state) => state?.posts?.posts);
   const user = useSelector((state) => state?.session?.user);
   const [loaded, setIsLoaded] = useState(false);
-  const [content, setContent] = useState('')
   const [errors, setErrors] = useState('');
 
-  useEffect(() => {
-    dispatch(getOnePost(postId.id)).then(()=> getComments(postId.id)).then(() => setIsLoaded(true));
-  }, [dispatch,loaded]);
+  useEffect( async() => {
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  const user_id = user.id;
-  const post_id = postId.id;
-  const newComment = {
-    content,
-    post_id,
-    user_id,
-  };
-  console.log(newComment);
-  if (newComment) {
-    console.log(newComment);
-    await dispatch(addComment(newComment))
-  }
+    await dispatch(getOnePost(postId2.id))
+    await dispatch(getComments(postId2.id))
+    setIsLoaded(true)
+  }, [dispatch, loaded, errors]);
 
-};
 
 
 
@@ -61,18 +46,8 @@ if (!loaded) {
             <p>{post?.caption}</p>
           </div>
           <div>
-            <div className="add_comment_form">
-              <form onSubmit={handleSubmit}>
-                <input
-                  type="textarea"
-                  placeholder="Add a comment..."
-                  value={content}
-                  onChange={(e) => setContent(e.target.value)}
-                />
-                <button type="submit">Add Comment</button>
-              </form>
-            </div>
-            {!loaded ? null : <CommentsDiv loaded={loaded} postId={post?.id} />}
+
+            {!loaded ? null : <CommentsDiv loaded={loaded} postId={postId2} />}
           </div>
         </div>
       </div>

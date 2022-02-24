@@ -18,8 +18,7 @@ function EditPostPage() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [errors, setErrors] = useState([]);
   const categories = useSelector((state) => state?.categories?.categories);
-  console.log('hello')
-  console.log(postId.id)
+
 
   useEffect(() => {
     dispatch(getCategories()).then(() => dispatch(getPosts())).then(() => dispatch(getOnePost(postId.id))).then(() => setIsLoaded(true));
@@ -34,7 +33,7 @@ function EditPostPage() {
       category_id,
       user_id: user.id,
     };
-    console.log(editedPost)
+
     if (editedPost) {
       dispatch(editPost(editedPost)).then(() => {
         history.push("/posts");
