@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { getOnePost, editPost, deletePost } from "../../../store/posts";
-import { getComments, addComment, editComment, deleteComment } from "../../../store/comments";
+import { getComments, addComment, editComment, deleteComment, getComment } from "../../../store/comments";
 import CommentsDiv from "../../Comments";
 
 function SinglePost() {
@@ -18,6 +18,7 @@ function SinglePost() {
   const [errors, setErrors] = useState('');
   const [content, setContent] = useState("");
   const [showEdit, setShowEdit] = useState(false);
+  const [editContent, setEditContent] = useState("");
 
   // console.log(post)
   // console.log(comments)
@@ -67,8 +68,10 @@ function SinglePost() {
       setIsLoaded(false);
     }
   };
-const openEdit = (e) => {
+const openEdit = async(e) => {
   e.preventDefault();
+
+  await dispatch(getComment(id))
   setShowEdit(true);
 };
 
@@ -80,8 +83,11 @@ const handleDelete = async (id) => {
   setIsLoaded(false)
 };
 
+let editDiv
+const handleEdit = async(e) => {
+  e.preventDefault();
 
-
+}
 useEffect(async() => {
   if(!loaded)
   await dispatch(getComments(id))
@@ -137,7 +143,13 @@ useEffect(async() => {
                     <div className="comment_options">
                       {user.id !== comment.user_id ? null : (
                         <>
-                          <button onClick={openEdit}>Edit</button>
+                          <button
+                            comment={comment}
+                            id={comment.id}
+                            onClick={(e) => openEdit(e.target.id)}
+                          >
+                            Edit
+                          </button>
                           <button
                             id={comment.id}
                             post={comment.post_id}
@@ -145,6 +157,24 @@ useEffect(async() => {
                           >
                             Delete
                           </button>
+                          <div className="edit_container">
+                            {((user.id !== comment.user_id) && !showEdit) ? null : (
+                              <>
+                                <div className="edit_comment_container">
+                                  <form onSubmit={handleEdit}>
+                                    <textarea
+                                      type="textarea"
+                                      value={editContent}
+                                      onChange={(e) =>
+                                        setEditContent(e.target.value)
+                                      }
+                                    />
+                                    <button type="submit">Edit</button>
+                                  </form>
+                                </div>
+                              </>
+                            )}
+                          </div>
                         </>
                       )}
                     </div>
