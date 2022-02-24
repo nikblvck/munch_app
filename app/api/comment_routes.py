@@ -20,8 +20,8 @@ def add_comment():
         )
         db.session.add(new_comment)
         db.session.commit()
-        return jsonify(new_comment.to_dict())
-    return jsonify(form.errors)
+        return new_comment.to_dict()
+    return {'errors': form.errors}, 401
 
 
 # READ ALL

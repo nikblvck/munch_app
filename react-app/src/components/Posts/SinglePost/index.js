@@ -31,24 +31,42 @@ function SinglePost() {
     , [dispatch, loaded, errors]);
 
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   const postId = post.id;
+  //   console.log(postId)
+  //   const newComment = {
+  //     content,
+  //     post_id: postId,
+  //   };
+
+  //   if (newComment) {
+  //     console.log(newComment)
+  //     await dispatch(addComment(newComment));
+  //     setIsLoaded(false);
+  //   } else {
+  //     setErrors("Please enter a comment");
+  //   }
+  // };
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const postId = post.id;
-    console.log(postId)
+
+    const user_id = user.id;
+    const post_id = postId.id;
+    console.log(post_id)
     const newComment = {
       content,
-      post_id: postId,
+      post_id,
     };
 
     if (newComment) {
-      console.log(newComment)
       await dispatch(addComment(newComment));
+      setContent('')
       setIsLoaded(false);
-    } else {
-      setErrors("Please enter a comment");
     }
   };
-
 const openEdit = (e) => {
   e.preventDefault();
   setShowEdit(true);

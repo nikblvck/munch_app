@@ -19,7 +19,7 @@ function NewPost() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [errors, setErrors] = useState([]);
   const categories = useSelector((state) => state?.categories?.categories);
-
+ 
   useEffect(() => {
    dispatch(getCategories()).then(() => setIsLoaded(true));
 
@@ -33,7 +33,7 @@ function NewPost() {
       category_id,
       user_id: user.id,
     }
-
+    console.log(newPost)
     if (newPost) {
       dispatch(addPost(newPost)).then(() => {
         history.push('/posts');
