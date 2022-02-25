@@ -34,7 +34,7 @@ function CategoryIdPage() {
 
 return (
   <>
-    <div className="main_container">
+    <div className="main_catgory_container">
       <div>
         <h1 className="category_title">{postsArray[0]?.category_name}</h1>
       </div>
