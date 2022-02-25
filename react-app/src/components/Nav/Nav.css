@@ -3,16 +3,29 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-direction: row;
 }
 
-.nav_left{
+.left_nav{
   float: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
 
 }
 
-.nav_right {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+
+p.welcome {
+  padding: 0px 15px;
+}
+.right_nav {
+float: right;
+display: flex;
+justify-content: center;
+align-items: space-around;
+flex-direction: row;
+width: 300px;
 }
 
 li{
