@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import db, Comment
-from app.forms import NewComment
+from app.forms import NewComment, EditComment
 
 comment_routes = Blueprint('comments', __name__)
 
@@ -15,6 +15,7 @@ def validation_errors_to_error_messages(validation_errors):
         for error in validation_errors[field]:
             errorMessages.append(f'{field} : {error}')
     return errorMessages
+
 
 
 
@@ -33,7 +34,7 @@ def add_comment():
         db.session.add(new_comment)
         db.session.commit()
         return new_comment.to_dict()
-    return {'errors': form.errors}, 401
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
 # READ ALL
@@ -59,7 +60,7 @@ def get_comments_by_post(id):
 # UPDATE
 @comment_routes.route('/<int:id>/', methods=['PUT'])
 def edit_comment(id):
-    form = NewComment()
+    form = EditComment()
     form['csrf_token'].data = request.cookies['csrf_token']
     comment = Comment.query.get(id)
     if comment.user_id == current_user.id:

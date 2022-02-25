@@ -6,6 +6,19 @@ from app.forms import NewPost
 post_routes = Blueprint('posts', __name__)
 
 
+def validation_errors_to_error_messages(validation_errors):
+    """
+    Simple function that turns the WTForms validation errors into a simple list
+    """
+    errorMessages = []
+    for field in validation_errors:
+        for error in validation_errors[field]:
+            errorMessages.append(f'{field} : {error}')
+    return errorMessages
+
+
+
+
 # CREATE
 @post_routes.route('/new/', methods=['POST'])
 @login_required
@@ -22,7 +35,7 @@ def new_post():
         db.session.add(new_post)
         db.session.commit()
         return jsonify(new_post.to_dict())
-    return jsonify(form.errors)
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
 # READ ALL
@@ -62,7 +75,7 @@ def edit_post(id):
             post.category_id = form.category_id.data
             db.session.commit()
             return jsonify(post.to_dict())
-        return jsonify(form.errors)
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 # DELETE
 @post_routes.route('/delete/<int:id>/', methods=['DELETE'])
