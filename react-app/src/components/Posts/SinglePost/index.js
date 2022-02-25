@@ -65,21 +65,22 @@ function SinglePost() {
 
   const [content, setContent] = useState("");
 
-  const handleDelete = async (id) => {
+  const handleDelete = async (e) => {
+    e.preventDefault()
     console.log(post);
     const postId = post.id;
     await dispatch(deleteComment(id));
     await dispatch(getComments(postId));
-    setIsLoaded(false);
+
   };
 
-  const handleEdit = async (e) => {
-    e.preventDefault();
+  const handleEdit = async (id) => {
+
     const comment_id = editCommentId;
     const post_id = post.id;
     const content = editContent;
 
-    console.log(comment_id);
+
     const editedComment = {
       id: editCommentId,
       comment_id,
@@ -87,9 +88,9 @@ function SinglePost() {
       content,
       user_id: user.id,
     }
+ 
     await dispatch(editComment(editedComment));
-    console.log('*******************************')
-    console.log(editedComment)
+
     setEditContent("");
     setIsLoaded(false);
     showEditModal(false);
@@ -137,7 +138,7 @@ function SinglePost() {
         <div>
           {!loaded ? null : (
             <>
-              <div className="individual_post_container">
+              <div className="individual_post_container" id="comments">
                 {post.comment_list.map((comment) => (
                   <>
                     <div className="individual_comment_container">
@@ -167,12 +168,12 @@ function SinglePost() {
                           </div>
                           {editModal && (
                             <Modal
-                              comment_id={comment.id}
+                              comment_id={comment?.id}
                               onClose={() => showEditModal(false)}
                             >
                               <div className="main_edit_container">
                                 <div className="edit_comment_container">
-                                  <form id={comment.id} onSubmit={(e)=> handleEdit(e.target.id)}>
+                                  <form id={comment?.id} onSubmit={(e)=> handleEdit(e.target.id)}>
                                     <input
                                       className="edit_comment_textarea"
                                       type="text"
@@ -190,13 +191,6 @@ function SinglePost() {
                               </div>
                             </Modal>
                           )}
-                          {/* {showEditModal && (
-                            <Modal onClose={() => showEditModal(false)}>
-                              <EditComment commentId={comment.id} editCommentId={editCommentId} postId={comment.post_id} showEditModal={showEditModal} />
-
-
-                            </Modal>
-                          )} */}
                         </>
                       )}
                     </div>

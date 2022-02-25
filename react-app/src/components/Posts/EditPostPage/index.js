@@ -26,6 +26,7 @@ function EditPostPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const editedPost = {
       id: postId.id,
       image_url,
@@ -33,7 +34,7 @@ function EditPostPage() {
       category_id,
       user_id: user.id,
     };
-
+    console.log(editedPost)
     if (editedPost) {
       dispatch(editPost(editedPost)).then(() => {
         history.push("/posts");

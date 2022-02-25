@@ -81,14 +81,16 @@ button{
   -webkit-border-radius: 10;
   -moz-border-radius: 10;
   border-radius: 10px;
-  color: #fc3c3c;
+  color: #ff042e;
   font-size: 1em;
   padding: 10px 20px 10px 20px;
   text-decoration: none;
+
+
 }
 
 button:hover {
-  color: blue;
+  color: #0058db;
 }
 
 h1 {
@@ -105,3 +107,4 @@ h1 {
 
 
 }
+

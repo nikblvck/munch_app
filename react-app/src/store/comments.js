@@ -3,6 +3,7 @@
 const GET_COMMENTS = 'GET_COMMENTS';
 const GET_COMMENT = 'GET_COMMENT';
 const ADD_COMMENT = 'ADD_COMMENT';
+const EDIT_COMMENT = 'EDIT_COMMENT';
 const DELETE_COMMENT = 'DELETE_COMMENT';
 
 
@@ -18,6 +19,10 @@ export const loadComment = (comment) => ({
   comment
 });
 
+const edit = (comment) => ({
+  type: EDIT_COMMENT,
+  comment
+});
 
 export const add = (comment) => ({
   type: ADD_COMMENT,
@@ -74,7 +79,8 @@ export const addComment = (comment) => async dispatch => {
 }
 
 export const editComment = (comment) => async dispatch => {
-  const response = await fetch(`/api/comments/${comment}`, {
+  console.log(comment.id)
+  const response = await fetch(`/api/comments/${comment.id}/`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
@@ -84,7 +90,7 @@ export const editComment = (comment) => async dispatch => {
   if(response.ok) {
     const editedComment = await response.json();
     console.log(editedComment)
-    dispatch(add(editedComment))
+    dispatch(edit(editedComment))
     return editedComment
   }
 }
@@ -119,6 +125,10 @@ export default function reducer(state = initialState, action) {
       newState.comments = action.comment;
       return newState;
     case ADD_COMMENT:
+      newState = { ...state}
+      newState.comments = action.comment;
+      return newState;
+    case EDIT_COMMENT:
       newState = { ...state}
       newState.comments = action.comment;
       return newState;

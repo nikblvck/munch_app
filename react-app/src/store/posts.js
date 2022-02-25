@@ -97,7 +97,7 @@ export const getOnePost = (postId) => async dispatch => {
 
 //UPDATE
 export const editPost = post => async dispatch => {
-  const response = await fetch(`/api/posts/${post.id}`, {
+  const response = await fetch(`/api/posts/${post.id}/`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',

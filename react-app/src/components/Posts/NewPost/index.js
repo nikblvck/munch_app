@@ -15,15 +15,23 @@ function NewPost() {
   const user = useSelector((state) => state?.session?.user);
   const [image_url, setImage_url] = useState('');
   const [caption, setCaption] = useState('');
-  const [category_id, setCategoryId] = useState('');
+  const [category_id, setCategoryId] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
   const [errors, setErrors] = useState([]);
   const categories = useSelector((state) => state?.categories?.categories);
- 
+
   useEffect(() => {
    dispatch(getCategories()).then(() => setIsLoaded(true));
 
   }, [dispatch, isLoaded]);
+
+  useEffect(() => {
+    if (!image_url) {
+      setErrors(['Please enter an image url']);
+    } else if (!category_id) {
+      setErrors(['Please select a category']);
+  }
+  }, [image_url, category_id]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -82,7 +90,7 @@ return (
               placholder="Caption [optional]"
               onChange={(e) => setCaption(e.target.value)}
             />
-            <label htmlFor="category_id">Category</label>
+            <label htmlFor="category_id">Category *</label>
             <select
               className="category_select"
               value={category_id}
