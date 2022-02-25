@@ -63,11 +63,11 @@ const NavBar = () => {
             MUNCH
             </h1></NavLink></div>
             <div>
-              <NavLink to="/posts" className="nav_link">
+              <a href="https://www.github.com/nikblvck/munch_app">
                 <button>
                   About
                 </button>
-              </NavLink>
+              </a>
             </div>
 
       </div>
