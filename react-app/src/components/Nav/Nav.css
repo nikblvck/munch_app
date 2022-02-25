@@ -25,16 +25,16 @@ li{
 li button {
   background: none;
   border: none;
-  color: black;
+  color: #ff042d;
   cursor: pointer;
   font-size: 1em;
 }
-li button:hover{
-  color: goldenrod;
+li button:hover, a:hover{
+  color: #0058db;
 }
-a, a:hover, a:active, a:visited {
+a, a:active, a:visited {
   text-decoration: none;
-  color: black;
+  color: #ff042d;
 }
 
 h1 {

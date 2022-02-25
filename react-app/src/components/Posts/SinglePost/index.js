@@ -65,12 +65,13 @@ function SinglePost() {
 
   const [content, setContent] = useState("");
 
-  const handleDelete = async (e) => {
-    e.preventDefault()
+  const handleDelete = async (id) => {
+
     console.log(post);
     const postId = post.id;
     await dispatch(deleteComment(id));
     await dispatch(getComments(postId));
+    setIsLoaded(false)
 
   };
 
@@ -88,12 +89,13 @@ function SinglePost() {
       content,
       user_id: user.id,
     }
- 
+
     await dispatch(editComment(editedComment));
 
     setEditContent("");
-    setIsLoaded(false);
     showEditModal(false);
+    setIsLoaded(false);
+
   };
 
 

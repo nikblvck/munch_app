@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { Redirect, Link} from 'react-router-dom';
+import { Redirect, useHistory} from 'react-router-dom';
 import { signUp } from '../../store/session';
 import './Auth.css';
 
 const SignUpForm = () => {
+  const history = useHistory();
   const [errors, setErrors] = useState([]);
   const [first_name, setFirstName] = useState('');
   const [last_name, setLastName] = useState('')
@@ -49,6 +50,11 @@ const SignUpForm = () => {
     setRepeatPassword(e.target.value);
   };
 
+  const handleClick = e => {
+    e.preventDefault();
+    history.push('/login');
+  };
+
   if (user) {
     return <Redirect to='/posts' />;
   }
@@ -57,7 +63,7 @@ const SignUpForm = () => {
     <>
     <div className="main_auth_container">
       <div className="auth_container">
-        <p className="sign_up_header">Sign Up</p>
+        <h1 className="sign_up_header">Sign Up</h1>
         <form onSubmit={onSignUp}>
           <div>
             {errors.map((error, ind) => (
@@ -129,8 +135,8 @@ const SignUpForm = () => {
             <button className="auth_btn" type="submit" disabled={errors.length}>
               Sign Up
             </button>
-            <button>
-              <Link to="/login">Have An Account?</Link>
+            <button onClick={handleClick}>
+              Have An Account?
             </button>
           </div>
         </form>

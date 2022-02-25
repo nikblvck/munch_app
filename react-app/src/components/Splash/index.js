@@ -1,12 +1,11 @@
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector} from "react-redux";
-import { useHistory, Redirect } from "react-router-dom";
+
+import { useSelector } from "react-redux";
+import { Redirect } from "react-router-dom";
 
 
 import "./Splash.css";
 function SplashPage() {
-  const history = useHistory();
   const user = useSelector((state) => state?.session?.user);
 
   if (!user) {
@@ -17,7 +16,7 @@ function SplashPage() {
             <h1 className="welcome">MUNCH</h1>
           </div>
           <div>
-            <h2> Share your last bite, find your next! </h2>
+            <h1 className="tagline"> Share your last bite, find your next! </h1>
           </div>
           <div>
             {" "}
