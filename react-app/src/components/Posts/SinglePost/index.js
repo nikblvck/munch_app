@@ -46,16 +46,15 @@ function SinglePost() {
     };
 
     if (newComment) {
-      const data =  await dispatch(addComment(newComment));
-      if (data.errors) {
-        setErrors(data.errors);
-        console.log('0000000000000000000009090909090900')
-        console.log(errors)
+      const data = await dispatch(addComment(newComment));
+      if (data) {
+        console.log(data);
+        setErrors(data);
+        console.log(errors);
       }
-      setContent("");
-      setIsLoaded(false);
     }
   };
+
 
   const openEdit = async (id) => {
     await dispatch(getComment(id));
