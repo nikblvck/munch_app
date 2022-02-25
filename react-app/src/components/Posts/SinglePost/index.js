@@ -86,11 +86,16 @@ function SinglePost() {
       user_id: user.id,
     };
 
-    await dispatch(editComment(editedComment));
-
-    setEditContent("");
+    const data = await dispatch(editComment(editedComment));
+    if (data) {
+        console.log(data);
+        setErrors(data);
+        console.log(errors);
+      } else {
+           setEditContent("");
     showEditModal(false);
     setIsLoaded(false);
+      }
   };
 
   useEffect(async () => {
@@ -145,7 +150,7 @@ function SinglePost() {
                     <div className="individual_comment_container">
                       <span className="comment_username">
                         {comment.username}
-                      </span>{" "}
+                      </span>
                       {comment.content}
                     </div>
                     <div className="comment_options">
@@ -197,7 +202,12 @@ function SinglePost() {
                                       }
                                     />
                                     <div className="option_btns">
-                                      <button type="submit">Save</button>
+                                      <button
+                                        disabled={editContent === ""}
+                                        type="submit"
+                                      >
+                                        Save
+                                      </button>
                                       <button
                                         onClick={() => showEditModal(false)}
                                       >
