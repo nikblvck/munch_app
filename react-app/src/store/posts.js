@@ -45,13 +45,16 @@ export const addPost = (post) => async (dispatch) => {
   if (response.ok) {
     const newPost = await response.json();
     dispatch(add(newPost));
-  } else if (response.status < 500) {
-    const error = await response.json();
-    throw new Error(error.message);
+ } else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) {
+      return data.errors;
+    }
   } else {
-    throw new Error("Server error");
+    return ["An error occurred. Please try again."];
   }
 };
+
 //READ
 export const getPosts = () => async (dispatch) => {
   const response = await fetch("/api/posts/", {
