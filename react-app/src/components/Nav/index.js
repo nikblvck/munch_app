@@ -16,7 +16,6 @@ const NavBar = () => {
   if (!user) {
     navLinks = (
       <>
-        <div>
           <div>
             <DemoUser />
           </div>
@@ -33,7 +32,6 @@ const NavBar = () => {
               </button>
             </NavLink>
           </div>
-        </div>
       </>
     );
   } else {
