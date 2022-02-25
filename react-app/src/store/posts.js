@@ -106,10 +106,12 @@ export const editPost = (post) => async (dispatch) => {
     const editedPost = await response.json();
     dispatch(edit(editedPost));
   } else if (response.status < 500) {
-    const error = await response.json();
-    throw new Error(error.message);
+    const data = await response.json();
+    if (data.errors) {
+      return data.errors;
+    }
   } else {
-    throw new Error("Server error");
+    return ["An error occurred. Please try again."];
   }
 };
 

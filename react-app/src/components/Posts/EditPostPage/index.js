@@ -24,7 +24,7 @@ function EditPostPage() {
     dispatch(getCategories()).then(() => dispatch(getPosts())).then(() => dispatch(getOnePost(postId.id))).then(() => setIsLoaded(true));
   }, [dispatch]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const editedPost = {
@@ -36,11 +36,12 @@ function EditPostPage() {
     };
 
     if (editedPost) {
-      dispatch(editPost(editedPost)).then(() => {
-        history.push("/posts");
-      });
-    } else {
-      setErrors(["Please fill out all fields"]);
+      const data = await dispatch(editPost(editedPost));
+      if (data) {
+        console.log(data);
+        setErrors(data);
+        console.log(errors);
+      }
     }
   };
 

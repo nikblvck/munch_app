@@ -48,7 +48,7 @@ function NewPost() {
         setErrors(data);
         console.log(errors);
       }
-    } 
+    }
   };
 
 
@@ -97,6 +97,7 @@ return (
               value={category_id}
               onChange={(e) => setCategoryId(e.target.value)}
             >
+              <option > --Select a Category-- </option>
               {categories.map((category) => (
                 <option key={category.id} value={category.id}>
                   {category.name}
