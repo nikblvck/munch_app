@@ -59,7 +59,7 @@ function HomeFeed() {
                   <Link to={`/categories/${post.category_id}`}>
                     <div className="post_category">{post.category_name}</div>
                   </Link>
-                  <div className="likes_container">
+                  <div className="like s_container">
                     <button className="like_btn"><i className="fa-solid fa-heart"></i></button>
                     {!post.likes ? null : (
                       <div className="post_likes">

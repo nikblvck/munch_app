@@ -1,0 +1,22 @@
+.main_container {
+
+  justify-content: center;
+  align-items: center;
+  width: 800px;
+  height: 1000px;
+  background-color: rgba(242, 242, 241, 1);
+  border-radius: .5rem;
+}
+
+.posts_container {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  width: 750px;
+  margin: auto; 
+}
+img.post_image{
+  width: 200px;
+  max-height: 200px;
+  border-radius: .5rem;
+
+}

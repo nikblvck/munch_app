@@ -45,7 +45,7 @@ const NavBar = () => {
           </li>
           <li key="nav_right_post">
             <NavLink to="/post/new" exact={true} className="nav_link">
-            <i class="fa-solid fa-plus"></i>
+            <i className="fa-solid fa-plus"></i>
             </NavLink>
           </li>
           <li key="nav_right_logout">

@@ -6,19 +6,18 @@ import {editComment, getComment} from '../../../store/comments';
 
 
 export default function EditComment({ commentId, postId, setShowEditModal }) {
- console.log(commentId)
+
   const dispatch = useDispatch();
   const history = useHistory();
   const comment = useSelector((state) => state?.comments?.comments.find((comment) => comment.id === commentId));
 const id = comment.id;
   const [isLoaded, setIsLoaded] = useState(false);
-console.log(id)
+
   useEffect(async () => {
     await dispatch(getComment(id))
     setIsLoaded(true)
   }, [dispatch, id, isLoaded]);
 
- console.log(comment)
 
   //  const comment = useSelector((state) => state?.comments?.comments.find(comment => comment.id === commentId));
 
@@ -39,9 +38,7 @@ console.log(id)
     }
 
     if (editedComment) {
-      console.log('=======================')
-      console.log(editedComment)
-      console.log(comment.id)
+   
        await dispatch(editComment(editedComment))
 
        await dispatch(getComment(commentId))

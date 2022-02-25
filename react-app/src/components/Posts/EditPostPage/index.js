@@ -34,7 +34,7 @@ function EditPostPage() {
       category_id,
       user_id: user.id,
     };
-    console.log(editedPost)
+
     if (editedPost) {
       dispatch(editPost(editedPost)).then(() => {
         history.push("/posts");

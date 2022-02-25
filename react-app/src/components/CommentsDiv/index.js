@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import {getComments, editComment, deleteComment} from '../../store/comments';
 
 function CommentsDiv({postId, loaded}) {
-  console.log([loaded, postId])
+
   const history = useHistory();
   const dispatch = useDispatch();
   const user = useSelector((state) => state?.session?.user);

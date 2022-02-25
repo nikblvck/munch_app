@@ -11,7 +11,7 @@ import {
 } from "../../../store/comments";
 
 import { Modal } from "../../../context/Modal";
-import CommentsDiv from "../../Comments";
+
 
 function SinglePost() {
   const dispatch = useDispatch();
@@ -27,9 +27,7 @@ function SinglePost() {
   const [editContent, setEditContent] = useState("");
   const [editCommentId, setEditCommentId] = useState("");
   const [editModal, showEditModal] = useState(false);
-  // console.log(post)
-  // console.log(comments)
-  // console.log(id)
+
   useEffect(async () => {
     await dispatch(getOnePost(id));
     await dispatch(getComments(id));
@@ -40,7 +38,7 @@ function SinglePost() {
     e.preventDefault();
 
     const post_id = postId.id;
-    console.log(post_id);
+
     const newComment = {
       content,
       post_id,
@@ -54,33 +52,26 @@ function SinglePost() {
   };
 
   const openEdit = async (id) => {
-
-    console.log(id)
     await dispatch(getComment(id));
 
     setEditCommentId(id);
-    console.log(editCommentId)
+
     showEditModal(true);
   };
 
   const [content, setContent] = useState("");
 
   const handleDelete = async (id) => {
-
-    console.log(post);
     const postId = post.id;
     await dispatch(deleteComment(id));
     await dispatch(getComments(postId));
-    setIsLoaded(false)
-
+    setIsLoaded(false);
   };
 
   const handleEdit = async (id) => {
-
     const comment_id = editCommentId;
     const post_id = post.id;
     const content = editContent;
-
 
     const editedComment = {
       id: editCommentId,
@@ -88,16 +79,14 @@ function SinglePost() {
       post_id,
       content,
       user_id: user.id,
-    }
+    };
 
     await dispatch(editComment(editedComment));
 
     setEditContent("");
     showEditModal(false);
     setIsLoaded(false);
-
   };
-
 
   useEffect(async () => {
     if (!loaded) await dispatch(getComments(id));
@@ -155,7 +144,11 @@ function SinglePost() {
                           <div className="option_btns">
                             <button
                               comment={comment}
-                              onClick={() => openEdit(comment.id).then(() => setEditContent(comment.content))}
+                              onClick={() =>
+                                openEdit(comment.id).then(() =>
+                                  setEditContent(comment.content)
+                                )
+                              }
                               value={comment.id}
                             >
                               Edit
@@ -175,7 +168,10 @@ function SinglePost() {
                             >
                               <div className="main_edit_container">
                                 <div className="edit_comment_container">
-                                  <form id={comment?.id} onSubmit={(e)=> handleEdit(e.target.id)}>
+                                  <form
+                                    id={comment?.id}
+                                    onSubmit={(e) => handleEdit(e.target.id)}
+                                  >
                                     <input
                                       className="edit_comment_textarea"
                                       type="text"

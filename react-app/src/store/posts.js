@@ -1,46 +1,44 @@
 //constants
 
-const GET_POSTS = 'posts/GET_POSTS';
-const GET_POST = 'posts/GET_POST';
-const ADD_POST = 'posts/ADD_POST';
-const EDIT_POST = 'posts/EDIT_POST';
-const DELETE_POST = 'posts/DELETE_POST';
-
+const GET_POSTS = "posts/GET_POSTS";
+const GET_POST = "posts/GET_POST";
+const ADD_POST = "posts/ADD_POST";
+const EDIT_POST = "posts/EDIT_POST";
+const DELETE_POST = "posts/DELETE_POST";
 
 // action creators
-const loadPosts = posts => ({
+const loadPosts = (posts) => ({
   type: GET_POSTS,
   posts,
 });
 
-const loadPost = post => ({
+const loadPost = (post) => ({
   type: GET_POST,
   post,
 });
 
-
-const edit = post => ({
+const edit = (post) => ({
   type: EDIT_POST,
   post,
 });
 
-const remove = id => ({
+const remove = (id) => ({
   type: DELETE_POST,
   id,
 });
 
-const add = post => ({
+const add = (post) => ({
   type: ADD_POST,
   post,
 });
 
 // thunk functions
 //CREATE
-export const addPost = post => async(dispatch) => {
-  const response = await fetch('/api/posts/new/', {
-    method: 'POST',
+export const addPost = (post) => async (dispatch) => {
+  const response = await fetch("/api/posts/new/", {
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     body: JSON.stringify(post),
   });
@@ -51,15 +49,15 @@ export const addPost = post => async(dispatch) => {
     const error = await response.json();
     throw new Error(error.message);
   } else {
-    throw new Error('Server error');
+    throw new Error("Server error");
   }
 };
 //READ
-export const getPosts = () => async dispatch => {
-  const response = await fetch('/api/posts/', {
+export const getPosts = () => async (dispatch) => {
+  const response = await fetch("/api/posts/", {
     headers: {
-      'Content-Type': 'application/json',
-    }
+      "Content-Type": "application/json",
+    },
   });
 
   if (response.ok) {
@@ -68,11 +66,11 @@ export const getPosts = () => async dispatch => {
   }
 };
 
-export const getUserPosts = (userId) => async dispatch => {
+export const getUserPosts = (userId) => async (dispatch) => {
   const res = await fetch(`/api/posts/${userId}`, {
     headers: {
-      'Content-Type': 'application/json',
-    }
+      "Content-Type": "application/json",
+    },
   });
   if (res.ok) {
     const posts = await res.json();
@@ -80,12 +78,11 @@ export const getUserPosts = (userId) => async dispatch => {
   }
 };
 
-
-export const getOnePost = (postId) => async dispatch => {
+export const getOnePost = (postId) => async (dispatch) => {
   const res = await fetch(`/api/posts/${postId}/`, {
     headers: {
-      'Content-Type': 'application/json',
-    }
+      "Content-Type": "application/json",
+    },
   });
   if (res.ok) {
     const post = await res.json();
@@ -93,14 +90,12 @@ export const getOnePost = (postId) => async dispatch => {
   }
 };
 
-
-
 //UPDATE
-export const editPost = post => async dispatch => {
+export const editPost = (post) => async (dispatch) => {
   const response = await fetch(`/api/posts/${post.id}/`, {
-    method: 'PUT',
+    method: "PUT",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     body: JSON.stringify(post),
   });
@@ -111,16 +106,16 @@ export const editPost = post => async dispatch => {
     const error = await response.json();
     throw new Error(error.message);
   } else {
-    throw new Error('Server error');
+    throw new Error("Server error");
   }
 };
 
 //DELETE
-export const deletePost = id => async dispatch => {
+export const deletePost = (id) => async (dispatch) => {
   const response = await fetch(`/api/posts/delete/${id}/`, {
-    method: 'DELETE',
+    method: "DELETE",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
   });
   if (response.ok) {
@@ -129,11 +124,9 @@ export const deletePost = id => async dispatch => {
     const error = await response.json();
     throw new Error(error.message);
   } else {
-    throw new Error('Server error');
+    throw new Error("Server error");
   }
 };
-
-
 
 //reducer function
 const initialState = {};
@@ -143,25 +136,25 @@ export default function reducer(state = initialState, action) {
 
   switch (action.type) {
     case GET_POSTS:
-      newState = { ...state}
+      newState = { ...state };
       newState.posts = action.posts;
       return newState;
     case GET_POST:
-      newState = { ...state}
+      newState = { ...state };
       newState.posts = action.post;
       return newState;
     case ADD_POST:
-      newState = {...state}
+      newState = { ...state };
       newState.posts = action.post;
       return newState;
     case EDIT_POST:
-      newState = {...state}
+      newState = { ...state };
       newState.posts = action.post;
       return newState;
     case DELETE_POST:
-      newState = {...state}
+      newState = { ...state };
       delete newState.posts[action.id];
-      return newState
+      return newState;
     default:
       return state;
   }

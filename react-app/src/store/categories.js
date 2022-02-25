@@ -1,27 +1,27 @@
 //constants
 
-const GET_CATEGORIES = 'categories/GET_CATEGORIES';
-const GET_CATEGORY = 'categories/GET_CATEGORY';
+const GET_CATEGORIES = "categories/GET_CATEGORIES";
+const GET_CATEGORY = "categories/GET_CATEGORY";
 
 //action creators
 
-const loadCategories = categories => ({
+const loadCategories = (categories) => ({
   type: GET_CATEGORIES,
   categories,
 });
 
-const loadCategory = category => ({
+const loadCategory = (category) => ({
   type: GET_CATEGORY,
   category,
 });
 
 //thunk functions
 
-export const getCategories = () => async dispatch => {
-  const response = await fetch('/api/categories/', {
+export const getCategories = () => async (dispatch) => {
+  const response = await fetch("/api/categories/", {
     headers: {
-      'Content-Type': 'application/json',
-    }
+      "Content-Type": "application/json",
+    },
   });
 
   if (response.ok) {
@@ -31,15 +31,15 @@ export const getCategories = () => async dispatch => {
     const error = await response.json();
     throw new Error(error.message);
   } else {
-    throw new Error('Server error');
+    throw new Error("Server error");
   }
-}
+};
 
-export const getCategory = id => async dispatch => {
+export const getCategory = (id) => async (dispatch) => {
   const response = await fetch(`/api/categories/${id}/`, {
     headers: {
-      'Content-Type': 'application/json',
-    }
+      "Content-Type": "application/json",
+    },
   });
 
   if (response.ok) {
@@ -49,21 +49,21 @@ export const getCategory = id => async dispatch => {
     const error = await response.json();
     throw new Error(error.message);
   } else {
-    throw new Error('Server error');
+    throw new Error("Server error");
   }
-}
+};
 
 //reducer
-const  initialState = {};
-export default function categoriesReducer(state = initialState, action)  {
+const initialState = {};
+export default function categoriesReducer(state = initialState, action) {
   let newState;
   switch (action.type) {
     case GET_CATEGORIES:
-      newState = {...state}
+      newState = { ...state };
       newState.categories = action.categories;
       return newState;
     case GET_CATEGORY:
-      newState = {...state}
+      newState = { ...state };
       newState.category = action.category;
       return newState;
     default:

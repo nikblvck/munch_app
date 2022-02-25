@@ -37,7 +37,7 @@ const handleSubmit = async (e) => {
 const handleDelete = async (id, post) => {
 
   await dispatch(deleteComment(id));
-  console.log(post)
+
   await dispatch(getComments(post.id));
 };
 
@@ -52,7 +52,7 @@ const openEdit = (e) => {
     await dispatch(getOnePost(postId.id))
     setIsLoaded(true)
   }, [dispatch, loaded]);
-  console.log(post)
+
 
  const comments = useSelector((state) => state?.comments?.comments);
  const [content, setContent] = useState("");
