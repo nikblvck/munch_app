@@ -45,7 +45,7 @@ def get_comments_by_post(id):
     return jsonify([comment.to_dict() for comment in comments])
 
 # UPDATE
-@comment_routes.route('/<int:id>', methods=['PUT'])
+@comment_routes.route('/<int:id>/', methods=['PUT'])
 def edit_comment(id):
     form = NewComment()
     form['csrf_token'].data = request.cookies['csrf_token']

@@ -39,6 +39,22 @@
   width: 600px;
   margin: auto;
 }
+
+.edit_comment_container {
+  display: flex;
+  box-sizing: border-box;
+  padding: 10px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  margin: auto;
+}
+
+.edit_comment_textarea {
+  width: 400px;
+  margin: auto;
+}
 .add_comment_textarea {
   width: 550px;
   box-sizing: border-box;
@@ -58,4 +74,34 @@
 
 .add_comment_textarea::-webkit-scrollbar{
   display:none;
+}
+
+.comment_username {
+  font-weight: 400;
+  margin: auto;
+  padding-right:.1em;
+}
+
+.option_btns{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 300px;
+  margin: auto;
+  font-size: .75em;
+}
+
+.individual_comment_container{
+  box-sizing: border-box;
+  margin: 10px;
+  padding: 15px;
+  border-top: 1px dotted rgba(0,0,0,.9);
+  width: 500px;
+  justify-content: left;
+
+}
+
+.individual_post_container#comments{
+ max-height: 500px;
 }

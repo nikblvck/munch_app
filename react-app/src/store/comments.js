@@ -3,6 +3,7 @@
 const GET_COMMENTS = 'GET_COMMENTS';
 const GET_COMMENT = 'GET_COMMENT';
 const ADD_COMMENT = 'ADD_COMMENT';
+const EDIT_COMMENT = 'EDIT_COMMENT';
 const DELETE_COMMENT = 'DELETE_COMMENT';
 
 
@@ -18,6 +19,10 @@ export const loadComment = (comment) => ({
   comment
 });
 
+const edit = (comment) => ({
+  type: EDIT_COMMENT,
+  comment
+});
 
 export const add = (comment) => ({
   type: ADD_COMMENT,
@@ -32,8 +37,6 @@ export const remove = (id) => ({
 
 //thunk functions
 export const getComments = (postId) => async dispatch => {
-  console.log('!!!!!!!!!!!!!!!')
-  console.log(postId)
   const response = await fetch(`/api/comments/posts/${postId}`, {
     headers: {
       'Content-Type': 'application/json',
@@ -75,17 +78,20 @@ export const addComment = (comment) => async dispatch => {
   }
 }
 
-export const editComment = (commentId) => async dispatch => {
-  const response = await fetch(`/api/comments/${commentId}`, {
+export const editComment = (comment) => async dispatch => {
+  console.log(comment.id)
+  const response = await fetch(`/api/comments/${comment.id}/`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(commentId)
+    body: JSON.stringify(comment)
   });
   if(response.ok) {
     const editedComment = await response.json();
-    dispatch(add(editedComment));
+    console.log(editedComment)
+    dispatch(edit(editedComment))
+    return editedComment
   }
 }
 
@@ -116,9 +122,13 @@ export default function reducer(state = initialState, action) {
       return newState;
     case GET_COMMENT:
       newState = { ...state}
-      newState.comment = action.comment;
+      newState.comments = action.comment;
       return newState;
     case ADD_COMMENT:
+      newState = { ...state}
+      newState.comments = action.comment;
+      return newState;
+    case EDIT_COMMENT:
       newState = { ...state}
       newState.comments = action.comment;
       return newState;

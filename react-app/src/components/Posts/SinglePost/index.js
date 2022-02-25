@@ -1,62 +1,46 @@
-
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { getOnePost, editPost, deletePost } from "../../../store/posts";
-import { getComments, addComment, editComment, deleteComment, getComment } from "../../../store/comments";
+import {
+  getComments,
+  addComment,
+  editComment,
+  deleteComment,
+  getComment,
+} from "../../../store/comments";
+
+import { Modal } from "../../../context/Modal";
 import CommentsDiv from "../../Comments";
 
 function SinglePost() {
   const dispatch = useDispatch();
   const history = useHistory();
-  const post = useSelector((state) => state?.posts?.posts)
-  const postId = useParams()
-  const id= postId.id
+  const post = useSelector((state) => state?.posts?.posts);
+  const postId = useParams();
+  const id = postId.id;
   const user = useSelector((state) => state?.session?.user);
   const comments = useSelector((state) => state?.comments?.comments);
   const [loaded, setIsLoaded] = useState(false);
-  const [errors, setErrors] = useState('');
-  const [content, setContent] = useState("");
-  const [showEdit, setShowEdit] = useState(false);
-  const [editContent, setEditContent] = useState("");
+  const [errors, setErrors] = useState("");
 
+  const [editContent, setEditContent] = useState("");
+  const [editCommentId, setEditCommentId] = useState("");
+  const [editModal, showEditModal] = useState(false);
   // console.log(post)
   // console.log(comments)
   // console.log(id)
   useEffect(async () => {
-
-    await dispatch(getOnePost(id))
-    await dispatch(getComments(id))
-    setIsLoaded(true)
-  }
-    , [dispatch, loaded, errors]);
-
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   const postId = post.id;
-  //   console.log(postId)
-  //   const newComment = {
-  //     content,
-  //     post_id: postId,
-  //   };
-
-  //   if (newComment) {
-  //     console.log(newComment)
-  //     await dispatch(addComment(newComment));
-  //     setIsLoaded(false);
-  //   } else {
-  //     setErrors("Please enter a comment");
-  //   }
-  // };
-
+    await dispatch(getOnePost(id));
+    await dispatch(getComments(id));
+    setIsLoaded(true);
+  }, [dispatch, loaded, errors]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const user_id = user.id;
     const post_id = postId.id;
-    console.log(post_id)
+    console.log(post_id);
     const newComment = {
       content,
       post_id,
@@ -64,38 +48,61 @@ function SinglePost() {
 
     if (newComment) {
       await dispatch(addComment(newComment));
-      setContent('')
+      setContent("");
       setIsLoaded(false);
     }
   };
-const openEdit = async(e) => {
-  e.preventDefault();
 
-  await dispatch(getComment(id))
-  setShowEdit(true);
-};
+  const openEdit = async (id) => {
 
-const handleDelete = async (id) => {
-  console.log(post)
-  const postId= post.id
-  await dispatch(deleteComment(id))
-  await dispatch(getComments(postId))
-  setIsLoaded(false)
-};
+    console.log(id)
+    await dispatch(getComment(id));
 
-let editDiv
-const handleEdit = async(e) => {
-  e.preventDefault();
+    setEditCommentId(id);
+    console.log(editCommentId)
+    showEditModal(true);
+  };
 
-}
-useEffect(async() => {
-  if(!loaded)
-  await dispatch(getComments(id))
-}, [comments]);
+  const [content, setContent] = useState("");
 
+  const handleDelete = async (e) => {
+    e.preventDefault()
+    console.log(post);
+    const postId = post.id;
+    await dispatch(deleteComment(id));
+    await dispatch(getComments(postId));
+
+  };
+
+  const handleEdit = async (id) => {
+
+    const comment_id = editCommentId;
+    const post_id = post.id;
+    const content = editContent;
+
+
+    const editedComment = {
+      id: editCommentId,
+      comment_id,
+      post_id,
+      content,
+      user_id: user.id,
+    }
+ 
+    await dispatch(editComment(editedComment));
+
+    setEditContent("");
+    setIsLoaded(false);
+    showEditModal(false);
+  };
+
+
+  useEffect(async () => {
+    if (!loaded) await dispatch(getComments(id));
+  }, [comments, editContent]);
 
   if (!loaded) {
-    return null
+    return null;
   }
   return (
     <>
@@ -131,7 +138,7 @@ useEffect(async() => {
         <div>
           {!loaded ? null : (
             <>
-              <div className="individual_post_container">
+              <div className="individual_post_container" id="comments">
                 {post.comment_list.map((comment) => (
                   <>
                     <div className="individual_comment_container">
@@ -143,38 +150,47 @@ useEffect(async() => {
                     <div className="comment_options">
                       {user.id !== comment.user_id ? null : (
                         <>
-                          <button
-                            comment={comment}
-                            id={comment.id}
-                            onClick={(e) => openEdit(e.target.id)}
-                          >
-                            Edit
-                          </button>
-                          <button
-                            id={comment.id}
-                            post={comment.post_id}
-                            onClick={(e) => handleDelete(e.target.id)}
-                          >
-                            Delete
-                          </button>
-                          <div className="edit_container">
-                            {((user.id !== comment.user_id) && !showEdit) ? null : (
-                              <>
+                          <div className="option_btns">
+                            <button
+                              comment={comment}
+                              onClick={() => openEdit(comment.id).then(() => setEditContent(comment.content))}
+                              value={comment.id}
+                            >
+                              Edit
+                            </button>
+                            <button
+                              id={comment.id}
+                              post={comment.post_id}
+                              onClick={(e) => handleDelete(e.target.id)}
+                            >
+                              Delete
+                            </button>
+                          </div>
+                          {editModal && (
+                            <Modal
+                              comment_id={comment?.id}
+                              onClose={() => showEditModal(false)}
+                            >
+                              <div className="main_edit_container">
                                 <div className="edit_comment_container">
-                                  <form onSubmit={handleEdit}>
-                                    <textarea
-                                      type="textarea"
+                                  <form id={comment?.id} onSubmit={(e)=> handleEdit(e.target.id)}>
+                                    <input
+                                      className="edit_comment_textarea"
+                                      type="text"
+                                      name="content"
                                       value={editContent}
                                       onChange={(e) =>
                                         setEditContent(e.target.value)
                                       }
                                     />
-                                    <button type="submit">Edit</button>
+                                    <div className="option_btns">
+                                      <button type="submit">Save</button>
+                                    </div>
                                   </form>
                                 </div>
-                              </>
-                            )}
-                          </div>
+                              </div>
+                            </Modal>
+                          )}
                         </>
                       )}
                     </div>

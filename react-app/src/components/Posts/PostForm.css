@@ -1,6 +1,7 @@
 .post_form_container {
   background-color: rgba(242, 242, 241, 1);
   border-radius: 1em;
+  border: 1 px solid #ccc;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -11,9 +12,16 @@
 }
 
 .post_form_header {
-  font-size: 1.25em;
-  font-weight: bold;
-  color: rgba(3, 3, 3, .6);
+    font-size: 2.5rem;
+    font-weight: 200;
+    margin: 0;
+    padding: 0;
+    background-image: linear-gradient(45deg, #ff042d, #0058db);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
 }
 
 .post_form_image{
@@ -32,6 +40,7 @@
   justify-content: center;
   align-items: center;
   text-align: left;
+  width: 600px;
 }
 
 
