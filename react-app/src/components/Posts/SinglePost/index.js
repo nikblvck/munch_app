@@ -11,7 +11,7 @@ import {
 } from "../../../store/comments";
 
 import { Modal } from "../../../context/Modal";
-import { database } from "pg/lib/defaults";
+
 
 
 function SinglePost() {

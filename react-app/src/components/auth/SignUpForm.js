@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect, useHistory} from 'react-router-dom';
 import { signUp } from '../../store/session';
@@ -13,9 +13,15 @@ const SignUpForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
+  const [loaded, setIsLoaded] = useState(false)
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    if (!loaded){
+      return null
+    }
+  }, [loaded, errors, password, repeatPassword, email, username, first_name, last_name])
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
@@ -136,7 +142,7 @@ const SignUpForm = () => {
             ></input>
           </div>
           <div className="auth_btn_div">
-            <button className="auth_btn" type="submit" disabled={errors.length}>
+            <button className="auth_btn" type="submit">
               Sign Up
             </button>
             <button onClick={handleClick}>
