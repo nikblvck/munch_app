@@ -11,6 +11,7 @@ import {
 } from "../../../store/comments";
 
 import { Modal } from "../../../context/Modal";
+import { database } from "pg/lib/defaults";
 
 
 function SinglePost() {
@@ -22,7 +23,7 @@ function SinglePost() {
   const user = useSelector((state) => state?.session?.user);
   const comments = useSelector((state) => state?.comments?.comments);
   const [loaded, setIsLoaded] = useState(false);
-  const [errors, setErrors] = useState("");
+  const [errors, setErrors] = useState([]);
 
   const [editContent, setEditContent] = useState("");
   const [editCommentId, setEditCommentId] = useState("");
@@ -45,11 +46,15 @@ function SinglePost() {
     };
 
     if (newComment) {
-      await dispatch(addComment(newComment));
-      setContent("");
-      setIsLoaded(false);
+      const data = await dispatch(addComment(newComment));
+      if (data) {
+        console.log(data);
+        setErrors(data);
+        console.log(errors);
+      }
     }
   };
+
 
   const openEdit = async (id) => {
     await dispatch(getComment(id));
@@ -81,11 +86,16 @@ function SinglePost() {
       user_id: user.id,
     };
 
-    await dispatch(editComment(editedComment));
-
-    setEditContent("");
+    const data = await dispatch(editComment(editedComment));
+    if (data) {
+        console.log(data);
+        setErrors(data);
+        console.log(errors);
+      } else {
+           setEditContent("");
     showEditModal(false);
     setIsLoaded(false);
+      }
   };
 
   useEffect(async () => {
@@ -112,6 +122,11 @@ function SinglePost() {
         </div>
         <div className="individual_post_container">
           <div className="add_comment_container">
+            <div className="auth_errors">
+              {errors?.map((error, ind) => (
+                <div key={ind}>{error}</div>
+              ))}
+            </div>
             <form onSubmit={handleSubmit}>
               <textarea
                 className="add_comment_textarea"
@@ -135,7 +150,7 @@ function SinglePost() {
                     <div className="individual_comment_container">
                       <span className="comment_username">
                         {comment.username}
-                      </span>{" "}
+                      </span>
                       {comment.content}
                     </div>
                     <div className="comment_options">
@@ -168,7 +183,9 @@ function SinglePost() {
                             >
                               <div className="modal_content">
                                 <div className="edit_heading_container">
-                                  <h1 className="edit_cmt_heading">Edit Your Comment</h1>
+                                  <h1 className="edit_cmt_heading">
+                                    Edit Your Comment
+                                  </h1>
                                 </div>
                                 <div className="edit_comment_container">
                                   <form
@@ -185,8 +202,17 @@ function SinglePost() {
                                       }
                                     />
                                     <div className="option_btns">
-                                      <button type="submit">Save</button>
-                                      <button onClick={() => showEditModal(false)}>Cancel</button>
+                                      <button
+                                        disabled={editContent === ""}
+                                        type="submit"
+                                      >
+                                        Save
+                                      </button>
+                                      <button
+                                        onClick={() => showEditModal(false)}
+                                      >
+                                        Cancel
+                                      </button>
                                     </div>
                                   </form>
                                 </div>

@@ -11,6 +11,7 @@ import EditPostPage from './components/Posts/EditPostPage';
 import PostIdPage from './components/Posts/PostIdPage';
 import SplashPage from './components/Splash';
 import CategoryIdPage from './components/Categories';
+import PageNotFound from './components/PageNotFound';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import { authenticate } from "./store/session";
 import SinglePost from './components/Posts/SinglePost';
@@ -37,32 +38,34 @@ function App() {
     <>
       <NavBar />
       <Switch>
-        <Route exact={true} path="/" component={SplashPage}  />
-        <Route path='/login' exact={true}>
+        <Route exact={true} path="/" component={SplashPage} />
+        <Route path="/login" exact={true}>
           <LoginForm />
         </Route>
-        <Route path='/signup' exact={true}>
+        <Route path="/signup" exact={true}>
           <SignUpForm />
         </Route>
-        <Route path='/users/:userId' exact={true} >
+        <Route path="/users/:userId" exact={true}>
           <Profile />
         </Route>
-        <ProtectedRoute path='/posts' exact={true} >
-         <HomeFeed />
+        <ProtectedRoute path="/posts" exact={true}>
+          <HomeFeed />
         </ProtectedRoute>
-        <ProtectedRoute path='/posts/:id' exact={true} >
-          <SinglePost/>
+        <ProtectedRoute path="/posts/:id" exact={true}>
+          <SinglePost />
         </ProtectedRoute>
-        <Route path='/posts/:id/edit' exact={true} >
-          <EditPostPage/>
+        <Route path="/posts/:id/edit" exact={true}>
+          <EditPostPage />
         </Route>
-        <Route path='/categories/:id' exact={true} >
+        <Route path="/categories/:id" exact={true}>
           <CategoryIdPage />
         </Route>
-        <Route path='/post/new' exact={true} >
+        <Route path="/post/new" exact={true}>
           <NewPostForm />
         </Route>
-
+        <Route>
+          <PageNotFound />
+        </Route>
       </Switch>
     </>
   );

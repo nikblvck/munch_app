@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserPosts } from "../../store/posts";
 import "./Profile.css";
@@ -7,6 +7,7 @@ import "./Profile.css";
 function Profile() {
   const [user, setUser] = useState({});
   const { userId } = useParams();
+  console.log(userId)
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -21,7 +22,8 @@ function Profile() {
     })();
   }, [userId]);
 
-  const posts = useSelector((state) => state?.session?.user.post_list);
+  const posts = useSelector((state) => state?.session?.user?.post_list);
+
 
   if (!user) {
     return null;
@@ -29,8 +31,7 @@ function Profile() {
 
   return (
     <>
-      <div className="main_container">
-        <div>
+      <div className="main_profile_container">
           <div className="profile_container">
             <div className="profile_image">
               <img
@@ -52,11 +53,11 @@ function Profile() {
               {posts?.map((post) => (
                 <>
                   <div className="individual_profile_post">
-                    <img
+                   <Link to={`/posts/${post.id}`}> <img
                       className="profile_grid_image"
                       src={post.image_url}
                       alt={post.title}
-                    />
+                    /></Link>
                     <div className="prof_post_category">
                       {post.category_name}
                     </div>
@@ -65,7 +66,6 @@ function Profile() {
               ))}
             </div>
           </div>
-        </div>
       </div>
     </>
   );

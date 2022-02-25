@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {useHistory, useParams} from "react-router-dom";
 import { getPost } from "../../store/posts";
-import { getCategory } from "../../store/categories";
+import { getCategory, getCategories } from "../../store/categories";
 import './Categories.css'
 
 
@@ -15,12 +15,13 @@ function CategoryIdPage() {
   const [isLoaded, setIsLoaded] = useState(false);
   const postsArray = useSelector((state) => state?.categories?.category)
   const postArrayLength = postsArray?.length;
-
+  const categoryName = useSelector((state) => state?.categories?.category?.name);
   console.log(postsArray?.length)
-  useEffect(() => {
-      dispatch(getCategory(id))
+  useEffect(async () => {
+      await dispatch(getCategories());
+      await dispatch(getCategory(id))
       setIsLoaded(true)
-  }, [dispatch, id]);
+  }, [dispatch, id, postArrayLength]);
 
   if (postArrayLength === 0 || !isLoaded) {
     return (

@@ -33,22 +33,24 @@ function NewPost() {
   }
   }, [image_url, category_id]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const newPost = {
       image_url,
       caption,
       category_id,
       user_id: user.id,
-    }
+    };
     if (newPost) {
-      dispatch(addPost(newPost)).then(() => {
-        history.push('/posts');
-      });
-    } else {
-      setErrors(['Please fill out all fields']);
+      const data = await dispatch(addPost(newPost));
+      if (data) {
+        console.log(data);
+        setErrors(data);
+        console.log(errors);
+      }
     }
   };
+
 
   if (!isLoaded) {
     return null
@@ -95,6 +97,7 @@ return (
               value={category_id}
               onChange={(e) => setCategoryId(e.target.value)}
             >
+              <option > --Select a Category-- </option>
               {categories.map((category) => (
                 <option key={category.id} value={category.id}>
                   {category.name}

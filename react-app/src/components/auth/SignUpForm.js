@@ -21,8 +21,12 @@ const SignUpForm = () => {
     if (password === repeatPassword) {
       const data = await dispatch(signUp(first_name, last_name, username, email, password));
       if (data) {
+        console.log(data)
         setErrors(data)
+        console.log(errors)
       }
+    } else {
+      setErrors(['Passwords do not match'])
     }
   };
 
@@ -65,7 +69,7 @@ const SignUpForm = () => {
       <div className="auth_container">
         <h1 className="sign_up_header">Sign Up</h1>
         <form onSubmit={onSignUp}>
-          <div>
+          <div className="auth_errors">
             {errors.map((error, ind) => (
               <div key={ind}>{error}</div>
             ))}

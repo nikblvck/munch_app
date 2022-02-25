@@ -16,42 +16,40 @@ const NavBar = () => {
   if (!user) {
     navLinks = (
       <>
-        <ul>
-          <li>
+        <div>
+          <div>
             <DemoUser />
-          </li>
-          <li key="nav_left_login">
+          </div>
+          <div key="nav_left_login">
             <NavLink to="/login" className="nav_link"><button>
               Log In
             </button>
             </NavLink>
-          </li>
-          <li key="nav_left_signup">
+          </div>
+          <div key="nav_left_signup">
             <NavLink to="/signup" className="nav_link">
               <button>
                 Sign Up
               </button>
             </NavLink>
-          </li>
-        </ul>
+          </div>
+        </div>
       </>
     );
   } else {
     navLinks = (
       <>
-        <ul>
-          <li>
-            <p>Welcome, {user.first_name}</p>{" "}
-          </li>
-          <li key="nav_right_post">
+          <div>
+            <p className="welcome">Welcome, {user.first_name}</p>{" "}
+          </div>
+          <div key="nav_right_post">
             <NavLink to="/post/new" exact={true} className="nav_link">
             <i className="fa-solid fa-plus"></i>
             </NavLink>
-          </li>
-          <li key="nav_right_logout">
+          </div>
+          <div key="nav_right_logout">
             <LogoutButton />
-          </li>
-        </ul>
+          </div>
       </>
     );
   }
@@ -60,18 +58,18 @@ const NavBar = () => {
     <nav>
       <div className="nav_container">
       <div className="left_nav">
-        <ul>
-          <li key="home" className="title"><NavLink to="/"><h1>
+
+          <div key="home" className="title"><NavLink to="/"><h1>
             MUNCH
-            </h1></NavLink></li>
-            <li>
-              <NavLink to="/posts" className="nav_link">
+            </h1></NavLink></div>
+            <div>
+              <a href="https://www.github.com/nikblvck/munch_app">
                 <button>
-                  Posts
+                  About
                 </button>
-              </NavLink>
-            </li>
-        </ul>
+              </a>
+            </div>
+
       </div>
       <div className="right_nav">
         {navLinks}
