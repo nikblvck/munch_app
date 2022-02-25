@@ -6,6 +6,18 @@ from app.forms import NewComment
 comment_routes = Blueprint('comments', __name__)
 
 
+def validation_errors_to_error_messages(validation_errors):
+    """
+    Simple function that turns the WTForms validation errors into a simple list
+    """
+    errorMessages = []
+    for field in validation_errors:
+        for error in validation_errors[field]:
+            errorMessages.append(f'{field} : {error}')
+    return errorMessages
+
+
+
 #CREATE
 @comment_routes.route('/new/', methods=['POST'])
 @login_required
@@ -56,7 +68,7 @@ def edit_comment(id):
             comment.post_id = form.post_id.data
             db.session.commit()
             return jsonify(comment.to_dict())
-        return jsonify(form.errors)
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 # DELETE
 @comment_routes.route('/<int:id>', methods=['DELETE'])

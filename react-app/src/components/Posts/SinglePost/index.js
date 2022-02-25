@@ -186,6 +186,7 @@ function SinglePost() {
                                     />
                                     <div className="option_btns">
                                       <button type="submit">Save</button>
+                                      <button onClick={() => showEditModal(false)}>Cancel</button>
                                     </div>
                                   </form>
                                 </div>
