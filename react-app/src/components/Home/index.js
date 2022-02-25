@@ -38,7 +38,7 @@ function HomeFeed() {
     <>
       <div className="home_feed_container">
         <div className="home_feed_header">
-          <h2>Home Feed</h2>
+          <h1 className="home_feed_title">Home Feed</h1>
         </div>
 
         <div className="post_content">
@@ -72,16 +72,14 @@ function HomeFeed() {
                     <div className="post_button_container">
                       <button className="edit_post">
                         <Link to={`/posts/${post.id}/edit`}>
-                          <i className="fa-solid fa-pen-to-square" />
+                          Edit
                         </Link>
                       </button>
                       <button
                       className="delete_btn"
                         id={post.id}
                         onClick={(e) => handleDelete(e.target.id)}
-                      >
-                        {/* <i className="fa-solid fa-xmark" /> */} Delete
-                      </button>
+                      >Delete</button>
                     </div>
                   )}
                 </div>

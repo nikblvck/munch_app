@@ -166,7 +166,10 @@ function SinglePost() {
                               comment_id={comment?.id}
                               onClose={() => showEditModal(false)}
                             >
-                              <div className="main_edit_container">
+                              <div className="modal_content">
+                                <div className="edit_heading_container">
+                                  <h1 className="edit_cmt_heading">Edit Your Comment</h1>
+                                </div>
                                 <div className="edit_comment_container">
                                   <form
                                     id={comment?.id}
