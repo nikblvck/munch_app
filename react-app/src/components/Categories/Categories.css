@@ -12,9 +12,9 @@
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
   width: 750px;
-  margin: auto; 
+  margin: auto;
 }
-img.post_image{
+img.post_image_categories{
   width: 200px;
   max-height: 200px;
   border-radius: .5rem;

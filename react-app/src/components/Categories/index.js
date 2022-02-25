@@ -42,7 +42,7 @@ return (
        {postsArray?.map((post) => (
           <>
             <div className="post_container">
-              <img className="post_image" src={post.image_url} alt={post.category_name}/>
+              <img className="post_image_categories" src={post.image_url} alt={post.category_name}/>
 
               <div className="post_title">{post.category_name}</div>  <br/>
            </div>
