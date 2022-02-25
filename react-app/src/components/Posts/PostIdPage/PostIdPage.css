@@ -39,6 +39,22 @@
   width: 600px;
   margin: auto;
 }
+
+.edit_comment_container {
+  display: flex;
+  box-sizing: border-box;
+  padding: 10px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  margin: auto;
+}
+
+.edit_comment_textarea {
+  width: 400px;
+  margin: auto;
+}
 .add_comment_textarea {
   width: 550px;
   box-sizing: border-box;
