@@ -42,7 +42,7 @@ function EditPostPage() {
         setErrors(data);
         console.log(errors);
       } else {
-        history.push(`/posts/${postId.id}`);
+        history.push(`/posts`);
       }
     }
   };

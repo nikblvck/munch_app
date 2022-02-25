@@ -24,7 +24,7 @@ function SinglePost() {
   const comments = useSelector((state) => state?.comments?.comments);
   const [loaded, setIsLoaded] = useState(false);
   const [errors, setErrors] = useState([]);
-
+  const [addErrors, setAddErrors] = useState([]);
   const [editContent, setEditContent] = useState("");
   const [editCommentId, setEditCommentId] = useState("");
   const [editModal, showEditModal] = useState(false);
@@ -47,10 +47,10 @@ function SinglePost() {
 
     if (newComment) {
       const data = await dispatch(addComment(newComment));
+       setContent("");
+       setIsLoaded(false);
       if (data) {
-        console.log(data);
         setErrors(data);
-        console.log(errors);
       }
     }
   };
@@ -100,7 +100,7 @@ function SinglePost() {
 
   useEffect(async () => {
     if (!loaded) await dispatch(getComments(id));
-  }, [comments, editContent]);
+  }, [comments, editContent, loaded]);
 
   if (!loaded) {
     return null;
@@ -123,9 +123,13 @@ function SinglePost() {
         <div className="individual_post_container">
           <div className="add_comment_container">
             <div className="auth_errors">
-              {errors?.map((error, ind) => (
-                <div key={ind}>{error}</div>
-              ))}
+              {!errors.length ? null : (
+                <ul>
+                  {errors.map((error) => (
+                    <li key={error}>{error}</li>
+                  ))}
+                </ul>
+              )}
             </div>
             <form onSubmit={handleSubmit}>
               <textarea
