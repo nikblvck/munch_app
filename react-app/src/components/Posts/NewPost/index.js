@@ -25,14 +25,6 @@ function NewPost() {
 
   }, [dispatch, isLoaded]);
 
-  useEffect(() => {
-    if (!image_url) {
-      setErrors(['Please enter an image url']);
-    } else if (!category_id) {
-      setErrors(['Please select a category']);
-  }
-  }, [image_url, category_id]);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newPost = {

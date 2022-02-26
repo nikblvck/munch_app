@@ -146,7 +146,7 @@ function SinglePost() {
           </div>
         </div>
         <div className="comment_list_container">
-          {!loaded ? null : (
+          {post.comment_list === 0 ? null : (
             <>
               <div className="comment_list" id="comments">
                 {post.comment_list.map((comment) => (
