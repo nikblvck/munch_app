@@ -1,0 +1,24 @@
+div.comment_list{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+}
+
+div.comment_list_container {
+  background-color: rgba(242, 242, 241, 1);
+  border-radius: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 600px;
+  margin: 10px auto;
+  height: 400px;
+  overflow-y: scroll;
+}
+
+.comment_list_container::-webkit-scrollbar{
+  display:none;
+}

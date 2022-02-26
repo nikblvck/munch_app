@@ -109,6 +109,6 @@ h1 {
 }
 
 .main_container {
-    margin: 75px auto;
-
+    margin: auto auto 50px auto;
+    height: 1000px;
 }

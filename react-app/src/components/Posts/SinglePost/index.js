@@ -9,7 +9,7 @@ import {
   deleteComment,
   getComment,
 } from "../../../store/comments";
-
+import './SinglePost.css'
 import { Modal } from "../../../context/Modal";
 
 
@@ -145,10 +145,10 @@ function SinglePost() {
             </form>
           </div>
         </div>
-        <div>
+        <div className="comment_list_container">
           {!loaded ? null : (
             <>
-              <div className="individual_post_container" id="comments">
+              <div className="comment_list" id="comments">
                 {post.comment_list.map((comment) => (
                   <>
                     <div className="individual_comment_container">
