@@ -54,7 +54,7 @@ button {
   justify-content: space-between;
   align-items: center;
   text-align: left;
-  height: 700px;
+  height: 600px;
 }
 .post_button_container{
   display: flex;
