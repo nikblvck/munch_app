@@ -1,6 +1,4 @@
 import { useDispatch } from "react-redux";
-
-//thunk import
 import { login } from "../../store/session";
 
 const DemoUser = () => {

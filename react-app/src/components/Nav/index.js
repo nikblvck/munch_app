@@ -3,7 +3,7 @@ import React from 'react';
 import {useSelector} from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
-import NewPost from '../Posts/NewPost';
+import AboutButton from './AboutButton';
 import DemoUser from './Demo';
 import './Nav.css'
 
@@ -61,11 +61,7 @@ const NavBar = () => {
             MUNCH
             </h1></NavLink></div>
             <div>
-              <a href="https://www.github.com/nikblvck/munch_app">
-                <button>
-                  About
-                </button>
-              </a>
+                <AboutButton />
             </div>
 
       </div>
