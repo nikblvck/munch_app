@@ -10,7 +10,7 @@ function EditPostPage() {
   const dispatch = useDispatch();
   const history = useHistory();
   const postId = useParams();
-  const post = useSelector((state) => state?.posts?.posts);
+  const post = useSelector((state) => state?.posts?.post);
   const user = useSelector((state) => state?.session?.user);
   const [image_url, setImage_url] = useState(post?.image_url || '');
   const [caption, setCaption] = useState(post?.caption || '');
