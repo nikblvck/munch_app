@@ -19,6 +19,7 @@ function ProfileButton({user}) {
   };
 
 
+
   useEffect(() => {
     if(!showMenu) return
 
@@ -56,9 +57,6 @@ function ProfileButton({user}) {
               <div><h1 className="bold_text" id="dropdown_username">{user.first_name} {user.last_name}</h1></div>
             <div className="subtext">Member Since
               <p className="bold_text">{user.member_since}</p>
-            </div>
-            <div className="post_count">
-              {user.post_count} Posts
             </div>
             </div>
               <div className="profile_d_links">
