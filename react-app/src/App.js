@@ -6,7 +6,6 @@ import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/Nav';
 import NewPost from './components/Posts/NewPost/';
 import HomeFeed from './components/Home';
-import Profile from './components/Profile';
 import EditPostPage from './components/Posts/EditPostPage';
 import SplashPage from './components/Splash';
 import CategoryIdPage from './components/Categories';
@@ -44,9 +43,7 @@ function App() {
         <Route path="/signup" exact={true}>
           <SignUpForm />
         </Route>
-        <Route path="/users/:userId" exact={true}>
-          <Profile />
-        </Route>
+
         <ProtectedRoute path="/posts" exact={true}>
           <HomeFeed />
         </ProtectedRoute>

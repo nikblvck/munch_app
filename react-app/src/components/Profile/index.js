@@ -4,25 +4,20 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUserPosts } from "../../store/posts";
 import "./Profile.css";
 
-function Profile() {
-  const [user, setUser] = useState({});
-  const { userId } = useParams();
-  console.log(userId)
+function ProfilePage() {
+  const {postUserId} = useParams().id;
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+  const posts = useSelector((state) => state?.posts?.user_posts.post_list)
+  const user = useSelector((state) => state?.session?.user_posts)
+  console.log(posts)
+
 
   useEffect(() => {
-    if (!userId) {
-      return;
-    }
-    (async () => {
-      const response = await fetch(`/api/users/${userId}`);
-      const user = await response.json();
-      setUser(user);
-    })();
-  }, [userId]);
+    dispatch(getUserPosts(postUserId));
+    setIsLoaded(true);
+  }, [isLoaded, dispatch]);
 
-  const posts = useSelector((state) => state?.session?.user?.post_list);
 
 
   if (!user) {
@@ -70,4 +65,4 @@ function Profile() {
     </>
   );
 }
-export default Profile;
+export default ProfilePage;
