@@ -7,7 +7,7 @@
 } */
 
 div.comment_list_container {
-  background-color: rgba(242, 242, 241, 1);
+  background-color: rgba(242, 242, 241, .75);
   border-radius: 1em;
   display: flex;
   flex-direction: column;
@@ -15,10 +15,28 @@ div.comment_list_container {
   align-items: center;
   width: 600px;
   margin: 10px auto;
-  height: 500px;
+  max-height: 500px;
+
 
 }
 
-.comment_list_container::-webkit-scrollbar{
+.comment_list {
+  display: flex;
+  flex-direction: column;
+  max-height: 480px;
+  justify-content: flex-start;
+  overflow-y: scroll;
+  padding: 10px;
+}
+
+.comment_list::-webkit-scrollbar{
   display:none;
+}
+
+.individual_comment_container {
+  border: 1px solid #ff042d;
+  border-radius: .5em;
+  padding: 10px;
+  margin: 10px;
+
 }

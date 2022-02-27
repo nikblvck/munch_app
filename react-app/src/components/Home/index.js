@@ -28,13 +28,7 @@ function HomeFeed() {
     dispatch(deletePost(id)).then(() => setIsLoaded(false)).then(() => dispatch(getPosts())).then(() => setIsLoaded(true));
 
   }
-  const handleEdit = (id) => {
-    history.push(`/edit/${id}`);
-  }
 
-  let userButtons;
-
-  let likesDiv
 
 
 
