@@ -15,7 +15,14 @@ function HomeFeed() {
 
 
   useEffect(() => {
-    dispatch(getPosts()).then(() => setIsLoaded(true));
+
+    if(!posts) {
+      setIsLoaded(false);
+       dispatch(getPosts());
+       setIsLoaded(true)
+    } else {
+      setIsLoaded(true);
+    }
   }, [dispatch]);
 
   const handleDelete = (id) => {
@@ -31,9 +38,7 @@ function HomeFeed() {
   let likesDiv
 
 
-  if (!isLoaded) {
-    return null
-  }
+
   return (
     <>
       <div className="home_feed_container">
@@ -45,31 +50,31 @@ function HomeFeed() {
           {posts?.map((post) => (
             <>
               <div className="individual_post">
-                <div key={post.username} id="post_username">
-                 <Link to={`/users/${post.user_id}`}>{post?.username}</Link>
+                <div key={post?.username} id="post_username">
+                 <Link to={`/users/${post?.user_id}`}>{post?.username}</Link>
                 </div>
-                <div className="post_image" key={post.image_url}>
-                  <Link to={`/posts/${post.id}`}>
+                <div className="post_image" key={post?.image_url}>
+                  <Link to={`/posts/${post?.id}`}>
                     <img
-                      src={post.image_url}
-                      alt={post.title}
+                      src={post?.image_url}
+                      alt={post?.title}
                       className="post_image"
                     />
                   </Link>
-                  <Link to={`/categories/${post.category_id}`}>
-                    <div className="post_category">{post.category_name}</div>
+                  <Link to={`/categories/${post?.category_id}`}>
+                    <div className="post_category">{post?.category_name}</div>
                   </Link>
-            
+
                   {user?.id === post?.user_id && (
                     <div className="post_button_container">
                       <button className="edit_post">
-                        <Link to={`/posts/${post.id}/edit`}>
+                        <Link to={`/posts/${post?.id}/edit`}>
                           Edit
                         </Link>
                       </button>
                       <button
                       className="delete_btn"
-                        id={post.id}
+                        id={post?.id}
                         onClick={(e) => handleDelete(e.target.id)}
                       >Delete</button>
                     </div>
@@ -82,8 +87,8 @@ function HomeFeed() {
                   </div>
                 )}
                 <div className="post_comments">
-                {!post.comment_list.length ? <Link to={`/posts/${post.id}`}>Be The First To Add A Comment!</Link> : (
-                  <Link to={`/posts/${post.id}`}>View Comments</Link>
+                {!post?.comment_list?.length ? <Link to={`/posts/${post?.id}`}>Be The First To Add A Comment!</Link> : (
+                  <Link to={`/posts/${post?.id}`}>View Comments</Link>
                 )}
                 </div>
               </div>

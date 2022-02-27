@@ -11,11 +11,11 @@ function PostIdPage () {
   const dispatch = useDispatch();
   const history = useHistory();
   const postId2 = useParams();
-  const post = useSelector((state) => state?.posts?.posts);
+  const post = useSelector((state) => state?.posts?.post);
   const user = useSelector((state) => state?.session?.user);
   const [loaded, setIsLoaded] = useState(false);
   const [errors, setErrors] = useState('');
-
+ console.log(post)
   useEffect( async() => {
 
     await dispatch(getOnePost(postId2.id))

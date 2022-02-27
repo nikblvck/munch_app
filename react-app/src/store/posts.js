@@ -134,7 +134,7 @@ export const deletePost = (id) => async (dispatch) => {
 };
 
 //reducer function
-const initialState = {};
+const initialState = {posts: [], post: {}};
 
 export default function reducer(state = initialState, action) {
   let newState;
@@ -146,11 +146,11 @@ export default function reducer(state = initialState, action) {
       return newState;
     case GET_POST:
       newState = { ...state };
-      newState.posts = action.post;
+      newState.post = action.post;
       return newState;
     case ADD_POST:
       newState = { ...state };
-      newState.posts = action.post;
+      newState.posts[action.post.id] = action.posts;
       return newState;
     case EDIT_POST:
       newState = { ...state };
