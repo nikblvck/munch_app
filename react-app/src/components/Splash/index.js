@@ -10,7 +10,7 @@ function SplashPage() {
   if (!user) {
     return (
       <>
-        <div className="main_container">
+        <div className="main_splash_container">
           <div>
             <h1 className="welcome">MUNCH</h1>
           </div>
