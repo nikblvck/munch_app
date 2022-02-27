@@ -15,9 +15,14 @@ function HomeFeed() {
 
 
   useEffect(() => {
+    if (!isLoaded) {
+      dispatch(getPosts());
+      setIsLoaded(true);
+    } else {
+      return;
+    }
 
-   dispatch(getPosts());
-  }, [dispatch]);
+  }, [dispatch, isLoaded]);
 
   const handleDelete = (id) => {
     dispatch(deletePost(id)).then(() => setIsLoaded(false)).then(() => dispatch(getPosts())).then(() => setIsLoaded(true));
@@ -44,8 +49,12 @@ function HomeFeed() {
           {posts?.map((post) => (
             <>
               <div className="individual_post">
-                <div key={post?.username} id="post_username">
-                 <Link to={`/users/${post?.user_id}`}>{post?.username}</Link>
+                <div className="post_header">
+                  <div className="header_profile_img">
+                    <img src={post?.user_profile_image} alt="profile_pic" /> </div>
+                <div className="header_username" key={post?.username} id="post_username">
+                {post?.username}
+                </div>
                 </div>
                 <div className="post_image" key={post?.image_url}>
                   <Link to={`/posts/${post?.id}`}>

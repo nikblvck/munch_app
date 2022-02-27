@@ -32,6 +32,7 @@
 .form_errors {
   color: red;
   font-size: 1rem;
+  text-align: center;
 }
 
 .post_form{

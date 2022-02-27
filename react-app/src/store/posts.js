@@ -2,6 +2,7 @@
 
 const GET_POSTS = "posts/GET_POSTS";
 const GET_POST = "posts/GET_POST";
+const GET_USER_POSTS = "posts/GET_USER_POSTS";
 const ADD_POST = "posts/ADD_POST";
 const EDIT_POST = "posts/EDIT_POST";
 const DELETE_POST = "posts/DELETE_POST";
@@ -15,6 +16,11 @@ const loadPosts = (posts) => ({
 const loadPost = (post) => ({
   type: GET_POST,
   post,
+});
+
+const loadUserPosts = (posts) => ({
+  type: GET_USER_POSTS,
+  posts,
 });
 
 const edit = (post) => ({
@@ -77,7 +83,7 @@ export const getUserPosts = (userId) => async (dispatch) => {
   });
   if (res.ok) {
     const posts = await res.json();
-    dispatch(loadPosts(posts));
+    dispatch(loadUserPosts(posts));
   }
 };
 
@@ -134,7 +140,7 @@ export const deletePost = (id) => async (dispatch) => {
 };
 
 //reducer function
-const initialState = {posts: [], post: {}};
+const initialState = {posts: [], post: {}, user_posts: []};
 
 export default function reducer(state = initialState, action) {
   let newState;
@@ -148,13 +154,17 @@ export default function reducer(state = initialState, action) {
       newState = { ...state };
       newState.post = action.post;
       return newState;
+    case GET_USER_POSTS:
+      newState = {...state};
+      newState.user_posts = action.posts;
+      return newState;
     case ADD_POST:
       newState = { ...state };
       newState.posts[action.post.id] = action.posts;
       return newState;
     case EDIT_POST:
       newState = { ...state };
-      newState.posts = action.post;
+      newState.posts[action.post.id] = action.posts;
       return newState;
     case DELETE_POST:
       newState = { ...state };

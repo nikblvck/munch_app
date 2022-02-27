@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import db, Post, Comment, Like
+from app.models import db, Post, Comment, Like, User
 from app.forms import NewPost
 
 post_routes = Blueprint('posts', __name__)
@@ -47,8 +47,9 @@ def posts():
 #READ ALL FROM USER
 @post_routes.route('/user/<int:user_id>')
 def posts_by_user(user_id):
+    user = User.query.get(user_id)
     posts = Post.query.filter_by(user_id=user_id).order_by(Post.updated_at.desc())
-    return jsonify([post.to_dict() for post in posts])
+    return user.to_dict()
 
 #READ ALL FROM CATEGORY
 @post_routes.route('/category/<int:category_id>')

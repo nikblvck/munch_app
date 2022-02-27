@@ -33,6 +33,10 @@ class User(db.Model, UserMixin):
     def check_password(self, password):
         return check_password_hash(self.password, password)
 
+    def member_since(self):
+        membership_date = self.created_at.strftime("%B %d, %Y")
+        return membership_date
+
     def to_dict(self):
         return {
             'id': self.id,
@@ -45,5 +49,6 @@ class User(db.Model, UserMixin):
             'post_count': len(self.post),
             'post_list': [post.to_dict() for post in self.post],
             'profile_img_url': self.profile_img_url,
-            'bio': self.bio
+            'bio': self.bio,
+            'member_since': self.member_since()
         }
