@@ -181,6 +181,6 @@ h1.home_feed_title {
   height: 50px;
   width: 50px;
   margin-right: 5px;
-  border-radius: 50%;
-;
+  border-radius: 50px;
+  overflow: hidden;
 }
