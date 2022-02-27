@@ -113,7 +113,7 @@ function SinglePost() {
           <button onClick={() => history.push("/posts")}>Back to Posts</button>
         </div>
         <div className="individual_post_container">
-          <div>{user.username}'s Post</div>
+          <div>{user?.username}'s Post</div>
           <div className="individual_post_image_container">
             <img src={post?.image_url} alt="post" />
           </div>
@@ -147,7 +147,13 @@ function SinglePost() {
           </div>
         </div>
 
-          {!post.comments ? null : (
+          {!post.comments ? (
+            <>
+            <div className="comment_list_container">
+              <div className="comment_list_header">No comments for this post yet..be the first to leave your thoughts! </div>
+           </div>
+            </>
+          ): (
             <>
               <div className="comment_list_container">
               <div className="comment_list" id="comments">

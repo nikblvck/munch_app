@@ -16,13 +16,7 @@ function HomeFeed() {
 
   useEffect(() => {
 
-    if(!posts) {
-      setIsLoaded(false);
-       dispatch(getPosts());
-       setIsLoaded(true)
-    } else {
-      setIsLoaded(true);
-    }
+   dispatch(getPosts());
   }, [dispatch]);
 
   const handleDelete = (id) => {

@@ -46,9 +46,6 @@ function NewPost() {
   };
 
 
-  if (!isLoaded) {
-    return null
-  }
 return (
   <>
     <div className="post_form_container">
@@ -92,9 +89,9 @@ return (
               onChange={(e) => setCategoryId(e.target.value)}
             >
               <option > --Select a Category-- </option>
-              {categories.map((category) => (
-                <option key={category.id} value={category.id}>
-                  {category.name}
+              {categories?.map((category) => (
+                <option key={category?.id} value={category?.id}>
+                  {category?.name}
                 </option>
               ))}
             </select>

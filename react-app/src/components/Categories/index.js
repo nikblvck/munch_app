@@ -23,7 +23,7 @@ function CategoryIdPage() {
       setIsLoaded(true)
   }, [dispatch, id, postArrayLength]);
 
-  if (postArrayLength === 0 || !isLoaded) {
+  if (!postArrayLength) {
     return (
       <>
       <div className="main_container">

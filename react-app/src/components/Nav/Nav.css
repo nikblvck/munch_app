@@ -1,9 +1,10 @@
 .nav_container {
-  height: 40px;
+  height: 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
+  border-bottom: 1px solid #0058db;
 }
 
 .left_nav{
@@ -53,6 +54,7 @@ a, a:active, a:visited {
 
 h1 {
   font-family: 'Shizuru', cursive;
+ margin-top: -10px;
 }
 
 li.title {
