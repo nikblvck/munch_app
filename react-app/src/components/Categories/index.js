@@ -1,27 +1,42 @@
 import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {useHistory, useParams} from "react-router-dom";
-import { getPost } from "../../store/posts";
 import { getCategory, getCategories } from "../../store/categories";
 import './Categories.css'
 
 
 function CategoryIdPage() {
-
+  const history = useHistory();
   const dispatch = useDispatch();
   const categoryId = useParams();
   const id = categoryId.id;
-  const user = useSelector((state) => state?.session?.user);
   const [isLoaded, setIsLoaded] = useState(false);
   const postsArray = useSelector((state) => state?.categories?.category)
   const postArrayLength = postsArray?.length;
-  const categoryName = useSelector((state) => state?.categories?.category?.name);
-  console.log(postsArray?.length)
+
   useEffect(async () => {
+
       await dispatch(getCategories());
       await dispatch(getCategory(id))
       setIsLoaded(true)
+
+
   }, [dispatch, id, postArrayLength]);
+
+  useEffect(async() => {
+
+       if(!isLoaded) {
+        await dispatch(getCategories())
+        await dispatch(getCategory(id));
+        await setIsLoaded(true);
+      }
+  }, [isLoaded]);
+
+  
+  const handleBack = (e) => {
+    e.preventDefault();
+    history.push('/posts')
+  }
 
   if (!postArrayLength) {
     return (
@@ -36,6 +51,9 @@ function CategoryIdPage() {
 return (
   <>
     <div className="main_catgory_container">
+      <div className="back_button">
+        <button onClick={handleBack}>Back</button>
+        </div>
       <div>
         <h1 className="category_title">{postsArray[0]?.category_name}</h1>
       </div>

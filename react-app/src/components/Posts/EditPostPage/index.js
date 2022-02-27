@@ -20,9 +20,12 @@ function EditPostPage() {
   const categories = useSelector((state) => state?.categories?.categories);
 
 
-  useEffect(() => {
-    dispatch(getCategories()).then(() => dispatch(getPosts())).then(() => dispatch(getOnePost(postId.id))).then(() => setIsLoaded(true));
-  }, [dispatch]);
+  useEffect(async() => {
+    await dispatch(getCategories())
+    await dispatch(getPosts())
+    await dispatch(getOnePost(postId.id))
+    await setIsLoaded(true);
+  }, [dispatch, postId]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
