@@ -50,13 +50,18 @@ function ProfileButton({user}) {
           <>
             <div className="profile_dropdown">
             <div className="profile_image_div">
-              <img className="profile_image" src={user.profile_img_url} alt="profile_image"/>
+              <img className="profile_img" src={user.profile_img_url} alt="profile_image"/>
             </div>
               <div className="profile_d_links">
                 <button onClick={handleClick} className="nav_link">
                   <i className="fa-solid fa-plus"></i>
                 </button>
               </div>
+              <div className="profile_d_links">
+                <button onClick={handleLogout} className="nav_link">
+                  <i className="fa-solid fa-sign-out-alt"></i>
+                </button>
+                </div>
             </div>
           </>
           )}

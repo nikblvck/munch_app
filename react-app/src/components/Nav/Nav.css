@@ -61,7 +61,7 @@ li.title {
   font-size: 1.55em;
 }
 
-.about_dropdown{
+.about_dropdown, .profile_dropdown{
       display: flex;
     flex-direction: column;
     position: absolute;
@@ -79,13 +79,17 @@ li.title {
     border-top-right-radius: 0px;
     border-top-left-radius: 0px;
 }
-
 .profile_dropdown{
-  background-color: black;
-  display: flex;
-  position: absolute;
-  border-radius: .5em;
-  
+  margin-left: -90px;
+
+}
+
+.profile_img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  padding-top:10px;
+
 }
 .about_links {
   display: flex;
