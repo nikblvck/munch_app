@@ -14,6 +14,19 @@ button {
   display: flex;
 
 }
+
+.home_feed_container {
+ background-image:  linear-gradient(45deg, #ff042e3d, #0058db44);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .post_content {
 
   justify-content: center;
@@ -47,7 +60,7 @@ button {
 .individual_post {
   /* border: 2px solid red; */
   border-radius: .5rem;
-  background-color: rgba(242, 242, 241, .5);
+  background-color: rgba(242, 242, 241, .75);
   margin: 40px;
   display: flex;
   flex-direction: column;
@@ -141,6 +154,6 @@ h1.home_feed_title {
     -moz-text-fill-color: transparent;
     -o-background-clip: text;
     width: fit-content;
-
+     -webkit-text-stroke: 1px rgba(255,255,255,0.5);
 
 }

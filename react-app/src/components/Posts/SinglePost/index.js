@@ -10,6 +10,7 @@ import {
   getComment,
 } from "../../../store/comments";
 import './SinglePost.css'
+import './PostIdPage.css'
 import { Modal } from "../../../context/Modal";
 
 
@@ -17,7 +18,7 @@ import { Modal } from "../../../context/Modal";
 function SinglePost() {
   const dispatch = useDispatch();
   const history = useHistory();
-  const post = useSelector((state) => state?.posts?.posts);
+  const post = useSelector((state) => state?.posts?.post);
   const postId = useParams();
   const id = postId.id;
   const user = useSelector((state) => state?.session?.user);
@@ -48,7 +49,7 @@ function SinglePost() {
     if (newComment) {
       const data = await dispatch(addComment(newComment));
        setContent("");
-       setIsLoaded(false);
+
       if (data) {
         setErrors(data);
       }
@@ -70,7 +71,8 @@ function SinglePost() {
     const postId = post.id;
     await dispatch(deleteComment(id));
     await dispatch(getComments(postId));
-    setIsLoaded(false);
+    setIsLoaded(false)
+
   };
 
   const handleEdit = async (id) => {
@@ -102,9 +104,9 @@ function SinglePost() {
     if (!loaded) await dispatch(getComments(id));
   }, [comments, editContent, loaded]);
 
-  if (!loaded) {
-    return null;
-  }
+  // if (!loaded) {
+  //   return null;
+  // }
   return (
     <>
       <div className="main_container">
@@ -112,7 +114,7 @@ function SinglePost() {
           <button onClick={() => history.push("/posts")}>Back to Posts</button>
         </div>
         <div className="individual_post_container">
-          <div>{user.username}'s Post</div>
+          <div>{user?.username}'s Post</div>
           <div className="individual_post_image_container">
             <img src={post?.image_url} alt="post" />
           </div>
@@ -145,9 +147,16 @@ function SinglePost() {
             </form>
           </div>
         </div>
-        <div className="comment_list_container">
-          {post.comment_list === 0 ? null : (
+
+          {!post.comments ? (
             <>
+            <div className="comment_list_container">
+              <div className="comment_list_header">No comments for this post yet..be the first to leave your thoughts! </div>
+           </div>
+            </>
+          ): (
+            <>
+              <div className="comment_list_container">
               <div className="comment_list" id="comments">
                 {post.comment_list.map((comment) => (
                   <>
@@ -229,10 +238,15 @@ function SinglePost() {
                   </>
                 ))}
               </div>
+              </div>
+
             </>
+
+
           )}
+
         </div>
-      </div>
+
     </>
   );
 }

@@ -1,9 +1,10 @@
 .nav_container {
-  height: 50px;
+  height: 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
+  border-bottom: 1px solid #0058db;
 }
 
 .left_nav{
@@ -26,6 +27,7 @@ justify-content: center;
 align-items: space-around;
 flex-direction: row;
 width: 300px;
+
 }
 
 li{
@@ -52,6 +54,7 @@ a, a:active, a:visited {
 
 h1 {
   font-family: 'Shizuru', cursive;
+ margin-top: -10px;
 }
 
 li.title {
@@ -70,5 +73,19 @@ li.title {
     list-style-type: none;
     gap:18px;
     z-index: 100;
-    box-shadow: 0px 8px 20px rgba(110, 110, 110, 0.25);
+    box-shadow: 0px 5px 10px rgba(0, 4, 231, 0.116);
+    border: 1px solid #0058db2c
+}
+
+
+.about_links {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+  padding: 10px 4px;
+  position: relative;
+  height: 30px;
+  border-bottom: 1px solid #0058db
 }

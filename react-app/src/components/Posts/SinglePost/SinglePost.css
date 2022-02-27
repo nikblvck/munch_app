@@ -1,10 +1,10 @@
-div.comment_list{
+/* div.comment_list{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: left;
-}
+} */
 
 div.comment_list_container {
   background-color: rgba(242, 242, 241, 1);
@@ -15,8 +15,8 @@ div.comment_list_container {
   align-items: center;
   width: 600px;
   margin: 10px auto;
-  height: 400px;
-  overflow-y: scroll;
+  height: 500px;
+
 }
 
 .comment_list_container::-webkit-scrollbar{

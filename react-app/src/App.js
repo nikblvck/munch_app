@@ -8,7 +8,6 @@ import NewPostForm from './components/Posts/NewPost/';
 import HomeFeed from './components/Home';
 import Profile from './components/Profile';
 import EditPostPage from './components/Posts/EditPostPage';
-import PostIdPage from './components/Posts/PostIdPage';
 import SplashPage from './components/Splash';
 import CategoryIdPage from './components/Categories';
 import PageNotFound from './components/PageNotFound';
