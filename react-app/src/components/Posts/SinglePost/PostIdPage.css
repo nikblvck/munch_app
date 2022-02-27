@@ -1,10 +1,4 @@
-.main_container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  background-color: transparent;
-}
+
 
 .individual_post_container {
   background-color: rgba(242, 242, 241, 1);
@@ -90,7 +84,7 @@
   font-size: .75em;
 }
 
-.individual_comment_container{
+/* .individual_comment_container{
   box-sizing: border-box;
   margin: 10px;
   padding: 15px;
@@ -102,7 +96,7 @@
 
 .individual_post_container#comments{
  max-height: 500px;
-}
+} */
 
 .edit_heading_container{
   display: flex;

@@ -10,6 +10,7 @@ import {
   getComment,
 } from "../../../store/comments";
 import './SinglePost.css'
+import './PostIdPage.css'
 import { Modal } from "../../../context/Modal";
 
 
