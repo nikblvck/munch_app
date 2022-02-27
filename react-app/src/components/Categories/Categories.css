@@ -20,3 +20,8 @@ img.post_image_categories{
   border-radius: .5rem;
 
 }
+
+.none_yet {
+  font-family: 'Lato', sans-serif;
+  padding: 2em;
+}
