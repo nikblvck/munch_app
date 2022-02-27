@@ -126,11 +126,11 @@ function SinglePost() {
           <div className="add_comment_container">
             <div className="auth_errors">
               {!errors.length ? null : (
-                <ul>
+                <div>
                   {errors.map((error) => (
-                    <li key={error}>{error}</li>
+                    <div key={error}>{error}</div>
                   ))}
-                </ul>
+                </div>
               )}
             </div>
             <form onSubmit={handleSubmit}>

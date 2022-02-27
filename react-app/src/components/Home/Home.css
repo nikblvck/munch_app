@@ -68,6 +68,10 @@ button {
   height: 600px;
   overflow-y: scroll;
 }
+
+.individual_post::-webkit-scrollbar{
+  display: none;
+}
 .post_button_container{
   display: flex;
   justify-content: center;
@@ -169,7 +173,8 @@ h1.home_feed_title {
 
 }
 .header_profile_img, .header_username {
-  float: left
+  float: left;
+  color: #0058db;
 }
 
 .header_profile_img {

@@ -43,7 +43,6 @@ function App() {
         <Route path="/signup" exact={true}>
           <SignUpForm />
         </Route>
-
         <ProtectedRoute path="/posts" exact={true}>
           <HomeFeed />
         </ProtectedRoute>

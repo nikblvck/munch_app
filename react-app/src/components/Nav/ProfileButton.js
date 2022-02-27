@@ -44,7 +44,7 @@ function ProfileButton({user}) {
 
       <div className="profile_button" onClick={openMenu}>
         <button>
-          <i class="fa-solid fa-user"></i>
+          <i className="fa-solid fa-user"></i>
         </button>
         {showMenu && (
           <>

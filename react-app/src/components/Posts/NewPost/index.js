@@ -59,11 +59,11 @@ return (
         <div className="post_form_inputs">
           <div className="form_errors">
             {!errors.length ? null : (
-              <ul>
+              <div>
                 {errors.map((error) => (
-                  <li key={error}>{error}</li>
+                  <div key={error}>{error}</div>
                 ))}
-              </ul>
+              </div>
             )}
           </div>
           <form className="post_form" onSubmit={handleSubmit}>
