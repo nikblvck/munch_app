@@ -164,7 +164,7 @@ export default function reducer(state = initialState, action) {
       return newState;
     case EDIT_POST:
       newState = { ...state };
-      newState.posts = action.post;
+      newState.posts[action.post.id] = action.posts;
       return newState;
     case DELETE_POST:
       newState = { ...state };
