@@ -37,12 +37,24 @@ li{
   display: inline-block;
   padding: 0px 10px;;
 }
-li button {
+
+button {
   background: none;
   border: none;
   color: #ff042d;
   cursor: pointer;
   font-size: 1em;
+}
+.profile_link{
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+}
+
+p.nav_link_profile{
+  padding-left: .3em;
 }
 li button:hover, a:hover{
   color: #0058db;
@@ -68,7 +80,7 @@ li.title {
     border-radius: .5em;
     width: fit-content;
     padding:5px 10px;
-    margin-top: 20px;
+    margin-top: 19px;
     background-color:white;
     list-style-type: none;
     gap:18px;
@@ -80,7 +92,8 @@ li.title {
     border-top-left-radius: 0px;
 }
 .profile_dropdown{
-  margin-left: -90px;
+  margin-left: -150px;
+  align-items: center;
 
 }
 
@@ -102,3 +115,23 @@ li.title {
   height: 30px;
   border-bottom: 1px solid #0058db
 }
+
+.subtext {
+  font-size: .8em;
+  color: #0058db;
+  padding-left: .5em;
+}
+.bold_text {
+  font-weight: bold;
+}
+.profile_name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+ #dropdown_username{
+   font-family: 'Lato', sans-serif;
+   font-size: 1.5em;
+ }
