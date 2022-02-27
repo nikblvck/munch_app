@@ -18,15 +18,19 @@ function AboutButton() {
 
     document.addEventListener('click', closeMenu);
 
-    return () => document.removeEventListener('click', closeMenu);
+
+    return () => {
+      document.removeEventListener('click', closeMenu)
+
+    } ;
   }, [showMenu]);
 
 return (
   <>
-  <button className="nav_btn" onClick={openMenu}>About</button>
+  <button className="nav_btn"  onClick={openMenu}>About</button>
   {showMenu && (
     <>
-    <div className="about_dropdown">
+    <div className="about_dropdown" onMouseOver={openMenu}>
       <div className="about_dropdown_content">
       <div className="about_links"><a href="https://www.github.com/nikblvck/munch_app">Project Github</a></div>
       <div className="about_links"><a href="https://www.linkedin.com/in/niktyler/">LinkedIn</a></div>

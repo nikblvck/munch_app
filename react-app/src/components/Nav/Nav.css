@@ -65,19 +65,28 @@ li.title {
       display: flex;
     flex-direction: column;
     position: absolute;
-    border-radius: 6px;
+    border-radius: .5em;
     width: fit-content;
-    padding:20px 10px;
-    margin-top: 0px;
+    padding:5px 10px;
+    margin-top: 20px;
     background-color:white;
     list-style-type: none;
     gap:18px;
     z-index: 100;
-    box-shadow: 0px 5px 10px rgba(0, 4, 231, 0.116);
-    border: 1px solid #0058db2c
+    /* box-shadow: 0px 2px 2px 1px rgba(0, 4, 231, 0.116); */
+    border: 1px solid #0058db;
+    border-top: none;
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
 }
 
-
+.profile_dropdown{
+  background-color: black;
+  display: flex;
+  position: absolute;
+  border-radius: .5em;
+  
+}
 .about_links {
   display: flex;
   justify-content: flex-start;

@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
 import AboutButton from './AboutButton';
 import DemoUser from './Demo';
+import ProfileButton from './ProfileButton';
 import './Nav.css'
 
 const NavBar = () => {
@@ -37,17 +38,11 @@ const NavBar = () => {
   } else {
     navLinks = (
       <>
-          <div>
-            <p className="welcome">Welcome, {user.first_name}</p>{" "}
-          </div>
-          <div key="nav_right_post">
-            <NavLink to="/post/new" exact={true} className="nav_link">
-            <i className="fa-solid fa-plus"></i>
-            </NavLink>
-          </div>
-          <div key="nav_right_logout">
-            <LogoutButton />
-          </div>
+      
+        <div>
+          <p className="welcome">Welcome, {user.first_name}</p>{" "}
+        </div>
+        <ProfileButton user={user} />
       </>
     );
   }
@@ -55,19 +50,19 @@ const NavBar = () => {
   return (
     <nav>
       <div className="nav_container">
-      <div className="left_nav">
-
-          <div key="home" className="title"><NavLink to="/"><h1>
-            MUNCH
-            </h1></NavLink></div>
-            <div>
-                <AboutButton />
-            </div>
-
-      </div>
-      <div className="right_nav">
-        {navLinks}
-      </div>
+        <div className="left_nav">
+          <div key="home" className="title">
+            <NavLink to="/">
+              <h1>MUNCH</h1>
+            </NavLink>
+          </div>
+          <div>
+            <AboutButton />
+          </div>
+        </div>
+        <div className="right_nav">
+          {navLinks}
+        </div>
       </div>
     </nav>
   );

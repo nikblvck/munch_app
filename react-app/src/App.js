@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/Nav';
-import NewPostForm from './components/Posts/NewPost/';
+import NewPost from './components/Posts/NewPost/';
 import HomeFeed from './components/Home';
 import Profile from './components/Profile';
 import EditPostPage from './components/Posts/EditPostPage';
@@ -60,7 +60,7 @@ function App() {
           <CategoryIdPage />
         </Route>
         <Route path="/post/new" exact={true}>
-          <NewPostForm />
+          <NewPost />
         </Route>
         <Route>
           <PageNotFound />
