@@ -148,15 +148,18 @@ function SinglePost() {
           </div>
         </div>
 
-          {!post.comments ? (
-            <>
+        {!post.comments ? (
+          <>
             <div className="comment_list_container">
-              <div className="comment_list_header">No comments for this post yet..be the first to leave your thoughts! </div>
-           </div>
-            </>
-          ): (
-            <>
-              <div className="comment_list_container">
+              <div className="comment_list_header">
+                No comments for this post yet..be the first to leave your
+                thoughts!{" "}
+              </div>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="comment_list_container">
               <div className="comment_list" id="comments">
                 {post.comment_list.map((comment) => (
                   <>
@@ -165,88 +168,83 @@ function SinglePost() {
                         {comment.username}
                       </span>
                       {comment.content}
-                    </div>
-                    <div className="comment_options">
-                      {user.id !== comment.user_id ? null : (
-                        <>
-                          <div className="option_btns">
-                            <button
-                              comment={comment}
-                              onClick={() =>
-                                openEdit(comment.id).then(() =>
-                                  setEditContent(comment.content)
-                                )
-                              }
-                              value={comment.id}
-                            >
-                              Edit
-                            </button>
-                            <button
-                              id={comment.id}
-                              post={comment.post_id}
-                              onClick={(e) => handleDelete(e.target.id)}
-                            >
-                              Delete
-                            </button>
-                          </div>
-                          {editModal && (
-                            <Modal
-                              comment_id={comment?.id}
-                              onClose={() => showEditModal(false)}
-                            >
-                              <div className="modal_content">
-                                <div className="edit_heading_container">
-                                  <h1 className="edit_cmt_heading">
-                                    Edit Your Comment
-                                  </h1>
+                      <div className="comment_options">
+                        {user.id !== comment.user_id ? null : (
+                          <>
+                            <div className="option_btns">
+                              <button
+                                comment={comment}
+                                onClick={() =>
+                                  openEdit(comment.id).then(() =>
+                                    setEditContent(comment.content)
+                                  )
+                                }
+                                value={comment.id}
+                              >
+                                Edit
+                              </button>
+                              <button
+                                id={comment.id}
+                                post={comment.post_id}
+                                onClick={(e) => handleDelete(e.target.id)}
+                              >
+                                Delete
+                              </button>
+                            </div>
+                            {editModal && (
+                              <Modal
+                                comment_id={comment?.id}
+                                onClose={() => showEditModal(false)}
+                              >
+                                <div className="modal_content">
+                                  <div className="edit_heading_container">
+                                    <h1 className="edit_cmt_heading">
+                                      Edit Your Comment
+                                    </h1>
+                                  </div>
+                                  <div className="edit_comment_container">
+                                    <form
+                                      id={comment?.id}
+                                      onSubmit={(e) => handleEdit(e.target.id)}
+                                    >
+                                      <input
+                                        className="edit_comment_textarea"
+                                        type="text"
+                                        name="content"
+                                        value={editContent}
+                                        onChange={(e) =>
+                                          setEditContent(e.target.value)
+                                        }
+                                      />
+                                      <div className="option_btns">
+                                        <button
+                                          disabled={editContent === ""}
+                                          type="submit"
+                                        >
+                                          Save
+                                        </button>
+                                        <button
+                                          onClick={() => showEditModal(false)}
+                                        >
+                                          Cancel
+                                        </button>
+                                      </div>
+                                    </form>
+                                  </div>
                                 </div>
-                                <div className="edit_comment_container">
-                                  <form
-                                    id={comment?.id}
-                                    onSubmit={(e) => handleEdit(e.target.id)}
-                                  >
-                                    <input
-                                      className="edit_comment_textarea"
-                                      type="text"
-                                      name="content"
-                                      value={editContent}
-                                      onChange={(e) =>
-                                        setEditContent(e.target.value)
-                                      }
-                                    />
-                                    <div className="option_btns">
-                                      <button
-                                        disabled={editContent === ""}
-                                        type="submit"
-                                      >
-                                        Save
-                                      </button>
-                                      <button
-                                        onClick={() => showEditModal(false)}
-                                      >
-                                        Cancel
-                                      </button>
-                                    </div>
-                                  </form>
-                                </div>
-                              </div>
-                            </Modal>
-                          )}
-                        </>
-                      )}
+                              </Modal>
+                            )}
+                          </>
+                        )}
+                      </div>
                     </div>
                   </>
                 ))}
               </div>
-              </div>
-
-            </>
-
-
-          )}
-
-        </div>
-
+            </div>
+          </>
+        )}
+      </div>
     </>
   );
 }

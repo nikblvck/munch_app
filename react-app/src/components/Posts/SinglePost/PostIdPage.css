@@ -1,7 +1,7 @@
 
 
 .individual_post_container {
-  background-color: rgba(242, 242, 241, 1);
+  background-color: rgba(242, 242, 241, .75);
   border-radius: 1em;
   display: flex;
   flex-direction: column;
@@ -71,7 +71,7 @@
 .comment_username {
   font-weight: 400;
   margin: auto;
-  padding-right:.1em;
+  padding-right:.5em;
 }
 
 .option_btns{
