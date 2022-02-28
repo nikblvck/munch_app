@@ -8,10 +8,10 @@ h1.tagline{
   font-family: 'Lato', sans-serif;
   font-style: italic;
   font-size: 2.5em;
-  padding: 35px;
+  padding: 5px;
 }
-.splash_container{
 
+.splash_container{
   height: 1000px;
   width: 100%;
   display: flex;
@@ -45,11 +45,21 @@ h1.tagline{
 }
 
 .get_started{
-  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin-top: -1em;
+  margin-bottom:-4em;
 }
 
-#splash_btn{
+#splash_btn, #get_started{
   padding: .1em none;
+  background-color: black;
+  padding: .5em;
+  margin-bottom: 15px;
 }
 
 .splash_background_container{
