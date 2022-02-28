@@ -21,6 +21,7 @@ h1.tagline{
 }
 .header_image{
  height: 400px;
+ max-width: 100%;
 }
 
 .main_splash_container {
