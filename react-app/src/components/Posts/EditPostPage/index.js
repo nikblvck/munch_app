@@ -28,7 +28,7 @@ function EditPostPage() {
       setIsLoaded(true);
     }
     fetchData();
-  }, [dispatch, postId]);
+  }, [dispatch, postId, isLoaded]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

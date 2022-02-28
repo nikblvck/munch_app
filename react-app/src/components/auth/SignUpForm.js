@@ -13,15 +13,14 @@ const SignUpForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
-  const [loaded, setIsLoaded] = useState(false)
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (!loaded){
+    if (!user){
       return null
     }
-  }, [loaded, errors, password, repeatPassword, email, username, first_name, last_name])
+  }, [ errors, password, repeatPassword, email, username, first_name, last_name, user])
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {

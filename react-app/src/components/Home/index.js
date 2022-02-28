@@ -13,13 +13,11 @@ function HomeFeed() {
 
 
   useEffect(() => {
-    if (!isLoaded) {
-      dispatch(getPosts());
+    async function fetchData() {
+      dispatch (getPosts());
       setIsLoaded(true);
-    } else {
-      return;
     }
-
+    fetchData();
   }, [dispatch, isLoaded]);
 
   const handleDelete = (id) => {
@@ -33,7 +31,7 @@ function HomeFeed() {
   return (
     <>
       <div className="home_feed_container">
-       
+
 
         <div className="post_content">
           {posts?.map((post) => (

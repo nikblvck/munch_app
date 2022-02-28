@@ -22,7 +22,6 @@ function SinglePost() {
   const postId = useParams();
   const id = postId.id;
   const user = useSelector((state) => state?.session?.user);
-  const comments = useSelector((state) => state?.comments?.comments);
   const [loaded, setIsLoaded] = useState(false);
   const [errors, setErrors] = useState([]);
   const [editContent, setEditContent] = useState("");
