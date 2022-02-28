@@ -36,7 +36,21 @@ div.comment_list_container {
 .individual_comment_container {
   border: 1px solid #ff042d;
   border-radius: .5em;
-  padding: 10px;
+ padding: 10px;
   margin: 10px;
+  width: 500px;
+}
 
+.post_header_profileid{
+  height: 75px;
+  width: 94%;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  margin-top: 5px;
+  margin-bottom: -25px;
+}
+
+.white_link{
+  color: white;
 }

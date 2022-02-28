@@ -64,7 +64,7 @@ function EditPostPage() {
   }
   return (
     <>
-      <div className="post_form_container">
+      <div className="home_feed_container">
         <div className="post_form_header">
           <p>Edit Post</p>
         </div>
