@@ -9,6 +9,7 @@
   height: 700px;
   width: 800px;
   margin: 100px auto auto auto;
+  border: 1px solid #ff042d;
 }
 
 .post_form_header {
@@ -55,14 +56,22 @@ input {
 }
 
 .caption_input{
-height: 100px;
+  height: 75px;
+  width: 550px;
+  text-align: left;
+  box-sizing: border-box;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding:10px;
+  resize:none;
+  overflow:scroll;
+  overflow-y:scroll;
+  overflow-x:hidden;
+  overflow:-mox-scrollbars-vertical;
   word-wrap: break-word;
-  margin:auto;
-  width: 90%;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  display: flex;
-  justify-content: flex-start;
+  margin:auto
 }
 
 .caption_input::-webkit-scrollbar{
