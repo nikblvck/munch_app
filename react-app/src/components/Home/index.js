@@ -1,27 +1,23 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { getPosts, deletePost} from "../../store/posts";
-import CommentsDiv from "../Comments";
 import "./Home.css";
 
 function HomeFeed() {
   const [isLoaded, setIsLoaded] = useState(false);
   const dispatch = useDispatch();
-  const history = useHistory();
   const user = useSelector((state) => state?.session?.user);
   const posts = useSelector((state) => state?.posts?.posts);
 
 
 
   useEffect(() => {
-    if (!isLoaded) {
-      dispatch(getPosts());
+    async function fetchData() {
+      dispatch (getPosts());
       setIsLoaded(true);
-    } else {
-      return;
     }
-
+    fetchData();
   }, [dispatch, isLoaded]);
 
   const handleDelete = (id) => {
@@ -35,9 +31,7 @@ function HomeFeed() {
   return (
     <>
       <div className="home_feed_container">
-        <div className="home_feed_header">
-          <h1 className="home_feed_title">Home Feed</h1>
-        </div>
+
 
         <div className="post_content">
           {posts?.map((post) => (
@@ -58,9 +52,8 @@ function HomeFeed() {
                       className="post_image"
                     />
                   </Link>
-                  <Link to={`/categories/${post?.category_id}`}>
                     <div className="post_category">{post?.category_name}</div>
-                  </Link>
+
 
                   {user?.id === post?.user_id && (
                     <div className="post_button_container">

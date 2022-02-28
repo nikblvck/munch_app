@@ -59,8 +59,8 @@ const LoginForm = () => {
           onChange={updatePassword}
         />
         <div className="auth_btn_div">
-        <button type='submit'>Login</button>
-        <button><Link to="/signup">Don't Have An Account?</Link></button>
+        <button className ="auth_btn" type='submit'>Login</button>
+        <button className ="auth_btn"><Link to="/signup">Don't Have An Account?</Link></button>
         </div>
       </div>
     </form>

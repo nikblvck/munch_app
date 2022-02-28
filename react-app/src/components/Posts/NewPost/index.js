@@ -49,7 +49,7 @@ function NewPost() {
 return (
   <>
     <div className="home_feed_container">
-      <div className="individual_post_container">
+      <div className="post_form_container">
       <div className="post_form_header">
         <p>New Post</p>
       </div>
@@ -77,6 +77,7 @@ return (
             />
             <label htmlFor="caption">Caption</label>
             <input
+              className="caption_input"
               type="text"
               name="caption"
               value={caption}

@@ -8,9 +8,17 @@ h1.tagline{
   font-family: 'Lato', sans-serif;
   font-style: italic;
   font-size: 2.5em;
-  padding: 35px;
+  padding: 5px;
 }
 
+.splash_container{
+  height: 1000px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .header_image{
  height: 400px;
 }
@@ -37,13 +45,35 @@ h1.tagline{
 }
 
 .get_started{
-  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin-top: -6.75em;
+  margin-bottom:-4em;
 }
 
-#splash_btn{
-  padding: .1em none;
+#splash_btn, #get_started{
+  background-color: transparent;
+  padding: 0px .5em;
+  border: 1px solid #ff042d;
+  margin: 0px .5em;
+
 }
 
-#splash{
+.splash_background_container{
   min-height: 500px;
+  border-radius: .5rem;
+  background-color: rgba(255, 255, 255, 1);
+  margin: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  height: 600px;
+  overflow: hidden;
+  border: 1.5px solid #0058db;
 }

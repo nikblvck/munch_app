@@ -4,31 +4,23 @@
     display: revert;
 }
 
-/* Preferred box-sizing value */
+
 *,
 *::before,
 *::after {
     box-sizing: border-box;
 }
 html{
-      background: url('https://res.cloudinary.com/bigtechnik/image/upload/v1646001516/munch/wallpaper2_osaguw.jpg') no-repeat center center fixed;
+background: url('https://res.cloudinary.com/bigtechnik/image/upload/v1646001516/munch/wallpaper2_osaguw.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  overflow: none;
 }
 body {
   font-family: 'Lato', sans-serif;
   font-weight: 200;
-
-  /* background: rgba(255, 255, 255, 1); */
-  /* background: linear-gradient(270deg, rgba(150,0,3,.3) 0%, rgba(190,176,6,.3) 50%, rgba(0,114,199,.3) 100%); */
-      -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
-  background-repeat: no-repeat;
-
 }
 
 a, button {

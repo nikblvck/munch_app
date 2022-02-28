@@ -2,7 +2,6 @@
 import React from 'react';
 import {useSelector} from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import LogoutButton from '../auth/LogoutButton';
 import AboutButton from './AboutButton';
 import DemoUser from './Demo';
 import ProfileButton from './ProfileButton';
@@ -38,9 +37,9 @@ const NavBar = () => {
   } else {
     navLinks = (
       <>
-      
+
         <div>
-          <p className="welcome">Welcome, {user.first_name}</p>{" "}
+          <p className="welcome">Good vibes, {user.first_name}! </p>
         </div>
         <ProfileButton user={user} />
       </>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import { getOnePost, editPost, deletePost } from "../../../store/posts";
+import { getOnePost } from "../../../store/posts";
 import {
   getComments,
   addComment,
@@ -22,19 +22,24 @@ function SinglePost() {
   const postId = useParams();
   const id = postId.id;
   const user = useSelector((state) => state?.session?.user);
-  const comments = useSelector((state) => state?.comments?.comments);
   const [loaded, setIsLoaded] = useState(false);
   const [errors, setErrors] = useState([]);
-  const [addErrors, setAddErrors] = useState([]);
   const [editContent, setEditContent] = useState("");
   const [editCommentId, setEditCommentId] = useState("");
   const [editModal, showEditModal] = useState(false);
 
-  useEffect(async () => {
-    await dispatch(getOnePost(id));
-    await dispatch(getComments(id));
-    setIsLoaded(true);
-  }, [dispatch, loaded, errors]);
+  useEffect(() => {
+    async function fetchData() {
+      await dispatch(getOnePost(id));
+      await dispatch(getComments(id));
+      setIsLoaded(true);
+    }
+    fetchData();
+    if(!loaded) {
+      fetchData();
+    }
+
+  }, [dispatch, loaded, errors, id]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -100,13 +105,15 @@ function SinglePost() {
       }
   };
 
-  useEffect(async () => {
-    if (!loaded) await dispatch(getComments(id));
-  }, [comments, editContent, loaded]);
 
-  // if (!loaded) {
-  //   return null;
-  // }
+
+  useEffect(() => {
+    async function fetchComments() {
+      if (!loaded) await dispatch(getComments(id));
+    }
+    fetchComments();
+  }, [dispatch, loaded, id]);
+
   return (
     <>
       <div className="home_feed_container">

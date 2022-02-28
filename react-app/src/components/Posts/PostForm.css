@@ -1,14 +1,14 @@
 .post_form_container {
-  background-color: rgba(242, 242, 241, 1);
+  background-color: rgba(244, 244, 244, .75);
   border-radius: 1em;
   border: 1 px solid #ccc;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 800px;
+  height: 700px;
   width: 800px;
-  margin: auto;
+  margin: 100px auto auto auto;
 }
 
 .post_form_header {
@@ -27,6 +27,11 @@
 .post_form_image{
   height: 400px;
   width: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
 }
 
 .form_errors {
@@ -44,8 +49,22 @@
   width: 600px;
 }
 
-
-
 input {
   width: 90%;
+  padding: 10px 10px;
+}
+
+.caption_input{
+height: 100px;
+  word-wrap: break-word;
+  margin:auto;
+  width: 90%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.caption_input::-webkit-scrollbar{
+  display:none;
 }
