@@ -1,14 +1,12 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { getPosts, deletePost} from "../../store/posts";
-import CommentsDiv from "../Comments";
 import "./Home.css";
 
 function HomeFeed() {
   const [isLoaded, setIsLoaded] = useState(false);
   const dispatch = useDispatch();
-  const history = useHistory();
   const user = useSelector((state) => state?.session?.user);
   const posts = useSelector((state) => state?.posts?.posts);
 
@@ -58,9 +56,8 @@ function HomeFeed() {
                       className="post_image"
                     />
                   </Link>
-                  <Link to={`/categories/${post?.category_id}`}>
                     <div className="post_category">{post?.category_name}</div>
-                  </Link>
+
 
                   {user?.id === post?.user_id && (
                     <div className="post_button_container">

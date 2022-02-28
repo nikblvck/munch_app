@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import {  getPosts, getOnePost, editPost} from "../../../store/posts";
+import { getOnePost, editPost} from "../../../store/posts";
 import { getCategories } from "../../../store/categories";
 import '../PostForm.css'
 
@@ -20,11 +20,14 @@ function EditPostPage() {
   const categories = useSelector((state) => state?.categories?.categories);
 
 
-  useEffect(async() => {
-    await dispatch(getCategories())
-    await dispatch(getPosts())
-    await dispatch(getOnePost(postId.id))
-    await setIsLoaded(true);
+  useEffect(() => {
+
+    async function fetchData() {
+      await dispatch(getOnePost(postId.id));
+      await dispatch(getCategories());
+      setIsLoaded(true);
+    }
+    fetchData();
   }, [dispatch, postId]);
 
   const handleSubmit = async (e) => {
@@ -63,7 +66,7 @@ function EditPostPage() {
   return (
     <>
       <div className="home_feed_container">
-        <div className="individual_post_container">
+        <div className="post_form_container">
         <div className="post_form_header">
           <p>Edit Post</p>
         </div>
@@ -95,6 +98,7 @@ function EditPostPage() {
               />
               <label htmlFor="caption">Caption</label>
               <input
+                className="caption_input"
                 type="textarea"
                 name="caption"
                 value={caption}

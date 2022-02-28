@@ -1,10 +1,3 @@
-/* div.comment_list{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: left;
-} */
 
 div.comment_list_container {
   background-color: rgba(242, 242, 241, .75);

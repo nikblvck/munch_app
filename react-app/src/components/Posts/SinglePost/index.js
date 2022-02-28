@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import { getOnePost, editPost, deletePost } from "../../../store/posts";
+import { getOnePost } from "../../../store/posts";
 import {
   getComments,
   addComment,
@@ -24,7 +24,6 @@ function SinglePost() {
   const comments = useSelector((state) => state?.comments?.comments);
   const [loaded, setIsLoaded] = useState(false);
   const [errors, setErrors] = useState([]);
-  const [addErrors, setAddErrors] = useState([]);
   const [editContent, setEditContent] = useState("");
   const [editCommentId, setEditCommentId] = useState("");
   const [editModal, showEditModal] = useState(false);

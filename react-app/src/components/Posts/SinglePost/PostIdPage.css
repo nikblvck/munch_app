@@ -1,0 +1,115 @@
+
+
+.individual_post_container {
+  background-color: rgba(242, 242, 241, .75);
+  border-radius: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 600px;
+  margin: 10px auto;
+}
+.individual_post_image_container {
+  width: 600px;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+}
+.individual_post_image_container img{
+  width: 600px;
+  margin: auto;
+}
+
+.add_comment_container, .option_btns {
+  display: flex;
+  box-sizing: border-box;
+  padding: 10px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 600px;
+  margin: auto;
+}
+
+.edit_comment_container {
+  display: flex;
+  box-sizing: border-box;
+  padding: 10px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  margin: auto;
+}
+
+.edit_comment_textarea {
+  width: 400px;
+  margin: auto;
+}
+.add_comment_textarea {
+
+  box-sizing: border-box;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding:10px;
+  resize:none;
+  overflow:scroll;
+  overflow-y:scroll;
+  overflow-x:hidden;
+  overflow:-mox-scrollbars-vertical;
+  word-wrap: break-word;
+  margin:auto
+}
+
+.add_comment_textarea::-webkit-scrollbar{
+  display:none;
+}
+
+.comment_username {
+  font-weight: 400;
+  margin: auto;
+  padding-right:.5em;
+}
+
+.option_btns{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 300px;
+  margin: auto;
+  font-size: .75em;
+}
+
+/* .individual_comment_container{
+  box-sizing: border-box;
+  margin: 10px;
+  padding: 15px;
+  border-top: 1px dotted rgba(0,0,0,.9);
+  width: 500px;
+  justify-content: left;
+
+}
+
+.individual_post_container#comments{
+ max-height: 500px;
+} */
+
+.edit_heading_container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+.modal_content{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
