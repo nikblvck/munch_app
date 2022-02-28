@@ -142,24 +142,7 @@ div.home_feed_header {
   box-sizing: border-box;
   margin: 1em;
 }
-h1.home_feed_title {
-  text-align: center;
-  font-family: 'Lato', sans-serif;
-  font-size: 2.5em;
-    font-weight: 400;
-    margin: 0;
-    padding: 0;
-    background-image: linear-gradient(45deg, #ff042d, #0058db);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -moz-background-clip: text;
-    -moz-text-fill-color: transparent;
-    -o-background-clip: text;
-    width: fit-content;
 
-
-}
 .post_header {
   height: 50px;
   width: 94%;

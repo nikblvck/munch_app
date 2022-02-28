@@ -33,9 +33,7 @@ function HomeFeed() {
   return (
     <>
       <div className="home_feed_container">
-        <div className="home_feed_header">
-          <h1 className="home_feed_title">Home Feed</h1>
-        </div>
+       
 
         <div className="post_content">
           {posts?.map((post) => (
