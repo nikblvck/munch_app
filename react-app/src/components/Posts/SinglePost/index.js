@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import { getOnePost } from "../../../store/posts";
+import { getOnePost, editPost, deletePost } from "../../../store/posts";
 import {
   getComments,
   addComment,
@@ -10,6 +10,7 @@ import {
   getComment,
 } from "../../../store/comments";
 import './SinglePost.css'
+import './PostIdPage.css'
 import { Modal } from "../../../context/Modal";
 
 
@@ -24,6 +25,7 @@ function SinglePost() {
   const comments = useSelector((state) => state?.comments?.comments);
   const [loaded, setIsLoaded] = useState(false);
   const [errors, setErrors] = useState([]);
+  const [addErrors, setAddErrors] = useState([]);
   const [editContent, setEditContent] = useState("");
   const [editCommentId, setEditCommentId] = useState("");
   const [editModal, showEditModal] = useState(false);
@@ -126,7 +128,7 @@ function SinglePost() {
             </div>
           </div>
           <div className="individual_post_image_container">
-            <img className="individual_post_img" src={post?.image_url} alt="post" />
+            <img src={post?.image_url} alt="post" />
           </div>
           <div className="individual_post_caption_container">
             <p>{post?.caption}</p>
