@@ -101,7 +101,7 @@ function SinglePost() {
       } else {
            setEditContent("");
     showEditModal(false);
-    setIsLoaded(false);
+
       }
   };
 

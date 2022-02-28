@@ -46,6 +46,7 @@ button {
 
 }
 .post_image{
+  padding-top: 10px;
   height: 400px;
   width: auto;
   max-width: 100%;
@@ -153,6 +154,7 @@ div.home_feed_header {
   margin-top: 15px;
   margin-bottom: -25px;
 
+
 }
 .header_profile_img, .header_username {
   float: left;
@@ -160,9 +162,9 @@ div.home_feed_header {
 }
 
 .header_profile_img {
-  height: 50px;
-  width: 50px;
+  height: 40px;
+  width: 40px;
   margin-right: 5px;
-  border-radius: 50px;
+  border-radius: 40px;
   overflow: hidden;
 }
