@@ -32,6 +32,11 @@ return (
     <>
     <div className="about_dropdown" onMouseOver={openMenu}>
       <div className="about_dropdown_content">
+        <div className="about_dropdown_title">
+          <p className="subtext" id="created_by">
+            Created by: Nik Tyler
+          </p>
+      </div>
       <div className="about_links"><a href="https://www.github.com/nikblvck/munch_app">Project Github</a></div>
       <div className="about_links"><a href="https://www.linkedin.com/in/niktyler/">LinkedIn</a></div>
       </div>

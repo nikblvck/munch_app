@@ -10,7 +10,7 @@
 *::after {
     box-sizing: border-box;
 }
-html {
+html{
       background: url('https://res.cloudinary.com/bigtechnik/image/upload/v1646001516/munch/wallpaper2_osaguw.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
