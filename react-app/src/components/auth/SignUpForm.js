@@ -145,7 +145,7 @@ const SignUpForm = () => {
             <button className="auth_btn" type="submit">
               Sign Up
             </button>
-            <button onClick={handleClick}>
+            <button className="auth_btn" onClick={handleClick}>
               Have An Account?
             </button>
           </div>
