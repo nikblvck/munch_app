@@ -49,6 +49,7 @@ function NewPost() {
 return (
   <>
     <div className="home_feed_container">
+      <div className="individual_post_container">
       <div className="post_form_header">
         <p>New Post</p>
       </div>
@@ -103,6 +104,7 @@ return (
             </div>
           </form>
         </div>
+      </div>
       </div>
     </div>
   </>

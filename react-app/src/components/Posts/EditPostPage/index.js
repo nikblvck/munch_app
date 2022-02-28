@@ -59,12 +59,11 @@ function EditPostPage() {
   }, [post]);
 
 
-  if (!isLoaded) {
-    return null;
-  }
+
   return (
     <>
       <div className="home_feed_container">
+        <div className="individual_post_container">
         <div className="post_form_header">
           <p>Edit Post</p>
         </div>
@@ -108,7 +107,7 @@ function EditPostPage() {
                 onChange={(e) => setCategoryId(e.target.value)}
               >
                 <option> --Select a Category-- </option>
-                {categories.map((category) => (
+                {categories?.map((category) => (
                   <option key={category.id} value={category.id}>
                     {category.name}
                   </option>
@@ -123,6 +122,7 @@ function EditPostPage() {
               </div>
             </form>
           </div>
+        </div>
         </div>
       </div>
     </>
