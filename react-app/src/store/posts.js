@@ -147,7 +147,7 @@ export default function reducer(state = initialState, action) {
 
   switch (action.type) {
     case GET_POSTS:
-      newState = { ...state };
+      newState = { ...state, post: {} };
       newState.posts = action.posts;
       return newState;
     case GET_POST:
