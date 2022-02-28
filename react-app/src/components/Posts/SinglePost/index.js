@@ -10,7 +10,6 @@ import {
   getComment,
 } from "../../../store/comments";
 import './SinglePost.css'
-import './PostIdPage.css'
 import { Modal } from "../../../context/Modal";
 
 
@@ -128,7 +127,7 @@ function SinglePost() {
             </div>
           </div>
           <div className="individual_post_image_container">
-            <img src={post?.image_url} alt="post" />
+            <img className="individual_post_img" src={post?.image_url} alt="post" />
           </div>
           <div className="individual_post_caption_container">
             <p>{post?.caption}</p>

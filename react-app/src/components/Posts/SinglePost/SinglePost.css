@@ -19,7 +19,21 @@ div.comment_list_container {
 
 
 }
+.individual_post_container{
+  box-sizing: border-box;
+  border-radius: .5rem;
+  background-color: rgba(242, 242, 241, .75);
+  margin: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;;
+}
 
+.individual_post_img{
+  height: 500px;
+}
 .comment_list {
   display: flex;
   flex-direction: column;
@@ -53,4 +67,9 @@ div.comment_list_container {
 
 .white_link{
   color: white;
+}
+
+.individual_post_image {
+  height: 400px;
+  width: auto;
 }

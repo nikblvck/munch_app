@@ -44,14 +44,14 @@ function ProfileButton({user}) {
     <>
 
       <div className="profile_button" onClick={openMenu}>
-        <button>
+        <button className="nav_btn">
           <i className="fa-solid fa-user"></i>
         </button>
         {showMenu && (
           <>
             <div className="profile_dropdown">
             <div className="profile_image_div">
-              <img className="profile_img" src={user.profile_img_url} alt="profile_image"/>
+              <img className="profile_dropdown_img" src={user.profile_img_url} alt="profile_image"/>
             </div>
             <div className="profile_name">
               <div><h1 className="bold_text" id="dropdown_username">{user.first_name} {user.last_name}</h1></div>

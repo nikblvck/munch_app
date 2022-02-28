@@ -38,9 +38,9 @@ const NavBar = () => {
   } else {
     navLinks = (
       <>
-      
+
         <div>
-          <p className="welcome">Welcome, {user.first_name}</p>{" "}
+          <p className="welcome">Good vibes, {user.first_name}! </p>
         </div>
         <ProfileButton user={user} />
       </>
