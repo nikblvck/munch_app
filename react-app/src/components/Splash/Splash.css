@@ -43,3 +43,7 @@ h1.tagline{
 #splash_btn{
   padding: .1em none;
 }
+
+#splash{
+  min-height: 500px;
+}

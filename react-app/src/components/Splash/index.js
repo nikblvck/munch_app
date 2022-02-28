@@ -11,7 +11,7 @@ function SplashPage() {
     return (
       <>
         <div className="home_feed_container">
-          <div className="individual_post">
+          <div className="individual_post" id="splash">
             <div className="header_image_container">
               <img
                 className="header_image"
