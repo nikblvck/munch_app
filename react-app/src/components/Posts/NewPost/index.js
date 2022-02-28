@@ -36,9 +36,9 @@ function NewPost() {
     if (newPost) {
       const data = await dispatch(addPost(newPost));
       if (data) {
-        console.log(data);
+ ;
         setErrors(data);
-        console.log(errors);
+      
       } else {
         history.push('/posts');
       }

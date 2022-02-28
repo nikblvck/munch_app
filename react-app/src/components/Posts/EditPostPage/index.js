@@ -44,9 +44,9 @@ function EditPostPage() {
     if (editedPost) {
       const data = await dispatch(editPost(editedPost));
       if (data) {
-        console.log(data);
+
         setErrors(data);
-        console.log(errors);
+     
       } else {
         history.push(`/posts`);
       }

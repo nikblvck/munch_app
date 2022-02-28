@@ -95,13 +95,12 @@ function SinglePost() {
 
     const data = await dispatch(editComment(editedComment));
     if (data) {
-        console.log(data);
+     
         setErrors(data);
-        console.log(errors);
+
       } else {
            setEditContent("");
     showEditModal(false);
-
       }
   };
 
