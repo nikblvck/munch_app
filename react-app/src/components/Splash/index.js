@@ -10,19 +10,33 @@ function SplashPage() {
   if (!user) {
     return (
       <>
-        <div className="main_splash_container">
-          <div>
-            <h1 className="welcome">MUNCH</h1>
+        <div className="home_feed_container">
+          <div className="individual_post">
+            <div className="header_image_container">
+              <img
+                className="header_image"
+                src="https://res.cloudinary.com/bigtechnik/image/upload/v1646008618/munch/munchheader_ei5ryi.png"
+                alt="munch"
+              />
+            </div>
+            <div className="splash_tagline">
+              <h1 className="tagline">Share your last bite, find your next!</h1>
+            </div>
+            <div className="splash_options">
+                <Link to="/signup">
+                  <button id="splash_btn">SIGN UP</button>
+                </Link>
+              or
+              <Link to="/login">
+                <button id="get_started">LOG IN</button>
+              </Link>
+              </div>
+              <div className="get_started">
+                TO GET STARTED!
+              </div>
+            </div>
           </div>
-          <div>
-            <h1 className="tagline"> Share your last bite, find your next! </h1>
-          </div>
-          <div>
-            {" "}
-            <Link to="/signup">Sign up</Link> or <Link to="/login">log in</Link>{" "}
-            to get started!
-          </div>
-        </div>
+
       </>
     );
   }

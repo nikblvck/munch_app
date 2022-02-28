@@ -109,12 +109,24 @@ function SinglePost() {
   // }
   return (
     <>
-      <div className="main_container">
-        <div className="header_links">
-          <button onClick={() => history.push("/posts")}>Back to Posts</button>
+      <div className="home_feed_container">
+        <div className="post_content">
+        <div className="back_button">
+          <button className="white_link" onClick={() => history.push("/posts")}>Back to Posts</button>
         </div>
         <div className="individual_post_container">
-          <div>{user?.username}'s Post</div>
+          <div className="post_header_profileid">
+            <div className="header_profile_img">
+              <img src={post?.user_profile_image} alt="profile_pic" />{" "}
+            </div>
+            <div
+              className="header_username"
+              key={post?.username}
+              id="post_username"
+            >
+              {post?.username}
+            </div>
+          </div>
           <div className="individual_post_image_container">
             <img src={post?.image_url} alt="post" />
           </div>
@@ -245,6 +257,7 @@ function SinglePost() {
           </>
         )}
       </div>
+    </div>
     </>
   );
 }

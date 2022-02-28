@@ -25,14 +25,6 @@ function CategoryIdPage() {
 
   }, [dispatch, id, postArrayLength]);
 
-  useEffect(async() => {
-
-       if(!isLoaded) {
-        await dispatch(getCategories())
-        await dispatch(getCategory(id));
-        await setIsLoaded(true);
-      }
-  }, [isLoaded]);
 
 
   const handleBack = (e) => {
@@ -96,7 +88,7 @@ return (
                       className="post_image"
                     />
                   </Link>
-                
+
 
                   {user?.id === post?.user_id && (
                     <div className="post_button_container">
