@@ -60,6 +60,8 @@ h1.tagline{
   padding: 0px .5em;
   border: 1px solid #ff042d;
   margin: 0px .5em;
+  position: relative;
+  z-index: 4
 
 }
 
