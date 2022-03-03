@@ -1,1 +1,17 @@
+.left_nav_container, .right_nav_container {
+  position: fixed;
+  height: 100%;
+  width: 375px; /* width of the side nav */
+  top: 0;
+}
 
+.left_nav_container{
+  background-color: white;
+  float: left;
+}
+
+
+.right_nav_container{
+  background-color: black;
+  right: 0;
+} 

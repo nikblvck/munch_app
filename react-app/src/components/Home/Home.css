@@ -57,7 +57,7 @@ button {
 }
 .individual_post {
   border-radius: .5rem;
-  background-color: rgba(242, 242, 241, .75);
+  background-color: rgba(252, 252, 251, .95);
   margin: 40px;
   display: flex;
   flex-direction: column;
@@ -146,7 +146,7 @@ div.home_feed_header {
 }
 
 .post_header {
-  height: 50px;
+  height: 80px;
   width: 94%;
   display: flex;
   align-items: center;
@@ -154,6 +154,13 @@ div.home_feed_header {
   margin-top: 15px;
   margin-bottom: -25px;
 
+
+}
+.post_header_image{
+  height: 50px;
+  width: 50px;
+  border-radius: 50% important;
+  margin-bottom: 10px;
 
 }
 .header_profile_img, .header_username {

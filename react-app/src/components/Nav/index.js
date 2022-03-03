@@ -6,6 +6,7 @@ import AboutButton from './AboutButton';
 import DemoUser from './Demo';
 import ProfileButton from './ProfileButton';
 import LeftNavPanel from './LeftNavPanel';
+import RightNavPanel from './RightNavPanel';
 import './Nav.css'
 
 const NavBar = () => {
@@ -65,6 +66,7 @@ const NavBar = () => {
         </div>
       </div>
       <LeftNavPanel />
+      <RightNavPanel />
     </nav>
   );
 }

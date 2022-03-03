@@ -1,7 +1,7 @@
 import React from 'react';
 import {useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import './RightNav.css';
+import '../SideNavs.css';
 
 function RightNavPanel() {
 
@@ -19,3 +19,5 @@ function RightNavPanel() {
     </>
   )
 }
+
+export default RightNavPanel;
