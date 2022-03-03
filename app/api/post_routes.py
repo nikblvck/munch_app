@@ -44,6 +44,14 @@ def posts():
     posts = Post.query.order_by(Post.updated_at.desc())
     return jsonify([post.to_dict() for post in posts])
 
+# READ NEW
+@post_routes.route('/newposts')
+def new_posts():
+    posts = Post.query.order_by(Post.updated_at.desc()).limit(10)
+    return jsonify([post.to_dict() for post in posts])
+
+
+
 #READ ALL FROM USER
 @post_routes.route('/user/<int:user_id>')
 def posts_by_user(user_id):

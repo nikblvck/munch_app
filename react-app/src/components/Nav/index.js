@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom';
 import AboutButton from './AboutButton';
 import DemoUser from './Demo';
 import ProfileButton from './ProfileButton';
+import LeftNavPanel from './LeftNavPanel';
 import './Nav.css'
 
 const NavBar = () => {
@@ -63,6 +64,7 @@ const NavBar = () => {
           {navLinks}
         </div>
       </div>
+      <LeftNavPanel />
     </nav>
   );
 }
