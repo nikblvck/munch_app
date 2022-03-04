@@ -8,6 +8,7 @@ import NewPost from './components/Posts/NewPost/';
 import HomeFeed from './components/Home';
 import EditPostPage from './components/Posts/EditPostPage';
 import SplashPage from './components/Splash';
+import CategoriesPage from './components/CategoriesPage';
 import PageNotFound from './components/PageNotFound';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import { authenticate } from "./store/session";
@@ -53,6 +54,9 @@ function App() {
         </Route>
         <Route path="/post/new" exact={true}>
           <NewPost />
+        </Route>
+        <Route path="/categories/:id" exact={true}>
+          <CategoriesPage />
         </Route>
         <Route>
           <PageNotFound />

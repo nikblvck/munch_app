@@ -1,17 +1,23 @@
 .left_nav_container, .right_nav_container {
   position: fixed;
   height: 100%;
-  width: 375px; /* width of the side nav */
-  top: 0;
+  width: 275px; /* width of the side nav */
+  top: 60px;
 }
 
 .left_nav_container{
-  background-color: white;
+  background-color: rgba(255, 255, 255, .8);
   float: left;
 }
 
 
 .right_nav_container{
-  background-color: black;
+  background-color: rgba(255, 255, 255, .8);
   right: 0;
-} 
+}
+
+@media screen and (max-width: 1200px) {
+  .left_nav_container, .right_nav_container {
+    display: none;
+  }
+}
