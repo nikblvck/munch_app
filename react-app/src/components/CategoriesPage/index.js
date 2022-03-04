@@ -9,7 +9,7 @@ function CategoryPage() {
   console.log(category_name)
   const category = useSelector((state) =>
   state?.categories?.category)
-
+  const posts = category?.posts
     useEffect(() => {
 			async function fetchData() {
 				dispatch(getCategories());
@@ -17,12 +17,23 @@ function CategoryPage() {
 			}
 			fetchData();
 		}, [dispatch, category_name]);
- console.log(category)
+
 
   return (
     <>
     <div className="home_feed_container">
       <div className="post_content">
+        {posts?.map((post) => (
+          <>
+            <div className="individual_post" id="category">
+              <div className="post_header">
+              </div>
+              <div className="post_image" key={post?.image_url}>
+                <img src={post?.image_url} alt={post?.title} className="post_image" />
+                </div>
+                </div>
+                </>
+                ))}
       </div>
     </div>
     </>

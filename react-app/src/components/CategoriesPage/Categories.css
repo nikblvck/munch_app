@@ -3,3 +3,10 @@
   color: white;
   font-size: 2.5em;
 }
+
+.individual_post#category {
+  display: flex;
+  justify-content: center;
+  height: 500px;
+  width: 500px;
+}
