@@ -2,10 +2,12 @@
 
 const GET_POSTS = "posts/GET_POSTS";
 const GET_POST = "posts/GET_POST";
+const GET_NEW_POSTS = "posts/GET_NEW_POSTS";
 const GET_USER_POSTS = "posts/GET_USER_POSTS";
 const ADD_POST = "posts/ADD_POST";
 const EDIT_POST = "posts/EDIT_POST";
 const DELETE_POST = "posts/DELETE_POST";
+
 
 // action creators
 const loadPosts = (posts) => ({
@@ -16,6 +18,11 @@ const loadPosts = (posts) => ({
 const loadPost = (post) => ({
   type: GET_POST,
   post,
+});
+
+const loadNewPosts  = (posts) => ({
+  type: GET_NEW_POSTS,
+  posts
 });
 
 const loadUserPosts = (posts) => ({
@@ -75,6 +82,7 @@ export const getPosts = () => async (dispatch) => {
   }
 };
 
+//READ BY USER
 export const getUserPosts = (userId) => async (dispatch) => {
   const res = await fetch(`/api/posts/${userId}`, {
     headers: {
@@ -87,6 +95,21 @@ export const getUserPosts = (userId) => async (dispatch) => {
   }
 };
 
+//READ NEWEST
+export const getNewPosts = () => async (dispatch) => {
+  const res = await fetch("/api/posts/new", {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  if (res.ok) {
+    const posts = await res.json();
+    dispatch(loadNewPosts(posts));
+  }
+};
+
+
+//READ BY ID
 export const getOnePost = (postId) => async (dispatch) => {
   const res = await fetch(`/api/posts/${postId}/`, {
     headers: {
@@ -140,7 +163,7 @@ export const deletePost = (id) => async (dispatch) => {
 };
 
 //reducer function
-const initialState = {posts: [], post: {}, user_posts: []};
+const initialState = {posts: [], post: {}, newest_posts: [], user_posts: []};
 
 export default function reducer(state = initialState, action) {
   let newState;
@@ -158,6 +181,9 @@ export default function reducer(state = initialState, action) {
       newState = {...state};
       newState.user_posts = action.posts;
       return newState;
+    case GET_NEW_POSTS:
+      newState = {...state};
+      newState.newest_posts = action.newest_posts;
     case ADD_POST:
       newState = { ...state };
       newState.posts[action.post.id] = action.posts;
