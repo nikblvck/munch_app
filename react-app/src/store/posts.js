@@ -7,6 +7,7 @@ const GET_USER_POSTS = "posts/GET_USER_POSTS";
 const ADD_POST = "posts/ADD_POST";
 const EDIT_POST = "posts/EDIT_POST";
 const DELETE_POST = "posts/DELETE_POST";
+const LIKE_POST = "posts/LIKE_POST";
 
 
 // action creators
@@ -44,6 +45,11 @@ const add = (post) => ({
   type: ADD_POST,
   post,
 });
+
+const like = (postId) => ({
+  type: LIKE_POST,
+  postId,
+})
 
 // thunk functions
 //CREATE
@@ -162,6 +168,27 @@ export const deletePost = (id) => async (dispatch) => {
   }
 };
 
+//LIKE
+export const likePost = (postId) => async (dispatch) => {
+	const response = await fetch(`/api/likes/${postId}/`, {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify(postId),
+	});
+	if (response.ok) {
+		dispatch(like(postId));
+	} else if (response.status < 500) {
+		const data = await response.json();
+		if (data.errors) {
+			return data.errors;
+		}
+	} else {
+		return ["An error occurred. Please try again."];
+	}
+};
+
 //reducer function
 const initialState = {posts: [], post: {}, newest_posts: [], user_posts: []};
 
@@ -195,6 +222,10 @@ export default function reducer(state = initialState, action) {
     case DELETE_POST:
       newState = { ...state };
       delete newState.posts[action.id];
+      return newState;
+    case LIKE_POST:
+      newState = { ...state };
+      newState.posts[action.postId].likes += 1;
       return newState;
     default:
       return state;

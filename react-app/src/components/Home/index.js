@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getPosts, deletePost} from "../../store/posts";
+import { getPosts, deletePost, likePost} from "../../store/posts";
 import "./Home.css";
 
 function HomeFeed() {
@@ -25,8 +25,21 @@ function HomeFeed() {
 
   }
 
+ const handleSubmit = async (id) => {
 
-
+  const like = {
+		post_id: id.id,
+		user_id: user.id,
+	}
+	 if (like) {
+		const data = await dispatch(likePost(like));
+		if (data) {
+			console.log(data);
+		} else {
+			console.log("error");
+		}
+	}
+ }
 
   return (
 		<>
@@ -61,9 +74,17 @@ function HomeFeed() {
 									</Link>
 									<div className="post_category">
 										<Link to={`/categories/${post?.category_name}`}>
-										{post?.category_name}
+											{post?.category_name}
 										</Link>
+									</div>
+									{/* <div className="likes_div">
+										<div className="like_btn">
+											<button id={post.id} 	onClick={(e) => handleSubmit(e.target.id)}>
+												<i class="fa-solid fa-heart"></i>
+											</button>
 										</div>
+										<div className="likes_count">{post?.likes}</div>
+									</div> */}
 
 									{user?.id === post?.user_id && (
 										<div className="post_button_container">

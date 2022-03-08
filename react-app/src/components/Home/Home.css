@@ -101,7 +101,7 @@ button {
   border-radius: .5em;
   position: absolute;
   z-index: 2;
-  top: 3px;
+  top: 20px;
   font-size: .75rem;
 }
 
@@ -146,15 +146,11 @@ div.home_feed_header {
 }
 
 .post_header {
-  height: 80px;
+  height: 40px;
   width: 94%;
   display: flex;
   align-items: center;
   flex-direction: row;
-  margin-top: 15px;
-  margin-bottom: -25px;
-
-
 }
 .post_header_image{
   height: 50px;
@@ -175,7 +171,12 @@ div.home_feed_header {
   border-radius: 40px;
   overflow: hidden;
 }
-
+.likes_div{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
 @media screen and (max-width: 600px) {
   .individual_post {
     height: 350px;
