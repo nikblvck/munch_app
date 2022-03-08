@@ -10,13 +10,13 @@ function RightNavPanel() {
 	const user = useSelector((state) => state?.session?.user);
 
 
-	useEffect(() => {
-		async function fetchData() {
-			dispatch(getUsers());
-			dispatch(getNewPosts());
-		}
-		fetchData();
-	}, [dispatch]);
+	// useEffect(() => {
+	// 	async function fetchData() {
+	// 		dispatch(getUsers());
+	// 		dispatch(getNewPosts());
+	// 	}
+	// 	fetchData();
+	// }, [dispatch]);
 
 
 
@@ -24,7 +24,7 @@ function RightNavPanel() {
 		if (!user) {
 			return null;
 		}
-		
+
 	return (
 		<>
 			<div className="right_nav_container">

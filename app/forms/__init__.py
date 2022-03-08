@@ -4,3 +4,4 @@ from .new_post import NewPost
 from .comment_form import NewComment
 from .edit_comment import EditComment
 from .search_form import SearchForm
+from .new_like import NewLike

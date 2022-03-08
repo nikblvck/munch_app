@@ -11,7 +11,8 @@
     box-sizing: border-box;
 }
 html{
-    background-image: linear-gradient(to bottom, #ff042b 5%, #0058db 100%);
+    /* background-image: linear-gradient(to bottom, #ff042b 5%, #0058db 100%); */
+    background-color: #eee
 }
 
 

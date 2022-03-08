@@ -41,7 +41,7 @@ function HomeFeed() {
 											className="post_header_image"
 											src={post?.user_profile_image}
 											alt="profile_pic"
-										/>{" "}
+										/>
 									</div>
 									<div
 										className="header_username"

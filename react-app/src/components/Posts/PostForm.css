@@ -1,7 +1,7 @@
 .post_form_container {
-  background-color: rgba(244, 244, 244, .75);
+  background-color: rgba(255, 255, 255);
   border-radius: 1em;
-  border: 1 px solid #ccc;
+  border: 1 px solid #222222;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -9,7 +9,6 @@
   height: 700px;
   width: 800px;
   margin: 100px auto auto auto;
-  border: 1px solid #ff042d;
 }
 
 .post_form_header {
