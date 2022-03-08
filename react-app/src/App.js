@@ -7,6 +7,7 @@ import NavBar from './components/Nav';
 import NewPost from './components/Posts/NewPost/';
 import HomeFeed from './components/Home';
 import EditPostPage from './components/Posts/EditPostPage';
+import ProfilePage from './components/Profile';
 import SplashPage from './components/Splash';
 import CategoriesPage from './components/CategoriesPage';
 import PageNotFound from './components/PageNotFound';
@@ -57,6 +58,9 @@ function App() {
         </Route>
         <Route path="/categories/:id" exact={true}>
           <CategoriesPage />
+        </Route>
+        <Route path="/users/:userId" exact={true}>
+          <ProfilePage />
         </Route>
         <Route>
           <PageNotFound />

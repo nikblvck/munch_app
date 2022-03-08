@@ -61,7 +61,9 @@ function HomeFeed() {
 										key={post?.username}
 										id="post_username"
 									>
+										<Link to={`/users/${post?.user_id}`}>
 										{post?.username}
+										</Link>
 									</div>
 								</div>
 								<div className="post_image" key={post?.image_url}>
