@@ -1,12 +1,10 @@
 .profile_container{
   display: flex;
   justify-content: center;
-  max-width: 700px;
   margin: 105px auto auto auto;
   flex-direction: column;
   align-items: center;
   overflow-y: scroll;
-  padding-top: 175px;
 }
 
 .profile_header_image{
@@ -29,14 +27,20 @@
   border: 1px solid #222222;
 }
 
-/* .profile_post_image_container{
+.profile_post_image_container{
   height: 200px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-} */
+}
+
 .profile_post_image{
   height: 165px;
 
+}
+
+.user_posts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 }

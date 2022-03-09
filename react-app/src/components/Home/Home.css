@@ -118,7 +118,7 @@ button {
 }
 
 .fa-solid fa-heart {
-  color: red;
+  color: #e20000;
 }
 
 .post_likes p {
@@ -161,7 +161,7 @@ div.home_feed_header {
 }
 .header_profile_img, .header_username {
   float: left;
-  color: #0058db;
+  color: #e20000;
 }
 
 .header_profile_img {

@@ -32,6 +32,9 @@ function CategoryPage() {
 		<>
 			<div className="home_feed_container">
 				<div className="post_content">
+					<div className="category_title_container">
+						<h1 className="category_title">{category?.name}</h1>
+					</div>
 					{posts?.map((post) => (
 						<>
 							<div className="individual_post">
