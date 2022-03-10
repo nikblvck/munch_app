@@ -225,7 +225,7 @@ export default function reducer(state = initialState, action) {
       return newState;
     case LIKE_POST:
       newState = { ...state };
-      newState.posts[action.postId].likes += 1;
+      newState.posts[action.postId] = action.posts;
       return newState;
     default:
       return state;

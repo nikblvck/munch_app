@@ -8,7 +8,7 @@ import "../SideNavs.css";
 function RightNavPanel() {
  const [users, setUsers] = useState([]);
  const user = useSelector((state) => state?.session?.user);
- console.log(users);
+
  useEffect(() => {
 		async function fetchData() {
 			const response = await fetch("/api/users/");

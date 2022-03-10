@@ -32,8 +32,7 @@ function HomeFeed() {
 		console.log('xxxxxxxxxxxxxx')
 		console.log(post_id)
 		await dispatch(likePost(post_id))
-		await dispatch(getPosts())
-		setIsLoaded(true)
+		setIsLoaded(false)
 	}
   return (
 		<>
