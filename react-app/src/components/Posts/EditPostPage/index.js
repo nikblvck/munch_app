@@ -17,8 +17,8 @@ function EditPostPage() {
   const [category_id, setCategoryId] = useState(post?.category_id || '');
   const [isLoaded, setIsLoaded] = useState(false);
   const [errors, setErrors] = useState([]);
-  const categories = useSelector((state) => state?.categories?.categories);
-
+  const categories = useSelector((state) => state?.categories);
+  const categoriesArray = Object?.values(categories)
 
   useEffect(() => {
 
@@ -46,7 +46,7 @@ function EditPostPage() {
       if (data) {
 
         setErrors(data);
-     
+
       } else {
         history.push(`/posts`);
       }
@@ -111,7 +111,7 @@ function EditPostPage() {
                 onChange={(e) => setCategoryId(e.target.value)}
               >
                 <option> --Select a Category-- </option>
-                {categories?.map((category) => (
+                {categoriesArray?.map((category) => (
                   <option key={category.id} value={category.id}>
                     {category.name}
                   </option>

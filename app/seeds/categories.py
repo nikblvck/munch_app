@@ -2,10 +2,10 @@ from app.models import db, Category
 
 def seed_categories():
   categories = [
-    {'name': 'Soul Food'},
+    {'name': 'Soul-Food'},
     {'name': 'Vegan' },
     {'name': 'Vegetarian'},
-    {'name': 'Classic American'},
+    {'name': 'Classic-American'},
     { 'name': 'Mexican' },
     { 'name': 'Italian' },
     { 'name': 'Chinese' },
@@ -24,7 +24,7 @@ def seed_categories():
     {'name': 'Soup'},
     {'name': 'Sandwich'},
     {'name': 'Salad'},
-    {'name': 'From Scratch'},
+    {'name': 'From-Scratch'},
   ]
   for category in categories:
     new_category = Category(**category)

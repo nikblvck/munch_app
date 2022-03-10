@@ -1,44 +1,49 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { getPosts, deletePost, likePost} from "../../store/posts";
-import "./Home.css";
+import { useParams, Link } from "react-router-dom";
+import { getCategories, getCategory } from "../../store/categories";
+import { getPosts, deletePost } from "../../store/posts";
 
-function HomeFeed() {
+
+function CategoryPage() {
+	const dispatch = useDispatch();
+	const user = useSelector((state) => state?.session?.user);
+	const category_name = useParams().id;
+	const category = useSelector((state) => state?.categories?.category);
+	const posts = category?.posts;
   const [isLoaded, setIsLoaded] = useState(false);
-  const dispatch = useDispatch();
-  const user = useSelector((state) => state?.session?.user);
-  const posts = useSelector((state) => state?.posts?.posts);
-
-
-
-  useEffect(() => {
-    async function fetchData() {
-      dispatch (getPosts());
-      setIsLoaded(true);
-    }
-    fetchData();
-		if(!isLoaded) {
-			fetchData();
-		}
-  }, [dispatch, isLoaded]);
 
   const handleDelete = (id) => {
-    dispatch(deletePost(id)).then(() => setIsLoaded(false)).then(() => dispatch(getPosts())).then(() => setIsLoaded(true));
+		dispatch(deletePost(id))
+			.then(() => dispatch(getPosts()))
+			.then(() => setIsLoaded(true));
+	};
 
-  }
+	useEffect(() => {
+		async function fetchData() {
+			dispatch(getCategories());
+			dispatch(getCategory(category_name));
+		}
+		fetchData();
+	}, [dispatch, category_name]);
 
-	const handleLikePost = async (post_id) => {
-		console.log('xxxxxxxxxxxxxx')
-		console.log(post_id)
-		await dispatch(likePost(post_id))
-		setIsLoaded(false)
+	if(posts?.length === 0) {
+		return(
+			<>
+			<div className="home_feed_container">
+				<div className="home_feed_header">
+				<h1>{category_name}</h1>
+				</div>
+				<p>No posts in this category yet!</p>
+			</div>
+			</>
+		)
 	}
-  return (
+	return (
 		<>
 			<div className="home_feed_container">
 				<div className="home_feed_header">
-					<h1 className="home_feed_title">Home Feed</h1>
+					<h1 className="home_feed_title">{category_name}</h1>
 				</div>
 				<div className="post_content">
 					{posts?.map((post) => (
@@ -57,9 +62,7 @@ function HomeFeed() {
 										key={post?.username}
 										id="post_username"
 									>
-										<Link to={`/users/${post?.user_id}`}>
 										{post?.username}
-										</Link>
 									</div>
 								</div>
 								<div className="post_image" key={post?.image_url}>
@@ -70,26 +73,6 @@ function HomeFeed() {
 											className="post_image"
 										/>
 									</Link>
-									<div className="post_category">
-										<Link to={`/categories/${post?.category_name}`}>
-											{post?.category_name}
-										</Link>
-									</div>
-
-
-										<>
-									<div className="likes_div">
-										<div className="like_btn">
-											<button id={post?.id} onClick={() => handleLikePost(post?.id)}>
-												<i class="fa-solid fa-heart"></i>
-											</button>
-										</div>
-										<div className="likes_count">
-											{!post.likes ? 0 : post?.likes}
-											</div>
-									</div>
-									</>
-
 
 
 									{user?.id === post?.user_id && (
@@ -131,4 +114,4 @@ function HomeFeed() {
 	);
 }
 
-export default HomeFeed;
+export default CategoryPage;

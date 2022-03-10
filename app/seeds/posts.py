@@ -1,6 +1,8 @@
 from app.models import db, Post
 
 
+
+
 def seed_posts():
   posts = [
       {
@@ -150,7 +152,63 @@ def seed_posts():
           'caption': 'Homemade Menudo!',
           'user_id': 7,
           'category_id': 5
-      }
+      },
+      {
+          'image_url': 'https://res.cloudinary.com/bigtechnik/image/upload/v1645955739/munch/Italian_HomemadeRisotto.jpg',
+          'caption': 'I was hungry and unmotivated to run to the grocery store so I decided to try my hand at Risotto! Little bit of 🥓🥓 went a LONG way!',
+          'user_id': 11,
+          'category_id': 6
+      },
+      {
+          'image_url': 'https://res.cloudinary.com/bigtechnik/image/upload/v1646015737/munch/Italian_Rigatoni.jpg',
+          'caption': 'Been practicing my plating - Rigatoni!',
+          'user_id': 12,
+          'category_id': 6
+      },
+      {
+          'image_url': 'https://res.cloudinary.com/bigtechnik/image/upload/v1646015871/munch/Italian_Gnocchi.jpg',
+          'caption': 'handmade gnocchi topped with sum bolognese and crustini on the side',
+          'user_id': 13,
+          'category_id': 6
+      },
+      {
+          'image_url': 'https://res.cloudinary.com/bigtechnik/image/upload/v1646015936/munch/Italian_Cavatelli.jpg',
+          'caption': 'My Auntie Nona came by and we made this Cavatelli! Yum! Munching away over here!',
+          'user_id': 14,
+          'category_id': 6
+      },
+      {
+          'image_url': 'https://res.cloudinary.com/bigtechnik/image/upload/v1646016024/munch/Chinese_Kung%20Pao%20Chicken.jpg',
+          'caption': 'Kung Pao Chicken',
+            'user_id': 15,
+            'category_id': 7
+      },
+      {
+          'image_url': 'https://res.cloudinary.com/bigtechnik/image/upload/v1646016096/munch/Chinese_MaPaTofu.jpg',
+          'user_id': 16,
+          'category_id': 7
+      },
+      {
+          'image_url': 'https://res.cloudinary.com/bigtechnik/image/upload/v1646015986/munch/Chinese_PekingDuck.jpg',
+          'caption': 'Peking Duck w/ Garlic Chicken Fried Rice[NOT PICTURED] ',
+          'user_id': 17,
+          'category_id':7
+      },
+      {
+          'image_url': 'https://res.cloudinary.com/bigtechnik/image/upload/v1646016058/munch/Chinese_HotPot.jpg',
+          'caption': 'My friends came up from Texas so I made us a HOT POT! Great times with beautiful people. ',
+          'user_id': 14,
+          'category_id':7
+          },
+          {
+              'image_url': 'https://res.cloudinary.com/bigtechnik/image/upload/v1646857732/munch/FromScratch_EggNoodles.jpg',
+              'caption': 'I made these egg noodles and felt super accomplished! Munchin for the win!',
+              'user_id': 18,
+              'category_id': 23,
+              'created_at': '2022-1-12T00:00:00.000Z',
+          }
+
+
   ]
 
   for post in posts:

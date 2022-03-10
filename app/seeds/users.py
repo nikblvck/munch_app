@@ -1,4 +1,7 @@
 from app.models import db, User
+from faker import Faker
+
+fake = Faker()
 
 
 # Adds a demo user, you can add other users here if you want
@@ -105,6 +108,22 @@ def seed_users():
     ]
 
     for user in users:
+        new_user = User(**user)
+        db.session.add(new_user)
+
+    fake_users = [{
+        'first_name': fake.first_name(),
+        'last_name': fake.last_name(),
+        'is_admin': False,
+        'username': fake.user_name(),
+        'email': fake.email(),
+        'password': 'password',
+        'profile_img_url': 'https://res.cloudinary.com/bigtechnik/image/upload/v1645603921/munch/image_luhr2p.jpg',
+        'bio': fake.text()
+    }
+    for i in range(95)]
+
+    for user in fake_users:
         new_user = User(**user)
         db.session.add(new_user)
 

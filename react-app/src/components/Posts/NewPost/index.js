@@ -18,7 +18,9 @@ function NewPost() {
   const [category_id, setCategoryId] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
   const [errors, setErrors] = useState([]);
-  const categories = useSelector((state) => state?.categories?.categories);
+  const categories = useSelector((state) => state?.categories);
+  console.log(categories)
+  const categoriesArray = Object?.values(categories)
 
   useEffect(() => {
    dispatch(getCategories()).then(() => setIsLoaded(true));
@@ -38,7 +40,7 @@ function NewPost() {
       if (data) {
  ;
         setErrors(data);
-      
+
       } else {
         history.push('/posts');
       }
@@ -91,7 +93,7 @@ return (
               onChange={(e) => setCategoryId(e.target.value)}
             >
               <option > --Select a Category-- </option>
-              {categories?.map((category) => (
+              {categoriesArray?.map((category) => (
                 <option key={category?.id} value={category?.id}>
                   {category?.name}
                 </option>

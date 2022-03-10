@@ -1,7 +1,7 @@
 
 
 .individual_post_container {
-  background-color: rgba(242, 242, 241, .75);
+  background-color: rgba(255, 255, 255, .85);
   border-radius: 1em;
   display: flex;
   flex-direction: column;
@@ -116,9 +116,7 @@
   margin: auto;
 }
 
-.post_content {
-  margin-top: 60px;
-}
+
 
 .post_comments{
   box-sizing: border-box;

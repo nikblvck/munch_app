@@ -7,9 +7,12 @@ import NavBar from './components/Nav';
 import NewPost from './components/Posts/NewPost/';
 import HomeFeed from './components/Home';
 import EditPostPage from './components/Posts/EditPostPage';
+import ProfilePage from './components/Profile';
 import SplashPage from './components/Splash';
+import CategoriesPage from './components/CategoriesPage';
 import PageNotFound from './components/PageNotFound';
 import ProtectedRoute from './components/auth/ProtectedRoute';
+import Search from './components/Search';
 import { authenticate } from "./store/session";
 import SinglePost from './components/Posts/SinglePost';
 
@@ -32,34 +35,43 @@ function App() {
   }
 
   return (
-    <>
-      <NavBar />
-      <Switch>
-        <Route exact={true} path="/" component={SplashPage} />
-        <Route path="/login" exact={true}>
-          <LoginForm />
-        </Route>
-        <Route path="/signup" exact={true}>
-          <SignUpForm />
-        </Route>
-        <ProtectedRoute path="/posts" exact={true}>
-          <HomeFeed />
-        </ProtectedRoute>
-        <ProtectedRoute path="/posts/:id" exact={true}>
-          <SinglePost />
-        </ProtectedRoute>
-        <Route path="/posts/:id/edit" exact={true}>
-          <EditPostPage />
-        </Route>
-        <Route path="/post/new" exact={true}>
-          <NewPost />
-        </Route>
-        <Route>
-          <PageNotFound />
-        </Route>
-      </Switch>
-    </>
-  );
+		<>
+			<NavBar />
+			<Switch>
+				<Route exact={true} path="/" component={SplashPage} />
+				<Route path="/login" exact={true}>
+					<LoginForm />
+				</Route>
+				<Route path="/signup" exact={true}>
+					<SignUpForm />
+				</Route>
+				<ProtectedRoute path="/posts" exact={true}>
+					<HomeFeed />
+				</ProtectedRoute>
+				<ProtectedRoute path="/posts/:id" exact={true}>
+					<SinglePost />
+				</ProtectedRoute>
+				<Route path="/posts/:id/edit" exact={true}>
+					<EditPostPage />
+				</Route>
+				<Route path="/post/new" exact={true}>
+					<NewPost />
+				</Route>
+				<Route path="/categories/:id" exact={true}>
+					<CategoriesPage />
+				</Route>
+				<ProtectedRoute path="/users/:userId" exact={true}>
+					<ProfilePage />
+				</ProtectedRoute>
+				<Route path="/search">
+					<Search />
+				</Route>
+				<Route>
+					<PageNotFound />
+				</Route>
+			</Switch>
+		</>
+	);
 }
 
 export default App;

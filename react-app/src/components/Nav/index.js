@@ -5,6 +5,9 @@ import { NavLink } from 'react-router-dom';
 import AboutButton from './AboutButton';
 import DemoUser from './Demo';
 import ProfileButton from './ProfileButton';
+import LeftNavPanel from './LeftNavPanel';
+import RightNavPanel from './RightNavPanel';
+import SearchBar from './Search_Bar';
 import './Nav.css'
 
 const NavBar = () => {
@@ -52,17 +55,25 @@ const NavBar = () => {
         <div className="left_nav">
           <div key="home" className="title">
             <NavLink to="/">
-              <h1>MUNCH</h1>
+              <img
+              className="nav_logo"
+              src="https://res.cloudinary.com/bigtechnik/image/upload/v1646848241/munch/Munch_Assets/MUNCH_hrofck.png"
+              />
             </NavLink>
           </div>
           <div>
             <AboutButton />
           </div>
         </div>
+        <div className="center_nav">
+          <SearchBar />
+        </div>
         <div className="right_nav">
           {navLinks}
         </div>
       </div>
+      <LeftNavPanel />
+      <RightNavPanel />
     </nav>
   );
 }

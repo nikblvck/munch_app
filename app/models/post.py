@@ -16,6 +16,9 @@ class Post (db.Model):
   comments = db.relationship('Comment', back_populates='post', lazy=True)
   likes = db.relationship('Like', back_populates='post', lazy=True)
 
+  def most_liked(self):
+    return Post.query.order_by(Post.likes.desc()).limit(2)
+    
 
   def to_dict(self):
     return {

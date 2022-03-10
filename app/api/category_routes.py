@@ -14,8 +14,8 @@ def categories():
 
 
 # READ ONE
-@category_routes.route('/<int:id>/')
-def category(id):
-    category = Category.query.get(id)
-    posts = Post.query.filter_by(category_id=id).all()
-    return jsonify([posts.to_dict() for posts in posts])
+@category_routes.route('/<category_name>/')
+def category(category_name):
+    category = Category.query.filter(Category.name == category_name).one()
+    posts = Post.query.filter(Post.category_id == category.id).all()
+    return jsonify({'category': category.to_dict(), 'posts': [post.to_dict() for post in posts]})

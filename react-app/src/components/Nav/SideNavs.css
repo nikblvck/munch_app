@@ -1,0 +1,70 @@
+.left_nav_container, .right_nav_container {
+  position: fixed;
+  height: 100%;
+  width: 275px; /* width of the side nav */
+  top: 60px;
+}
+
+.left_nav_container{
+  background-color: rgba(255, 255, 255, .8);
+  float: left;
+}
+
+
+.right_nav_container{
+  background-color: rgba(255, 255, 255, .8);
+  right: 0;
+  overflow-y: scroll;
+}
+
+.users_list {
+  display: flex;
+  flex-direction: column;
+  align-items: space-between;
+}
+.user {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: .5em;
+  border-bottom: 1px solid #222222;
+}
+.rnav_profile_img {
+  height: 50px;
+  width:50px;
+  border-radius: 50%;
+}
+.left_nav_title{
+  font-size: 1.25em;
+  font-weight: 300;
+  color: #0058db;
+  margin-top: 20px;
+}
+.category_list_header{
+  margin-bottom: 5px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.categories_list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.left_panel_link{
+  color: black important;
+}
+.category_list_item{
+  box-sizing: content-box;
+  padding: .25em;
+}
+
+@media screen and (max-width: 1200px) {
+  .left_nav_container, .right_nav_container {
+    display: none;
+  }
+}

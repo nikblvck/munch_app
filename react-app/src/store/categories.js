@@ -1,5 +1,7 @@
 //constants
 
+import reducer from "./posts";
+
 const GET_CATEGORIES = "categories/GET_CATEGORIES";
 const GET_CATEGORY = "categories/GET_CATEGORY";
 
@@ -35,8 +37,8 @@ export const getCategories = () => async (dispatch) => {
   }
 };
 
-export const getCategory = (id) => async (dispatch) => {
-  const response = await fetch(`/api/categories/${id}/`, {
+export const getCategory = (category_name) => async (dispatch) => {
+  const response = await fetch(`/api/categories/${category_name}/`, {
     headers: {
       "Content-Type": "application/json",
     },
@@ -55,18 +57,20 @@ export const getCategory = (id) => async (dispatch) => {
 
 //reducer
 const initialState = {};
-export default function categoriesReducer(state = initialState, action) {
-  let newState;
-  switch (action.type) {
+
+export default function categoriesReducer(state = initialState, action){
+	let newState;
+	switch (action.type) {
     case GET_CATEGORIES:
-      newState = { ...state };
-      newState.categories = action.categories;
+      newState = {...state};
+      action.categories.forEach((category) => {
+        newState[category.name] = category;})
       return newState;
-    case GET_CATEGORY:
-      newState = { ...state };
-      newState.category = action.category;
-      return newState;
-    default:
-      return state;
-  }
-}
+		case GET_CATEGORY:
+			newState = { ...state };
+			newState.category = action.category;
+			return newState;
+		default:
+			return state;
+	}
+};

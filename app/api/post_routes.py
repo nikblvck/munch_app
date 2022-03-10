@@ -44,6 +44,14 @@ def posts():
     posts = Post.query.order_by(Post.updated_at.desc())
     return jsonify([post.to_dict() for post in posts])
 
+# READ NEW
+@post_routes.route('/newposts')
+def new_posts():
+    posts = Post.query.order_by(Post.updated_at.desc()).limit(10)
+    return jsonify([post.to_dict() for post in posts])
+
+
+
 #READ ALL FROM USER
 @post_routes.route('/user/<int:user_id>')
 def posts_by_user(user_id):
@@ -93,3 +101,21 @@ def delete_post(id):
         db.session.delete(post)
         db.session.commit()
         return jsonify('Success! Post deleted.')
+
+#LIKE ROUTES
+@post_routes.route('/like/<int:id>/', methods=['POST'])
+@login_required
+def like_post(id):
+    like = Like.query.filter_by(user_id=current_user.id, post_id=id).first()
+    if like:
+        db.session.delete(like)
+        db.session.commit()
+        return jsonify({'message': 'Like removed.'})
+    else:
+        new_like = Like(
+            user_id=current_user.id,
+            post_id=id
+        )
+        db.session.add(new_like)
+        db.session.commit()
+        return jsonify({'message': 'Liked!'})
