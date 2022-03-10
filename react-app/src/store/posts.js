@@ -170,7 +170,7 @@ export const deletePost = (id) => async (dispatch) => {
 
 //LIKE
 export const likePost = (postId) => async (dispatch) => {
-	const response = await fetch(`/api/likes/${postId}/`, {
+	const response = await fetch(`/api/posts/like/${postId}/`, {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",

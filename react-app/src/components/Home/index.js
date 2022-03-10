@@ -18,6 +18,9 @@ function HomeFeed() {
       setIsLoaded(true);
     }
     fetchData();
+		if(!isLoaded) {
+			fetchData();
+		}
   }, [dispatch, isLoaded]);
 
   const handleDelete = (id) => {
@@ -25,8 +28,13 @@ function HomeFeed() {
 
   }
 
-
-
+	const handleLikePost = async (post_id) => {
+		console.log('xxxxxxxxxxxxxx')
+		console.log(post_id)
+		await dispatch(likePost(post_id))
+		await dispatch(getPosts())
+		setIsLoaded(true)
+	}
   return (
 		<>
 			<div className="home_feed_container">
@@ -68,14 +76,22 @@ function HomeFeed() {
 											{post?.category_name}
 										</Link>
 									</div>
+
+
+										<>
 									<div className="likes_div">
 										<div className="like_btn">
-											<button id={post?.id}>
+											<button id={post?.id} onClick={() => handleLikePost(post?.id)}>
 												<i class="fa-solid fa-heart"></i>
 											</button>
 										</div>
-										<div className="likes_count">{post?.likes}</div>
+										<div className="likes_count">
+											{!post.likes ? 0 : post?.likes}
+											</div>
 									</div>
+									</>
+
+
 
 									{user?.id === post?.user_id && (
 										<div className="post_button_container">
