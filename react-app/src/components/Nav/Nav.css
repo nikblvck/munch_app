@@ -109,7 +109,9 @@ li.title {
     list-style-type: none;
     gap:18px;
     z-index: 2;
+
     border: 1px solid #222222;
+
     border-top: none;
     border-top-right-radius: 0px;
     border-top-left-radius: 0px;
@@ -130,6 +132,7 @@ li.title {
 
 
 }
+
 .about_links {
   display: flex;
   justify-content: flex-start;
@@ -147,9 +150,11 @@ li.title {
   color: #0058db;
   padding-left: .5em;
 }
+
 .bold_text {
   font-weight: bold;
 }
+
 .profile_name {
   display: flex;
   justify-content: center;
@@ -157,6 +162,7 @@ li.title {
   flex-direction: column;
   text-align: center;
 }
+
  #dropdown_username{
    font-family: 'Lato', sans-serif;
    font-size: 1.5em;
