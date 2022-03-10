@@ -9,7 +9,6 @@ function CategoryPage() {
 	const dispatch = useDispatch();
 	const user = useSelector((state) => state?.session?.user);
 	const category_name = useParams().id;
-	console.log(category_name);
 	const category = useSelector((state) => state?.categories?.category);
 	const posts = category?.posts;
   const [isLoaded, setIsLoaded] = useState(false);
@@ -28,13 +27,25 @@ function CategoryPage() {
 		fetchData();
 	}, [dispatch, category_name]);
 
+	if(posts?.length === 0) {
+		return(
+			<>
+			<div className="home_feed_container">
+				<div className="home_feed_header">
+				<h1>{category_name}</h1>
+				</div>
+				<p>No posts in this category yet!</p>
+			</div>
+			</>
+		)
+	}
 	return (
 		<>
 			<div className="home_feed_container">
+				<div className="home_feed_header">
+					<h1 className="home_feed_title">{category_name}</h1>
+				</div>
 				<div className="post_content">
-					<div className="category_title_container">
-						<h1 className="category_title">{category?.name}</h1>
-					</div>
 					{posts?.map((post) => (
 						<>
 							<div className="individual_post">
@@ -62,11 +73,7 @@ function CategoryPage() {
 											className="post_image"
 										/>
 									</Link>
-									<div className="post_category">
-										<Link to={`/categories/${post?.category_name}`}>
-											{post?.category_name}
-										</Link>
-									</div>
+
 
 									{user?.id === post?.user_id && (
 										<div className="post_button_container">

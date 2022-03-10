@@ -1,3 +1,8 @@
+h1.category_title{
+  color: red;
+  margin-top: 400px !important;
+}
+
 .category_header {
   margin-top: 100px;
   color: white;
@@ -10,3 +15,4 @@
   height: 500px;
   width: 500px;
 }
+

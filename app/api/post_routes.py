@@ -101,3 +101,21 @@ def delete_post(id):
         db.session.delete(post)
         db.session.commit()
         return jsonify('Success! Post deleted.')
+
+#LIKE ROUTES
+@post_routes.route('/like/<int:id>/', methods=['POST'])
+@login_required
+def like_post(id):
+    like = Like.query.filter_by(user_id=current_user.id, post_id=id).first()
+    if like:
+        db.session.delete(like)
+        db.session.commit()
+        return jsonify({'message': 'Like removed.'})
+    else:
+        new_like = Like(
+            user_id=current_user.id,
+            post_id=id
+        )
+        db.session.add(new_like)
+        db.session.commit()
+        return jsonify({'message': 'Liked!'})

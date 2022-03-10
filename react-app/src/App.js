@@ -60,9 +60,9 @@ function App() {
 				<Route path="/categories/:id" exact={true}>
 					<CategoriesPage />
 				</Route>
-				<Route path="/users/:userId" exact={true}>
+				<ProtectedRoute path="/users/:userId" exact={true}>
 					<ProfilePage />
-				</Route>
+				</ProtectedRoute>
 				<Route path="/search">
 					<Search />
 				</Route>

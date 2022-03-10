@@ -14,6 +14,11 @@ function SplashPage() {
 					<div className="splash_background_container">
 						<div className="header_image_container">
 							<img
+								className="header_image_logo"
+								src="https://res.cloudinary.com/bigtechnik/image/upload/v1646930158/munch/Munch_Assets/munchsmile_mac6gt.png"
+								alt="munch"
+							/>
+							<img
 								className="header_image"
 								src="https://res.cloudinary.com/bigtechnik/image/upload/v1646848241/munch/Munch_Assets/MUNCH_hrofck.png"
 								alt="munch"

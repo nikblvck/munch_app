@@ -25,7 +25,8 @@ function ProfilePage() {
 
 	return (
   <>
-      <div className="profile_container">
+      <div className="home_feed_container">
+        <div className="post_content">
         <div className="profile_header">
           <div className="profile_header_img">
             <img
@@ -60,6 +61,7 @@ function ProfilePage() {
                 </>
                 ))}
           </div>
+        </div>
         </div>
         </div>
   </>

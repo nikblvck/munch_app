@@ -18,12 +18,11 @@ def validation_errors_to_error_messages(validation_errors):
 
 
 
-@search_routes.route('')
+@search_routes.route('/')
 def search():
-  form = SearchForm()
-  form['csrf_token'].data = request.cookies['csrf_token']
-  if form.validate_on_submit():
-    search_term = form.data('Search')
-    posts = Post.query.filter(Post.caption.ilike(f'%{search_term}%')).all()
-    return {post.to_dict()['id']: post.to_dict() for post in posts}
-  return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+  term = request.args.get('x')
+  if term == None:
+    return jsonify({'error': 'No search term provided'})
+  else:
+    search_results = Post.query.filter(Post.title.ilike(f'%{term}%')).all()
+    return jsonify({'search_results': [post.to_dict() for post in search_results]})

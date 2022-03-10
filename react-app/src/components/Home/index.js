@@ -25,25 +25,14 @@ function HomeFeed() {
 
   }
 
- const handleSubmit = async (id) => {
 
-  const like = {
-		post_id: id.id,
-		user_id: user.id,
-	}
-	 if (like) {
-		const data = await dispatch(likePost(like));
-		if (data) {
-			console.log(data);
-		} else {
-			console.log("error");
-		}
-	}
- }
 
   return (
 		<>
 			<div className="home_feed_container">
+				<div className="home_feed_header">
+					<h1 className="home_feed_title">Home Feed</h1>
+				</div>
 				<div className="post_content">
 					{posts?.map((post) => (
 						<>
@@ -79,14 +68,14 @@ function HomeFeed() {
 											{post?.category_name}
 										</Link>
 									</div>
-									{/* <div className="likes_div">
+									<div className="likes_div">
 										<div className="like_btn">
-											<button id={post.id} 	onClick={(e) => handleSubmit(e.target.id)}>
+											<button id={post?.id}>
 												<i class="fa-solid fa-heart"></i>
 											</button>
 										</div>
 										<div className="likes_count">{post?.likes}</div>
-									</div> */}
+									</div>
 
 									{user?.id === post?.user_id && (
 										<div className="post_button_container">

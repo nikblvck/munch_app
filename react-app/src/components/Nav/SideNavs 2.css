@@ -14,27 +14,8 @@
 .right_nav_container{
   background-color: rgba(255, 255, 255, .8);
   right: 0;
-  overflow-y: scroll;
 }
 
-.users_list {
-  display: flex;
-  flex-direction: column;
-  align-items: space-between;
-}
-.user {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  padding: .5em;
-  border-bottom: 1px solid #222222;
-}
-.rnav_profile_img {
-  height: 50px;
-  width:50px;
-  border-radius: 50%;
-}
 .left_nav_title{
   font-size: 1.25em;
   font-weight: 300;

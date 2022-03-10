@@ -37,6 +37,8 @@ class User(db.Model, UserMixin):
         membership_date = self.created_at.strftime("%B %d, %Y")
         return membership_date
 
+
+
     def to_dict(self):
         return {
             'id': self.id,
@@ -50,5 +52,5 @@ class User(db.Model, UserMixin):
             'post_list': [post.to_dict() for post in self.post],
             'profile_img_url': self.profile_img_url,
             'bio': self.bio,
-            'member_since': self.member_since()
+            'member_since': self.member_since(),
         }

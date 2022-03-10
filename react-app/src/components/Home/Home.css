@@ -12,7 +12,14 @@ button {
 .home_feed_container h2 {
   text-align: center;
   display: flex;
+}
 
+.home_feed_header {
+  height: 50px;
+}
+.home_feed_title{
+  color: black;
+  text-align: center;
 }
 
 .home_feed_container {
@@ -25,14 +32,13 @@ button {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top:55px;
 }
 .post_content {
-
   justify-content: center;
   width: 800px;
   min-height: 600px;
   max-height: 1080px;
-  margin: auto;
   overflow-y: scroll;
 }
 .post_content::-webkit-scrollbar{
@@ -42,7 +48,7 @@ button {
  #post_username{
   font-weight: bold;
   font-size: 1.2em;
-  margin-top: -1em;
+
 
 }
 .post_image{
