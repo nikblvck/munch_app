@@ -32,7 +32,7 @@ function HomeFeed() {
 		console.log('xxxxxxxxxxxxxx')
 		console.log(post_id)
 		await dispatch(likePost(post_id))
-		setIsLoaded(false)
+		await dispatch(getPosts())
 	}
   return (
 		<>
@@ -85,7 +85,7 @@ function HomeFeed() {
 											</button>
 										</div>
 										<div className="likes_count">
-											{!post.likes ? 0 : post?.likes}
+											{post?.likes}
 											</div>
 									</div>
 									</>
