@@ -36,7 +36,7 @@ p.welcome {
 .right_nav {
 float: right;
 display: flex;
-justify-content: center;
+justify-content: flex-end;
 align-items: space-around;
 flex-direction: row;
 width: 300px;
@@ -49,6 +49,7 @@ width: 300px;
   justify-content: center;
   align-items: center;
   width: 500px;
+  height: 34px;
   border-radius: .5em;
   border: 1px solid #666666
 }
@@ -118,7 +119,7 @@ li.title {
 }
 
 .profile_dropdown{
-  margin-left: -150px;
+  margin-left: -175px;
   align-items: center;
 
 }

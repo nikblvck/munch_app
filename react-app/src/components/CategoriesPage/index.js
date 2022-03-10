@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
 import { getCategories, getCategory } from "../../store/categories";
-import { getPosts, deletePost } from "../../store/posts";
+import { getPosts, deletePost, likePost } from "../../store/posts";
 
 
 function CategoryPage() {
@@ -26,6 +26,12 @@ function CategoryPage() {
 		}
 		fetchData();
 	}, [dispatch, category_name]);
+
+		const handleLikePost = async (post_id) => {
+			await dispatch(likePost(post_id));
+			await dispatch(getCategories());
+			await dispatch(getCategory(category_name));
+		};
 
 	if(posts?.length === 0) {
 		return(
@@ -73,7 +79,17 @@ function CategoryPage() {
 											className="post_image"
 										/>
 									</Link>
-
+									<div className="likes_div">
+										<div className="like_btn">
+											<button
+												id={post?.id}
+												onClick={() => handleLikePost(post?.id)}
+											>
+												<i class="fa-solid fa-heart"></i>
+											</button>
+										</div>
+										<div className="likes_count">{post?.likes}</div>
+									</div>
 
 									{user?.id === post?.user_id && (
 										<div className="post_button_container">

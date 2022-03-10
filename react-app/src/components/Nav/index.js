@@ -41,9 +41,7 @@ const NavBar = () => {
     navLinks = (
       <>
 
-        <div>
-          <p className="welcome">Good vibes, {user.first_name}! </p>
-        </div>
+        
         <ProfileButton user={user} />
       </>
     );

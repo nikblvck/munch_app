@@ -1,13 +1,9 @@
-button {
+/* button {
   border: none;
   background-color: transparent;
   padding: 0px;
-}
+} */
 
-.delete_btn{
-  background-color: transparent;
-  border-radius: 5px;
-}
 
 .home_feed_container h2 {
   text-align: center;
@@ -70,7 +66,7 @@ button {
   justify-content: space-between;
   align-items: center;
   text-align: left;
-  height: 600px;
+  height: 700px;
   overflow-y: scroll;
   border: 1px solid #222222;
   flex-basis: 100%;
@@ -185,6 +181,10 @@ div.home_feed_header {
   justify-content: flex-start;
   align-items: center;
 }
+
+a::hover{
+  color: #e20000;
+}
 @media screen and (max-width: 600px) {
   .individual_post {
     height: 350px;
@@ -193,4 +193,9 @@ div.home_feed_header {
     border-radius: 30px;
     overflow: hidden;
   }
+}
+
+.delete_btn{
+  font-size: 1.5em;
+  z-index: 3;
 }
