@@ -17,10 +17,12 @@ def validation_errors_to_error_messages(validation_errors):
     return errorMessages
 
 
-@search_routes.route('')
+
+@search_routes.route('/')
 def search():
   term = request.args.get('x')
-  search_results = Post.query.filter(Post.title.ilike(f'%{term}%')).all()
-  if search_results:
-    result = {post.id: post.to_dict() for post in search_results}
-  return jsonify({'posts': result})
+  if term == None:
+    return jsonify({'error': 'No search term provided'})
+  else:
+    search_results = Post.query.filter(Post.title.ilike(f'%{term}%')).all()
+    return jsonify({'search_results': [post.to_dict() for post in search_results]})

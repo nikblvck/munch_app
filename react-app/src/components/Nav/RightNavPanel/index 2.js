@@ -8,7 +8,7 @@ import "../SideNavs.css";
 function RightNavPanel() {
  const [users, setUsers] = useState([]);
  const user = useSelector((state) => state?.session?.user);
-
+ console.log(users);
  useEffect(() => {
 		async function fetchData() {
 			const response = await fetch("/api/users/");
@@ -23,13 +23,13 @@ function RightNavPanel() {
  }
  const userComponents = users?.map((user) => {
 		return (
-			<div className="users_list" key={user.id}>
-				<ul className="user">
+			<div className="user" key={user.id}>
+				<ul>
 					<li key={user.profile_img_url}>
 						<img className="rnav_profile_img" src={user.profile_img_url} />
 					</li>
-					<li key={user.id}>
-						<NavLink to={`/users/${user.id}`}><p className="rnav_username">{user.username}</p></NavLink>
+					<li className="usersList" key={user.id}>
+						<NavLink to={`/users/${user.id}`}>{user.username}</NavLink>
 					</li>
 				</ul>
 			</div>
@@ -41,9 +41,9 @@ function RightNavPanel() {
 			<div className="right_nav_container">
 				<div className="right_nav_options">
 				 <div className="user_list_header">
-					 <h1 className="right_nav_title">Munchers</h1>
+					 <h3 className="right_nav_title">Munchers</h3>
 					 </div>
-					 <div className="users_list">
+					 <div>
 				{userComponents}
 				</div>
 				</div>

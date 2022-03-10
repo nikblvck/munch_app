@@ -64,7 +64,7 @@ button {
 .individual_post {
   border-radius: .5rem;
   background-color: rgba(252, 252, 251, .8);
-  margin: 40px;
+  margin: 25px auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -73,6 +73,7 @@ button {
   height: 600px;
   overflow-y: scroll;
   border: 1px solid #222222;
+  flex-basis: 100%;
 }
 
 

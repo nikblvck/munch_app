@@ -23,7 +23,9 @@ body {
 a, button {
     cursor: revert;
 }
-
+a:hover{
+    color: #e20000;
+}
 ol, ul, menu {
     list-style: none;
 }
@@ -74,7 +76,7 @@ button{
   -webkit-border-radius: 10;
   -moz-border-radius: 10;
   border-radius: 10px;
-  color: #ff042e;
+  color: #444444;
   font-size: 1em;
   padding: 10px 20px 10px 20px;
   text-decoration: none;
@@ -83,7 +85,7 @@ button{
 }
 
 button:hover {
-  color: #0058db;
+  color: #e20000;
 }
 
 h1 {

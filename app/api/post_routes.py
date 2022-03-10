@@ -18,7 +18,6 @@ def validation_errors_to_error_messages(validation_errors):
 
 
 
-
 # CREATE
 @post_routes.route('/new/', methods=['POST'])
 @login_required
@@ -70,6 +69,7 @@ def posts_by_category(category_id):
 def post(id):
     post = Post.query.get(id)
     return jsonify(post.to_dict())
+
 
 # UPDATE
 @post_routes.route('/<int:id>/', methods=['PUT'])

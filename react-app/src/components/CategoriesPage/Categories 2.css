@@ -1,0 +1,18 @@
+h1.category_title{
+  color: red;
+  margin-top: 400px !important;
+}
+
+.category_header {
+  margin-top: 100px;
+  color: white;
+  font-size: 2.5em;
+}
+
+.individual_post#category {
+  display: flex;
+  justify-content: center;
+  height: 500px;
+  width: 500px;
+}
+
