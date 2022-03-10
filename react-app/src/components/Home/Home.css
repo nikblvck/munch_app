@@ -73,7 +73,7 @@ button {
   height: 600px;
   overflow-y: scroll;
   border: 1px solid #222222;
-
+}
 
 
 .individual_post::-webkit-scrollbar{
