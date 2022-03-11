@@ -21,7 +21,7 @@ function ProfilePage() {
 			const user = await response.json();
 			setUser(user);
 		})();
-	}, [userId]);
+	}, [userId, user]);
 
 	console.log(user);
   console.log(user.post_list)
@@ -32,12 +32,10 @@ function ProfilePage() {
 
   const handleDelete = (id) => {
 		dispatch(deletePost(id))
-    (async () => {
-			const response = await fetch(`/api/users/${userId}`);
-			const user = await response.json();
-			setUser(user);
-		})();
+		.then(() => setUser(user))
+
 	};
+
 	return (
 		<>
 			<div className="home_feed_container" id="profile">
