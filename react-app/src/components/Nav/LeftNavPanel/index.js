@@ -24,7 +24,7 @@ function LeftNavPanel() {
 			<div className="left_nav_container">
 				<div className="left_nav_options">
 				 <div className="category_list_header">
-					 <h3 className="left_nav_title">Categories</h3>
+					 <h1 className="left_nav_title">Categories</h1>
 					</div>
 					<div className="categories_list">
 						{categoriesArr?.map((category) => (

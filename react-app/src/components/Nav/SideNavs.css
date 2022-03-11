@@ -14,33 +14,47 @@
 .right_nav_container{
   background-color: rgba(255, 255, 255, .8);
   right: 0;
-  overflow-y: scroll;
+    overflow-y: scroll;
+
+}
+.right_nav_title, .left_nav_title{
+  margin: 10px;
+  font-size: 1.5em;
+  font-weight: 200;
+  text-align: center;
+}
+.users_list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+}
+.right_nav_container::-webkit-scrollbar{
+  display:none;
 }
 
-.users_list {
-  display: flex;
-  flex-direction: column;
-  align-items: space-between;
-}
 .user {
   display: flex;
-  flex-direction: row;
+  box-sizing: border-box;
+  height: 100px;
+  width: 120px;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  padding: .5em;
-  border-bottom: 1px solid #222222;
+  justify-content: center;
+  margin: .25rem;
+  border: 1px solid #888888a1;
+  border-radius: .3rem;
 }
 .rnav_profile_img {
   height: 50px;
   width:50px;
   border-radius: 50%;
 }
-.left_nav_title{
-  font-size: 1.25em;
-  font-weight: 300;
-  color: #0058db;
-  margin-top: 20px;
+
+.rnav_username{
+  font-size: .95em;
+  text-align: center;
 }
+
 .category_list_header{
   margin-bottom: 5px;
   justify-content: center;
@@ -63,7 +77,7 @@
   padding: .25em;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1400px) {
   .left_nav_container, .right_nav_container {
     display: none;
   }

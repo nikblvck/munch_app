@@ -29,10 +29,9 @@ function HomeFeed() {
   }
 
 	const handleLikePost = async (post_id) => {
-		console.log('xxxxxxxxxxxxxx')
-		console.log(post_id)
+
 		await dispatch(likePost(post_id))
-		setIsLoaded(false)
+		await dispatch(getPosts())
 	}
   return (
 		<>
@@ -57,9 +56,7 @@ function HomeFeed() {
 										key={post?.username}
 										id="post_username"
 									>
-										<Link to={`/users/${post?.user_id}`}>
-										{post?.username}
-										</Link>
+										<Link to={`/users/${post?.user_id}`}>{post?.username}</Link>
 									</div>
 								</div>
 								<div className="post_image" key={post?.image_url}>
@@ -76,33 +73,32 @@ function HomeFeed() {
 										</Link>
 									</div>
 
-
-										<>
 									<div className="likes_div">
 										<div className="like_btn">
-											<button id={post?.id} onClick={() => handleLikePost(post?.id)}>
+											<button
+												id={post?.id}
+												onClick={() => handleLikePost(post?.id)}
+											>
 												<i class="fa-solid fa-heart"></i>
 											</button>
 										</div>
-										<div className="likes_count">
-											{!post.likes ? 0 : post?.likes}
-											</div>
+										<div className="likes_count">{post?.likes}</div>
 									</div>
-									</>
-
-
 
 									{user?.id === post?.user_id && (
 										<div className="post_button_container">
 											<button className="edit_post">
-												<Link to={`/posts/${post?.id}/edit`}>Edit</Link>
+												<Link to={`/posts/${post?.id}/edit`}>
+													Edit
+													{/* <i class="fa-solid fa-square-pen"></i> */}
+												</Link>
 											</button>
 											<button
 												className="delete_btn"
 												id={post?.id}
 												onClick={(e) => handleDelete(e.target.id)}
 											>
-												Delete
+											Delete
 											</button>
 										</div>
 									)}
@@ -119,7 +115,10 @@ function HomeFeed() {
 											Be The First To Add A Comment!
 										</Link>
 									) : (
-										<Link to={`/posts/${post?.id}`}>View Comments</Link>
+										<Link to={`/posts/${post?.id}`}>
+											<i className="fa-regular fa-comment-dots"></i>
+											{post?.comment_list?.length}
+										</Link>
 									)}
 								</div>
 							</div>

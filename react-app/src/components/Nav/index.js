@@ -19,16 +19,16 @@ const NavBar = () => {
   if (!user) {
     navLinks = (
       <>
-          <div>
+          <div className="nav_left_login">
             <DemoUser />
           </div>
-          <div key="nav_left_login">
+          <div className="nav_left_login">
             <NavLink to="/login" className="nav_link"><button>
               Log In
             </button>
             </NavLink>
           </div>
-          <div key="nav_left_signup">
+          <div className="nav_left_signup">
             <NavLink to="/signup" className="nav_link">
               <button>
                 Sign Up
@@ -41,9 +41,7 @@ const NavBar = () => {
     navLinks = (
       <>
 
-        <div>
-          <p className="welcome">Good vibes, {user.first_name}! </p>
-        </div>
+
         <ProfileButton user={user} />
       </>
     );
@@ -65,9 +63,9 @@ const NavBar = () => {
             <AboutButton />
           </div>
         </div>
-        <div className="center_nav">
+        {/* <div className="center_nav">
           <SearchBar />
-        </div>
+        </div> */}
         <div className="right_nav">
           {navLinks}
         </div>
