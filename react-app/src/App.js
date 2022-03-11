@@ -12,7 +12,6 @@ import SplashPage from './components/Splash';
 import CategoriesPage from './components/CategoriesPage';
 import PageNotFound from './components/PageNotFound';
 import ProtectedRoute from './components/auth/ProtectedRoute';
-import Search from './components/Search';
 import { authenticate } from "./store/session";
 import SinglePost from './components/Posts/SinglePost';
 
@@ -63,9 +62,6 @@ function App() {
 				<ProtectedRoute path="/users/:userId" exact={true}>
 					<ProfilePage />
 				</ProtectedRoute>
-				<Route path="/search">
-					<Search />
-				</Route>
 				<Route>
 					<PageNotFound />
 				</Route>

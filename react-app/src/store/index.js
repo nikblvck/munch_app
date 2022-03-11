@@ -5,15 +5,13 @@ import posts from "./posts";
 import categories from "./categories";
 import comments from "./comments";
 import users from "./users";
-import search from "./search"
 
 const rootReducer = combineReducers({
   session,
   posts,
   categories,
   comments,
-  users,
-  search
+  users
 });
 
 let enhancer;
