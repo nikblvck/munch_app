@@ -60,6 +60,7 @@ function SinglePost() {
       if (data) {
         setErrors(data);
       }
+      await dispatch(getComments(post_id));
     }
   };
 
