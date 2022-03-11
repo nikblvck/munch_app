@@ -48,8 +48,8 @@ function EditPostPage() {
         setErrors(data);
 
       } else {
-        history.push(`/posts`);
-      }
+      await dispatch(getOnePost(postId.id));
+    }
     }
   };
 
@@ -119,8 +119,8 @@ function EditPostPage() {
               </select>
 
               <div className="new_post_btns">
-                <button type="submit "> Save</button>
-                <button type="cancel" onClick={() => history.push("/posts")}>
+                <button className="delete_btn" type="submit "> Save</button>
+                <button className="delete_btn" type="cancel" onClick={() => history.push("/posts")}>
                   Cancel
                 </button>
               </div>

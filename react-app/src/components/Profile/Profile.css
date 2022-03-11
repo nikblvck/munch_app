@@ -1,49 +1,87 @@
 .profile_container{
   display: flex;
   flex-direction: column;
-  align-items: center;
-  overflow-y: scroll;
-}
-.profile_header{
-  height: 400px;
+  height: 1000px;
   width: 800px;
 }
+#profile{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
 
-.profile_header_image{
-  height: 200px;
-  width: 200px;
-  border-radius: 200px;
+}
+.profile_header{
+  box-sizing: border-box;
+  margin: 30px auto;
+  height: 400px;
+  width: 800px;
+  background-color:rgba(252, 252, 251, .8);
+  border-radius: .5rem;
+  border: 1px solid #e20000
 }
 
+
+.profile_header_top{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.profile_header_image{
+  box-sizing:border-box;
+  padding: 20px;
+  height: 250px;
+  width: 250px;
+  border-radius: 250px;
+}
+.user_bio{
+  box-sizing: border-box;
+  padding: 20px;
+  margin: auto;
+  justify-content: center;
+  align-items: center;;
+}
 .user_posts_container{
+  margin-top: 5em;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  height: 400px;
+  width: 800px;
+  background-color: rgba(252, 252, 251, .8);
+  border-radius: .5rem;
+  border: 1px solid #e20000;
 
 }
 
 .user_posts {
-
+  height: 400px;
+  width: 800px;
+  overflow-y: scroll;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 800px;
-  height: 400px;
+}
+
+.user_posts::-webkit-scrollbar{
+  display:none;
 }
 
 .individual_profile_post {
   border-radius: .5rem;
   background-color: rgba(252, 252, 251, .8);
-  margin: 20px;
+  margin: 10px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   text-align: left;
-  height: 300px;
-  width:300px;
+  height: 250px;
+  width:250px;
   box-sizing: border-box;
   padding: 10px;
   border: 1px solid #222222;
@@ -57,7 +95,8 @@
 }
 
 .profile_post_image{
-  height: 175px;
+  height: 155px;
+  max-width:230px;
   overflow-y: hidden;
 
 }
@@ -72,13 +111,13 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 300px;
+  width: 200px;
   height: 20px;
 }
 
 .profile_post_caption{
   height: 60px;
-  width: 260px;
+  width: 240px;
   overflow-y: scroll;
   border: .8px solid #666666;
   border-radius: .5rem;
@@ -87,5 +126,18 @@
 }
 
 .profile_post_caption::-webkit-scrollbar{
+  display: none;
+}
+
+.strong{
+  font-weight: 400;
+}
+
+.user_bio{
+  height: 100px;
+  overflow-y: scroll;
+}
+
+.user_bio::-webkit-scrollbar{
   display: none;
 }

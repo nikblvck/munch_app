@@ -30,8 +30,10 @@ function SinglePost() {
 
   useEffect(() => {
     async function fetchData() {
-      await dispatch(getOnePost(id));
-      await dispatch(getComments(id));
+      await Promise.all([
+        dispatch(getOnePost(id)),
+    dispatch(getComments(id))
+      ])
       setIsLoaded(true);
     }
     fetchData();
@@ -80,7 +82,7 @@ function SinglePost() {
 
   };
 
-  const handleEdit = async (id) => {
+  const handleEdit = async () => {
     const comment_id = editCommentId;
     const post_id = post.id;
     const content = editContent;
@@ -99,19 +101,21 @@ function SinglePost() {
         setErrors(data);
 
       } else {
-           setEditContent("");
-    showEditModal(false);
+
+          await dispatch(getComments(post_id));
+
+
       }
   };
 
 
 
-  useEffect(() => {
-    async function fetchComments() {
-      if (!loaded) await dispatch(getComments(id));
-    }
-    fetchComments();
-  }, [dispatch, loaded, id]);
+  // useEffect(() => {
+  //   async function fetchComments() {
+  //     if (!loaded) await dispatch(getComments(id));
+  //   }
+  //   fetchComments();
+  // }, [dispatch, loaded, id]);
 
   return (
     <>
@@ -128,7 +132,7 @@ function SinglePost() {
           <div className="individual_post_container">
             <div className="post_header_profileid">
               <div className="header_profile_img">
-                <img src={post?.user_profile_image} alt="profile_pic" />{" "}
+                <img className="post_header_image" src={post?.user_profile_image} alt="profile_pic" />{" "}
               </div>
               <div
                 className="header_username"

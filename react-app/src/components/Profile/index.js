@@ -40,21 +40,27 @@ function ProfilePage() {
 	};
 	return (
 		<>
-			<div className="home_feed_container">
-				<div className="post_container">
+			<div className="home_feed_container" id="profile">
+				<div className="profile_container">
 					<div className="profile_header">
-						<div className="profile_header_img">
-							<img
-								className="profile_header_image"
-								src={user?.profile_img_url}
-								alt="profile_pic"
-							/>
+						<div className="profile_header_top">
+							<div className="profile_header_username">
+								<h2 classname="profile_username">{user?.username}</h2>
+							</div>
+							<div className="profile_header_img">
+								<img
+									className="profile_header_image"
+									src={user?.profile_img_url}
+									alt="profile_pic"
+								/>
+							</div>
 						</div>
-						<div className="profile_header_username">
-							<h2 classname="profile_username">{user?.username}</h2>
-						</div>
+
 						<div className="user_bio">
+							<p className="strong">Bio</p>
 							<p>{user?.bio}</p>
+							<p className="strong">Member Since</p>
+							<p>{user?.member_since}</p>
 						</div>
 						<div className="user_posts_container">
 							<div className="user_posts_header">
@@ -89,7 +95,8 @@ function ProfilePage() {
 												<p>{post?.likes}</p>
 											</div>
 											<div className="profile_post_caption">
-												{post?.caption}
+												{!post?.caption && <p>No Caption</p>}
+												{post?.caption && <p>{post?.caption}</p>}
 											</div>
 										</div>
 									</>

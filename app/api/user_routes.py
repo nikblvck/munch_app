@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required
-from app.models import User
+from app.models import User, Post
 
 user_routes = Blueprint('users', __name__)
 
@@ -8,7 +8,7 @@ user_routes = Blueprint('users', __name__)
 @user_routes.route('/')
 @login_required
 def users():
-    users = User.query.all()
+    users = User.query.limit(12)
     return {'users': [user.to_dict() for user in users]}
 
 

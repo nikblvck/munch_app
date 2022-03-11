@@ -89,7 +89,8 @@ function HomeFeed() {
 										<div className="post_button_container">
 											<button className="edit_post">
 												<Link to={`/posts/${post?.id}/edit`}>
-													<i class="fa-solid fa-square-pen"></i>
+													Edit
+													{/* <i class="fa-solid fa-square-pen"></i> */}
 												</Link>
 											</button>
 											<button
@@ -97,7 +98,7 @@ function HomeFeed() {
 												id={post?.id}
 												onClick={(e) => handleDelete(e.target.id)}
 											>
-												<i className="fa-solid fa-xmark"></i>
+											Delete
 											</button>
 										</div>
 									)}

@@ -21,6 +21,8 @@ function RightNavPanel() {
 	if (!user) {
 		return null;
 	}
+
+	
 	const userComponents = users?.map((user) => {
 		return (
 			<div className="users_list" key={user.id}>

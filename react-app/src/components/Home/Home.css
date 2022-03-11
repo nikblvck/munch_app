@@ -22,7 +22,6 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -185,6 +184,10 @@ div.home_feed_header {
 a::hover{
   color: #e20000;
 }
+
+.edit_post, .delete_btn{
+  padding: 0px 15px;
+}
 @media screen and (max-width: 600px) {
   .individual_post {
     height: 350px;
@@ -196,6 +199,5 @@ a::hover{
 }
 
 .delete_btn{
-  font-size: 1.5em;
   z-index: 3;
 }
