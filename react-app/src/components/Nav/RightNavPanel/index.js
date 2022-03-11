@@ -10,19 +10,22 @@ function RightNavPanel() {
 	const user = useSelector((state) => state?.session?.user);
 
 	useEffect(() => {
+		if(!user) {
+			return;
+		}
 		async function fetchData() {
 			const response = await fetch("/api/users/");
 			const responseData = await response.json();
 			setUsers(responseData.users);
 		}
 		fetchData();
-	}, []);
+	}, [user]);
 
-	if (!user) {
-		return null;
-	}
+if (!user) {
+	return null;
+}
 
-	
+
 	const userComponents = users?.map((user) => {
 		return (
 			<div className="users_list" key={user.id}>

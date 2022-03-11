@@ -48,7 +48,7 @@ function EditPostPage() {
         setErrors(data);
 
       } else {
-      await dispatch(getOnePost(postId.id));
+         history.push('/posts')
     }
     }
   };
