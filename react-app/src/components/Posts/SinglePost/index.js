@@ -144,7 +144,14 @@ function SinglePost() {
               </div>
             </div>
             <div className="individual_post_image_container">
-              <img className="post_img"  src={post?.image_url} alt="post" />
+             {post?.images?.map((image, index) => (
+                <img
+                  className="individual_post_image"
+                  key={index}
+                  src={image.url}
+                  alt="post_image"
+                />
+              ))}
             </div>
             <div className="individual_post_caption_container">
               <p>{post?.caption}</p>

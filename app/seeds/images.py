@@ -7,6 +7,10 @@ def seed_images():
     {
         'url': 'https://res.cloudinary.com/bigtechnik/image/upload/v1645954902/munch/vegetarian%20burger.jpg',
         'post_id': 1},
+      {
+        'url': 'https://res.cloudinary.com/bigtechnik/image/upload/v1647814368/munch/Vegetarian_02.jpg',
+        'post_id': 1
+    },
     {
         'url': 'https://res.cloudinary.com/bigtechnik/image/upload/v1645955547/munch/Mexican_HomemadeTacos2.jpg',
         'post_id': 2
@@ -139,7 +143,7 @@ def seed_images():
         'url': 'https://res.cloudinary.com/bigtechnik/image/upload/v1646857732/munch/FromScratch_EggNoodles.jpg',
         'post_id': 34
     }
-]
+  ]
 
   for image in images:
     new_image=Image(**image)

@@ -9,7 +9,7 @@ function HomeFeed() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state?.session?.user);
   const posts = useSelector((state) => state?.posts?.posts);
-
+	console.log(posts)
 
 
   useEffect(() => {
@@ -62,7 +62,7 @@ function HomeFeed() {
 								<div className="post_image" key={post?.image_url}>
 									<Link to={`/posts/${post?.id}`}>
 										<img
-											src={post?.image_url}
+											src={post?.images[0].url}
 											alt={post?.title}
 											className="post_image"
 										/>

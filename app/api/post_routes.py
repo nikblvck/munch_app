@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import db, Post, Comment, Like, User
+from app.models import db, Post, Comment, Like, User, Image
 from app.forms import NewPost
 
 post_routes = Blueprint('posts', __name__)
@@ -93,11 +93,14 @@ def delete_post(id):
     post = Post.query.get(id)
     likes = Like.query.filter_by(post_id=id).all()
     comments = Comment.query.filter_by(post_id=id).all()
+    images = Image.query.filter_by(post_id=id).all()
     if post.user_id == current_user.id:
         for like in likes:
             db.session.delete(like)
         for comment in comments:
             db.session.delete(comment)
+        for image in images:
+            db.session.delete(image)
         db.session.delete(post)
         db.session.commit()
         return jsonify('Success! Post deleted.')
