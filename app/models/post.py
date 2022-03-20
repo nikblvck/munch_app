@@ -4,7 +4,6 @@ class Post (db.Model):
   __tablename__ = 'posts'
 
   id = db.Column(db.Integer, primary_key=True)
-  image_url = db.Column(db.String(255), nullable=False)
   caption = db.Column(db.Text(), nullable=True)
   category_id = db.Column(db.Integer, db.ForeignKey('categories.id'), nullable=False)
   user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
@@ -15,15 +14,13 @@ class Post (db.Model):
   category = db.relationship('Category', back_populates='post', lazy=True)
   comments = db.relationship('Comment', back_populates='post', lazy=True)
   likes = db.relationship('Like', back_populates='post', lazy=True)
+  images = db.relationship('Image', back_populates='post', lazy=True)
 
-  def most_liked(self):
-    return Post.query.order_by(Post.likes.desc()).limit(2)
-    
 
-  def to_dict(self):
-    return {
+  def to_dict_with_images(self):
+    return{
       'id': self.id,
-      'image_url': self.image_url,
+      'images': [image.to_dict() for image in self.images],
       'caption': self.caption,
       'category_id': self.category_id,
       'user_id': self.user_id,
@@ -34,5 +31,22 @@ class Post (db.Model):
       'created_at': self.created_at,
       'updated_at': self.updated_at,
       'category_name': self.category.name,
-      'user_profile_image': self.user.profile_img_url
+    }
+
+
+  def to_dict(self):
+    return {
+      'id': self.id,
+      'caption': self.caption,
+      'category_id': self.category_id,
+      'user_id': self.user_id,
+      'username': self.user.username,
+      'likes': len(self.likes),
+      'comments': len(self.comments),
+      'comment_list': [comment.to_dict() for comment in self.comments],
+      'created_at': self.created_at,
+      'updated_at': self.updated_at,
+      'category_name': self.category.name,
+      'user_profile_image': self.user.profile_img_url,
+      'images': [image.to_dict() for image in self.images]
     }
