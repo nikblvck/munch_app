@@ -1,7 +1,13 @@
+from dataclasses import dataclass
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import db, Post, Comment, Like, User, Image
 from app.forms import NewPost
+from app.s3_helpers import (
+    upload_file_to_s3,
+    allowed_file,
+    get_unique_filename
+)
 
 post_routes = Blueprint('posts', __name__)
 
@@ -16,25 +22,65 @@ def validation_errors_to_error_messages(validation_errors):
             errorMessages.append(f'{field} : {error}')
     return errorMessages
 
+#CREATE
+#Creates a new post with image(s) uploaded to S3
 
 
-# CREATE
-@post_routes.route('/new/', methods=['POST'])
+@post_routes.route('/new', methods=['POST'])
 @login_required
 def new_post():
     form = NewPost()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        new_post = Post(
-            image_url=form.image_url.data,
-            caption=form.caption.data,
+        post = Post(
             user_id=current_user.id,
+            caption=form.caption.data,
             category_id=form.category_id.data
         )
-        db.session.add(new_post)
+    #Adds the post to the database
+        db.session.add(post)
         db.session.commit()
-        return jsonify(new_post.to_dict())
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+    #Creates a new single image object
+    if "image" not in request.files:
+        return {"errors": "image required"}, 400
+
+    image = request.files['image']
+
+    if not allowed_file(image.filename):
+        return { "errors" : "file type not permitted"}, 400
+
+    image.filename = get_unique_filename(image.filename)
+
+    upload = upload_file_to_s3(image)
+    if "url" not in upload:
+        return { "errors" : "image upload failed"}, 400
+    url = upload['url']
+    #Creates a new image object
+    new_image = Image(url=url, post_id=post.id)
+    #Adds the image to the database
+    db.session.add(new_image)
+    db.session.commit()
+    #Returns the post object
+    return jsonify(post.to_dict()), 201
+
+
+
+# @post_routes.route('/new/', methods=['POST'])
+# @login_required
+# def new_post():
+
+#     form = NewPost()
+#     form['csrf_token'].data = request.cookies['csrf_token']
+#     if form.validate_on_submit():
+#         new_post = Post(
+#             caption=form.caption.data,
+#             user_id=current_user.id,
+#             category_id=form.category_id.data
+#         )
+#         db.session.add(new_post)
+#         db.session.commit()
+#         return jsonify(new_post.to_dict())
+#     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
 # READ ALL
@@ -79,7 +125,6 @@ def edit_post(id):
     post = Post.query.get(id)
     if post.user_id == current_user.id:
         if form.validate_on_submit():
-            post.image_url = form.image_url.data
             post.caption = form.caption.data
             post.category_id = form.category_id.data
             db.session.commit()

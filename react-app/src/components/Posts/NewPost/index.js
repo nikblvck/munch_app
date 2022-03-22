@@ -13,13 +13,13 @@ function NewPost() {
   const dispatch = useDispatch();
   const history = useHistory();
   const user = useSelector((state) => state?.session?.user);
-  const [image_url, setImage_url] = useState('');
+  const [image, setImage] = useState([]);
   const [caption, setCaption] = useState('');
   const [category_id, setCategoryId] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
   const [errors, setErrors] = useState([]);
+  const [imageLoading, setImageLoading] = useState(false)
   const categories = useSelector((state) => state?.categories);
-  console.log(categories)
   const categoriesArray = Object?.values(categories)
 
   useEffect(() => {
@@ -27,25 +27,56 @@ function NewPost() {
 
   }, [dispatch, isLoaded]);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const newPost = {
-      image_url,
-      caption,
-      category_id,
-      user_id: user.id,
-    };
-    if (newPost) {
-      const data = await dispatch(addPost(newPost));
-      if (data) {
- ;
-        setErrors(data);
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  const formData = {
+    image,
+    caption,
+    category_id,
+  }
+  console.log(formData)
+  //AWS uploads can be slow-displaying, loading message is a good idea to show user something is happening
+  setImageLoading(true);
+  const res = await fetch('/api/posts/new', {
+    method: 'POST',
+    body: formData,
+  });
+  if (res.ok) {
+    await res.json();
+    setImageLoading(false);
+    history.push('/posts');
+  } else {
+    setImageLoading(false);
+    console.log("an error has occurred");
+  }
+}
 
-      } else {
-        history.push('/posts');
-      }
-    }
-  };
+const updateImage = (e) => {
+  const file = e.target.files[0];
+  console.log(file)
+  setImage(file)
+}
+
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+
+//     const newPost = {
+//       images,
+//       caption,
+//       category_id,
+//       user_id: user.id,
+//     };
+//     if (newPost) {
+//       const data = await dispatch(addPost(newPost));
+//       if (data) {
+//  ;
+//         setErrors(data);
+
+//       } else {
+//         history.push('/posts');
+//       }
+//     }
+//   };
 
 
 return (
@@ -56,9 +87,10 @@ return (
         <p>New Post</p>
       </div>
       <div className="post_form_content">
-        <div className="post_form_image">
+        {/* <div className="post_form_image">
           <img src={image_url} alt={caption} className="post_form_image" />
-        </div>
+        </div> */}
+
         <div className="post_form_inputs">
           <div className="form_errors">
             {!errors.length ? null : (
@@ -70,12 +102,11 @@ return (
             )}
           </div>
           <form className="post_form" onSubmit={handleSubmit}>
-            <label htmlFor="image_url">Image URL *</label>
+            <label htmlFor="image_url">Images *</label>
             <input
-              type="text"
-              name="image_url"
-              value={image_url}
-              onChange={(e) => setImage_url(e.target.value)}
+              type="file"
+              accept="image/*"
+              onChange={updateImage}
             />
             <label htmlFor="caption">Caption</label>
             <input

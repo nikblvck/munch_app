@@ -13,7 +13,6 @@ def image_url_provided(form, field):
         raise ValidationError('Please provide an image URL.')
 
 class NewPost(FlaskForm):
-    image_url=StringField('Image URL', validators=[DataRequired(), image_url_provided])
     caption=StringField('Caption')
     category_id = IntegerField('category_id', validators = [DataRequired(), category_selected])
-    submit = SubmitField('Post')
+    image = StringField('image', validators = [DataRequired()])

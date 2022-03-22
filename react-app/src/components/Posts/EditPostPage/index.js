@@ -55,7 +55,7 @@ function EditPostPage() {
 
   useEffect(() => {
     if(post) {
-      setImage_url(post.image_url);
+      setImage_url(post?.images[0]?.url);
       setCaption(post.caption);
       setCategoryId(post.category_id);
     }

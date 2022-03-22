@@ -2,6 +2,12 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getPosts, deletePost, likePost} from "../../store/posts";
+import {
+	MdFavoriteBorder,
+	MdOutlineFavoriteBorder,
+	RiEditBoxLine,
+	MdDeleteForever,
+} from "react-icons/md";
 import "./Home.css";
 
 function HomeFeed() {
@@ -62,7 +68,7 @@ function HomeFeed() {
 								<div className="post_image" key={post?.image_url}>
 									<Link to={`/posts/${post?.id}`}>
 										<img
-											src={post?.images[0].url}
+											src={post?.images[0]?.url}
 											alt={post?.title}
 											className="post_image"
 										/>
@@ -79,7 +85,7 @@ function HomeFeed() {
 												id={post?.id}
 												onClick={() => handleLikePost(post?.id)}
 											>
-												<i class="fa-solid fa-heart"></i>
+												<MdOutlineFavoriteBorder/>
 											</button>
 										</div>
 										<div className="likes_count">{post?.likes}</div>

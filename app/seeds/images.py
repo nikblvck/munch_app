@@ -20,7 +20,7 @@ def seed_images():
         'post_id': 3
     },
     {
-        'url': 'https: // res.cloudinary.com/bigtechnik/image/upload/v1645954699/munch/vegan_pineapple_pizza.png',
+        'url': 'https://res.cloudinary.com/bigtechnik/image/upload/v1645954699/munch/vegan_pineapple_pizza.png',
         'post_id': 4
     },
     {
@@ -32,7 +32,7 @@ def seed_images():
         'post_id': 6
     },
     {
-        'url': 'https: // res.cloudinary.com/bigtechnik/image/upload/v1645955428/munch/CA_Seattle_Dog.jpg',
+        'url': 'https://res.cloudinary.com/bigtechnik/image/upload/v1645955428/munch/CA_Seattle_Dog.jpg',
         'post_id': 7
     },
     {
@@ -60,7 +60,7 @@ def seed_images():
         'post_id': 13
     },
     {
-        'url': 'https://res.cloudinary.com/bigtechnik/image/upload/v1645480014/munch/xj5zs0.jpg',
+        'url': 'https://res.cloudinary.com/bigtechnik/image/upload/v1645133391/munch/image_myycfd.png',
         'post_id': 14
     },
     {
@@ -68,11 +68,11 @@ def seed_images():
         'post_id': 15
     },
     {
-        'url': 'https://res.cloudinary.com/bigtechnik/image/upload/v1645480014/munch/xj5zs0.jpg',
+        'url': 'https://res.cloudinary.com/bigtechnik/image/upload/v1645480027/munch/yppdv83xj7j81_xrzsoq.jpg',
         'post_id': 16
     },
     {
-        'url': 'https://res.cloudinary.com/bigtechnik/image/upload/v1645133437/munch/r4xlle.png',
+        'url': 'https://res.cloudinary.com/bigtechnik/image/upload/v1645133437/munch/image_r4xlle.png',
         'post_id': 17
     },
     {
