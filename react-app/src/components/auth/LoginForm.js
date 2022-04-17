@@ -60,7 +60,8 @@ const LoginForm = () => {
         />
         <div className="auth_btn_div">
         <button className ="auth_btn" type='submit'>Login</button>
-        <button className ="auth_btn"><Link to="/signup">Don't Have An Account?</Link></button>
+        <br/>
+        <button className ="auth_btn"><Link to="/signup">Don't Have An Account? Sign Up</Link></button>
         </div>
       </div>
     </form>
