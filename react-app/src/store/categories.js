@@ -1,7 +1,4 @@
 //constants
-
-import reducer from "./posts";
-
 const GET_CATEGORIES = "categories/GET_CATEGORIES";
 const GET_CATEGORY = "categories/GET_CATEGORY";
 

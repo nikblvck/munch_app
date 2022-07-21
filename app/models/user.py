@@ -13,12 +13,12 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     is_admin=db.Column(db.Boolean, default=False)
     hashed_password = db.Column(db.String(255), nullable=False)
-    profile_img_url = db.Column(db.String(255), nullable=False, default='https://res.cloudinary.com/bigtechnik/image/upload/v1645603921/munch/image_luhr2p.jpg')
+    profile_img = db.Column(db.String(255), nullable=False, default='https://res.cloudinary.com/bigtechnik/image/upload/v1645603921/munch/image_luhr2p.jpg')
     bio=db.Column(db.Text, nullable=False, default='I am a new muncher!')
     created_at = db.Column(db.DateTime, nullable=False, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, nullable=False, server_default=db.func.now(), onupdate=db.func.now())
 
-    post = db.relationship('Post', back_populates='user', lazy=True)
+    posts = db.relationship('Post', back_populates='user', lazy=True)
     comments = db.relationship('Comment', back_populates='user', lazy=True)
     likes = db.relationship('Like', back_populates='user', lazy=True)
 
@@ -48,9 +48,9 @@ class User(db.Model, UserMixin):
             'last_name': self.last_name,
             'is_admin': self.is_admin,
             'created_at': self.created_at,
-            'post_count': len(self.post),
-            'post_list': [post.to_dict() for post in self.post],
-            'profile_img_url': self.profile_img_url,
+            'post_count': len(self.posts),
+            'post_list': [post.to_dict() for post in self.posts],
+            'profile_img': self.profile_img,
             'bio': self.bio,
             'member_since': self.member_since(),
         }
