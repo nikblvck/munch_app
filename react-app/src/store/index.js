@@ -9,7 +9,7 @@ import users from "./users";
 const rootReducer = combineReducers({
   session,
   posts,
-  categories,
+  // categories,
   comments,
   users
 });

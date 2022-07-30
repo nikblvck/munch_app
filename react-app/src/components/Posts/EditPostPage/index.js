@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { getOnePost, editPost} from "../../../store/posts";
 import { getCategories } from "../../../store/categories";
-import '../PostForm.css'
 
 
 function EditPostPage() {

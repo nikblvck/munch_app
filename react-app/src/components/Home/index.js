@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getPosts, deletePost, likePost} from "../../store/posts";
-import "./Home.css";
+
 
 function HomeFeed() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -59,13 +59,21 @@ function HomeFeed() {
 										<Link to={`/users/${post?.user_id}`}>{post?.username}</Link>
 									</div>
 								</div>
-								<div className="post_image" key={post?.image_url}>
+								<div className="post_images_container" key={post?.images}>
 									<Link to={`/posts/${post?.id}`}>
-										<img
+										{post?.images?.map((image) => (
+											<img
+												className="post_image_img"
+												src={image.url}
+												alt="post_image"
+												key={image?.id}
+											/>
+										))}
+										{/* <img
 											src={post?.image_url}
 											alt={post?.title}
 											className="post_image"
-										/>
+										/> */}
 									</Link>
 									<div className="post_category">
 										<Link to={`/categories/${post?.category_name}`}>

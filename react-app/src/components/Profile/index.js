@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import { deletePost } from '../../store/posts';
-import './Profile.css';
+
 
 
 function ProfilePage() {

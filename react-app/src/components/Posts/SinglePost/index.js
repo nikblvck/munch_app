@@ -9,8 +9,7 @@ import {
   deleteComment,
   getComment,
 } from "../../../store/comments";
-import './SinglePost.css'
-import './PostIdPage.css'
+
 import { Modal } from "../../../context/Modal";
 
 
@@ -144,7 +143,7 @@ function SinglePost() {
               </div>
             </div>
             <div className="individual_post_image_container">
-              <img className="post_img"  src={post?.image_url} alt="post" />
+              <img className="post_img"  src={post?.images} alt="post" />
             </div>
             <div className="individual_post_caption_container">
               <p>{post?.caption}</p>
@@ -176,7 +175,7 @@ function SinglePost() {
             </div>
           </div>
 
-          {!post.comments ? (
+          {/* {!post?.comments ? (
             <>
               <div className="comment_list_container">
                 <div className="comment_list_header">
@@ -189,7 +188,7 @@ function SinglePost() {
             <>
               <div className="comment_list_container">
                 <div className="comment_list" id="comments">
-                  {post.comment_list.map((comment) => (
+                  {post?.comment_list.map((comment) => (
                     <>
                       <div className="individual_comment_container">
                         <span className="comment_username">
@@ -273,7 +272,7 @@ function SinglePost() {
                 </div>
               </div>
             </>
-          )}
+          )} */}
         </div>
       </div>
     </>
