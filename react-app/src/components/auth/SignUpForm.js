@@ -2,7 +2,7 @@ import React, { useState, useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect, useHistory} from 'react-router-dom';
 import { signUp } from '../../store/session';
-
+import './Auth.css';
 
 const SignUpForm = () => {
   const history = useHistory();

@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { useHistory } from 'react-router';
-import './PageNotFound.css';
 
 function PageNotFound() {
     const history = useHistory();

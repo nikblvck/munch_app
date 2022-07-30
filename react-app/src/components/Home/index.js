@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getPosts, deletePost, likePost} from "../../store/posts";
-
+import './Home.css'
 
 function HomeFeed() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -60,10 +60,11 @@ function HomeFeed() {
 									</div>
 								</div>
 								<div className="post_images_container" key={post?.images}>
+									<div className="post_images">
 									<Link to={`/posts/${post?.id}`}>
 										{post?.images?.map((image) => (
 											<img
-												className="post_image_img"
+												className="post_img"
 												src={image.url}
 												alt="post_image"
 												key={image?.id}
@@ -75,6 +76,7 @@ function HomeFeed() {
 											className="post_image"
 										/> */}
 									</Link>
+									</div>
 									<div className="post_category">
 										<Link to={`/categories/${post?.category_name}`}>
 											{post?.category_name}

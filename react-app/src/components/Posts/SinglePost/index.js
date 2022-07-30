@@ -110,72 +110,77 @@ function SinglePost() {
 
 
 
-  // useEffect(() => {
-  //   async function fetchComments() {
-  //     if (!loaded) await dispatch(getComments(id));
-  //   }
-  //   fetchComments();
-  // }, [dispatch, loaded, id]);
 
   return (
-    <>
-      <div className="home_feed_container">
-        <div className="post_content">
-          <div className="back_button">
-            <button
-              className="white_link"
-              onClick={() => history.push("/posts")}
-            >
-              Back to Posts
-            </button>
-          </div>
-          <div className="individual_post_container">
-            <div className="post_header_profileid">
-              <div className="header_profile_img">
-                <img className="post_header_image" src={post?.user_profile_image} alt="profile_pic" />{" "}
-              </div>
-              <div
-                className="header_username"
-                key={post?.username}
-                id="post_username"
-              >
-                {post?.username}
-              </div>
-            </div>
-            <div className="individual_post_image_container">
-              <img className="post_img"  src={post?.images} alt="post" />
-            </div>
-            <div className="individual_post_caption_container">
-              <p>{post?.caption}</p>
-            </div>
-          </div>
-          <div className="individual_post_container">
-            <div className="add_comment_container">
-              <div className="auth_errors">
-                {!errors.length ? null : (
-                  <div>
-                    {errors.map((error) => (
-                      <div key={error}>{error}</div>
-                    ))}
-                  </div>
-                )}
-              </div>
-              <form onSubmit={handleSubmit}>
-                <textarea
-                  className="add_comment_textarea"
-                  name="comment"
-                  placeholder="Add a comment..."
-                  onChange={(e) => setContent(e.target.value)}
-                  value={content}
-                />
-                <div className="option_btns">
-                  <button type="submit">Save</button>
-                </div>
-              </form>
-            </div>
-          </div>
+		<>
+			<div className="home_feed_container">
+				<div className="post_content">
+					<div className="back_button">
+						<button
+							className="white_link"
+							onClick={() => history.push("/posts")}
+						>
+							Back to Posts
+						</button>
+					</div>
+					<div className="individual_post_container">
+						<div className="post_header_profileid">
+							<div className="header_profile_img">
+								<img
+									className="post_header_image"
+									src={post?.user_profile_image}
+									alt="profile_pic"
+								/>{" "}
+							</div>
+							<div
+								className="header_username"
+								key={post?.username}
+								id="post_username"
+							>
+								{post?.username}
+							</div>
+						</div>
+						<div className="post_images_container">
+							{post?.images?.map((image) => (
+								<img
+									className="post_image_img"
+									src={image.url}
+									alt="post_image"
+									key={image?.id}
+								/>
+							))}
+						</div>
+						<div className="individual_post_caption_container">
+							<p>{post?.caption}</p>
+						</div>
+					</div>
+					<div className="individual_post_container">
+						<div className="add_comment_container">
+							<div className="auth_errors">
+								{!errors.length ? null : (
+									<div>
+										{errors.map((error) => (
+											<div key={error}>{error}</div>
+										))}
+									</div>
+								)}
+							</div>
+							<form onSubmit={handleSubmit}>
+								<textarea
+									className="add_comment_textarea"
+									name="comment"
+									placeholder="Add a comment..."
+									onChange={(e) => setContent(e.target.value)}
+									value={content}
+								/>
+								<div className="option_btns">
+									<button type="submit">Save</button>
+								</div>
+							</form>
+						</div>
+					</div>
 
-          {/* {!post?.comments ? (
+					{/* {!post?.comments ? (
             <>
               <div className="comment_list_container">
                 <div className="comment_list_header">
@@ -273,10 +278,10 @@ function SinglePost() {
               </div>
             </>
           )} */}
-        </div>
-      </div>
-    </>
-  );
+				</div>
+			</div>
+		</>
+	);
 }
 
 export default SinglePost;

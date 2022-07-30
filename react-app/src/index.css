@@ -11,13 +11,12 @@
     box-sizing: border-box;
 }
 html{
-    background-color: rgb(241, 241, 241)
+    background-color: #EAF1F5;
 }
 
 
 body {
-  font-family: 'Lato', sans-serif;
-  font-weight: 200;
+  font-family: 'Museo Sans Display', sans-serif;
 }
 
 a, button {
@@ -102,11 +101,7 @@ h1 {
 
 }
 
-/* .main_container {
-    margin: 0 auto auto auto;
-    height: 800px;
-    max-height: 1050px;
-} */
+
 
 input[type=search]::-ms-clear {  display: none; width : 0; height: 0; }
 input[type=search]::-ms-reveal {  display: none; width : 0; height: 0; }
