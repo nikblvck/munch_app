@@ -6,16 +6,24 @@ import "../SideNavs.css";
 
 function LeftNavPanel() {
 	const dispatch = useDispatch();
+	const [isLoaded, setIsLoaded] = useState(false);
 	const user = useSelector((state) => state?.session?.user);
-	const categories = useSelector((state) => state?.categories);
-	const categoriesArr = Object.values(categories);
+	const categories = useSelector((state) => state?.categories?.categories);
+
 	useEffect(() => {
 		async function fetchData() {
 			await dispatch(getCategories());
+			setIsLoaded(true);
 		}
 		fetchData();
-	}, [dispatch]);
+		if (!isLoaded) {
+			fetchData();
+		} else {
+			return;
+		}
+	}, [dispatch, isLoaded]);
 
+	console.log(categories)
 	if(!user) {
 		return null
 	}
@@ -27,7 +35,7 @@ function LeftNavPanel() {
 					 <h1 className="left_nav_title">Categories</h1>
 					</div>
 					<div className="categories_list">
-						{categoriesArr?.map((category) => (
+						{categories?.map((category) => (
 							<div className="category_list_item">
 								<NavLink to={`/categories/${category?.name}`} className="left_panel_link">
 									{category?.name}

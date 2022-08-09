@@ -31,4 +31,6 @@ class Post (db.Model):
           'comments_count': len(self.comments),
           'likes_count': len(self.likes),
           'categories': [category.to_dict() for category in self.has_categories],
+          'profile_img': self.user.profile_img,
+          'username': self.user.username,
       }

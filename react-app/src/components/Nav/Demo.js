@@ -5,7 +5,7 @@ const DemoUser = () => {
   const dispatch = useDispatch();
 
   const loginDemo = () => {
-    dispatch(login("demo", "password" ));
+    dispatch(login("demo", "munch2022" ));
   };
 
   return (

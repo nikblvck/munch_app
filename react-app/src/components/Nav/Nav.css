@@ -6,7 +6,7 @@
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
-  border-bottom: 1px solid #222222;
+  border-bottom: 1px solid #d10000;
   background-color: rgb(255, 255, 255);
   z-index: 2;
   position: fixed;

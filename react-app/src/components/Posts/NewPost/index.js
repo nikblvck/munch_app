@@ -12,14 +12,13 @@ function NewPost() {
   const dispatch = useDispatch();
   const history = useHistory();
   const user = useSelector((state) => state?.session?.user);
-  const [image_url, setImage_url] = useState('');
+  const [images, setImages] = useState('');
   const [caption, setCaption] = useState('');
-  const [category_id, setCategoryId] = useState(0);
+  const [hasCategories, setHasCategories] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
   const [errors, setErrors] = useState([]);
-  const categories = useSelector((state) => state?.categories);
-  console.log(categories)
-  const categoriesArray = Object?.values(categories)
+  const categories = useSelector((state) => state?.categories?.categories);
+ console.log(images)
 
   useEffect(() => {
    dispatch(getCategories()).then(() => setIsLoaded(true));
@@ -29,9 +28,9 @@ function NewPost() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newPost = {
-      image_url,
+      images,
       caption,
-      category_id,
+      categories,
       user_id: user.id,
     };
     if (newPost) {
@@ -49,14 +48,14 @@ function NewPost() {
 
 return (
   <>
-    <div className="home_feed_container">
+    <div className="main_container">
       <div className="post_form_container">
       <div className="post_form_header">
         <p>New Post</p>
       </div>
       <div className="post_form_content">
         <div className="post_form_image">
-          <img src={image_url} alt={caption} className="post_form_image" />
+          <img src={images} alt={caption} className="post_form_image" />
         </div>
         <div className="post_form_inputs">
           <div className="form_errors">
@@ -71,10 +70,12 @@ return (
           <form className="post_form" onSubmit={handleSubmit}>
             <label htmlFor="image_url">Image URL *</label>
             <input
-              type="text"
-              name="image_url"
-              value={image_url}
-              onChange={(e) => setImage_url(e.target.value)}
+              type="file"
+              name="images"
+              value={images}
+              onChange={(e) => setImages(e.target.value)}
+              multiple
+              required
             />
             <label htmlFor="caption">Caption</label>
             <input
@@ -88,11 +89,11 @@ return (
             <label htmlFor="category_id">Category *</label>
             <select
               className="category_select"
-              value={category_id}
-              onChange={(e) => setCategoryId(e.target.value)}
+              value={hasCategories}
+              onChange={(e) => setHasCategories(e.target.value)}
             >
               <option > --Select a Category-- </option>
-              {categoriesArray?.map((category) => (
+              {categories?.map((category) => (
                 <option key={category?.id} value={category?.id}>
                   {category?.name}
                 </option>

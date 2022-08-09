@@ -1,68 +1,46 @@
-//constants
-const GET_CATEGORIES = "categories/GET_CATEGORIES";
-const GET_CATEGORY = "categories/GET_CATEGORY";
-
-//action creators
+//Constants
+const GET_CATEGORIES = "GET_CATEGORIES";
+const GET_CATEGORY = "GET_CATEGORY";
+//Action Creators
 
 const loadCategories = (categories) => ({
-  type: GET_CATEGORIES,
-  categories,
+	type: GET_CATEGORIES,
+	categories,
 });
 
 const loadCategory = (category) => ({
   type: GET_CATEGORY,
   category,
 });
-
-//thunk functions
+//Thunks
 
 export const getCategories = () => async (dispatch) => {
-  const response = await fetch("/api/categories/", {
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-
-  if (response.ok) {
-    const categories = await response.json();
-    dispatch(loadCategories(categories));
-  } else if (response.status < 500) {
-    const error = await response.json();
-    throw new Error(error.message);
-  } else {
-    throw new Error("Server error");
-  }
+	const response = await fetch("/api/categories");
+	if (response.ok) {
+		const categories = await response.json();
+		dispatch(loadCategories(categories));
+	}
 };
 
-export const getCategory = (category_name) => async (dispatch) => {
-  const response = await fetch(`/api/categories/${category_name}/`, {
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-
+export const getCategory = (category) => async (dispatch) => {
+  const response = await fetch(`/api/categories/${category}`);
   if (response.ok) {
     const category = await response.json();
     dispatch(loadCategory(category));
-  } else if (response.status < 500) {
-    const error = await response.json();
-    throw new Error(error.message);
-  } else {
-    throw new Error("Server error");
   }
-};
+}
 
-//reducer
-const initialState = {};
 
-export default function categoriesReducer(state = initialState, action){
+// Reducer
+let initialState = {};
+
+export default function categoriesReducer(state = initialState, action) {
 	let newState;
 	switch (action.type) {
-    case GET_CATEGORIES:
-      newState = {...state};
-      action.categories.forEach((category) => {
-        newState[category.name] = category;})
-      return newState;
+		case GET_CATEGORIES:
+			newState = { ...state };
+			newState.categories = action.categories;
+			return newState;
 		case GET_CATEGORY:
 			newState = { ...state };
 			newState.category = action.category;
@@ -70,4 +48,4 @@ export default function categoriesReducer(state = initialState, action){
 		default:
 			return state;
 	}
-};
+}

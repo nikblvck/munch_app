@@ -25,7 +25,7 @@ def seed_images():
         },
         {
             'url': 'https://res.cloudinary.com/bigtechnik/image/upload/v1658342429/munch/image_imcsns.jpg',
-            'post_id': 2
+            'post_id': 3
         }
     ]
 

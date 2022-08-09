@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 
 import { useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
+import './Splash.css'
 
 function SplashPage() {
   const user = useSelector((state) => state?.session?.user);
@@ -9,7 +10,7 @@ function SplashPage() {
   if (!user) {
     return (
 			<>
-				<div className="home_feed_container">
+				<div className="main_container">
 					<div className="splash_background_container">
 						<div className="header_image_container">
 							<img

@@ -70,7 +70,7 @@ const NavBar = () => {
           {navLinks}
         </div>
       </div>
-      {/* <LeftNavPanel /> */}
+      <LeftNavPanel />
       <RightNavPanel />
     </nav>
   );
